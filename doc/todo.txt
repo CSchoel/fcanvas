@@ -1,0 +1,6 @@
+- setDefaultFillColor
+- getTextWidth
+- drawImage
+- setPixel
+- keyPressedMostSinceLastAsked
+	

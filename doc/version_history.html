@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FCanvas Versionshistorie</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<p><b>Verbesserungen mit Version 1.1:</b></p>
+<ul>
+<li>Versionsnummer eingeführt: <span style="font-family:monospace">FCanvas.VERSION</span></li>
+<li>Bugfix: <span style="font-family:monospace">FCanvas.move(long, int, int)</span> funktioniert jetzt korrekt bei Rechtecken</li>
+<li>Mehrere Methoden eingeführt zur Abfrage von Mouse- und Key-Events.</li>
+<li>Später gezeichnete Komponenten verdecken jetzt früher gezeichnete</li>
+<li>Methode <span style="font-family:monospace">FCanvas.isVisible()</span> hinzugefügt, um Animationsschleifen abbrechen zu können</li>
+</ul>
+
+<p><b>Verbesserungen mit Version 1.1.1:</b></p>
+<ul>
+<li>Bugfix: <span style="font-family:monospace">FCanvas.move(long, int, int)</span> funktioniert jetzt korrekt bei Linien</li>
+</ul>
+
+<p><b>Verbesserungen mit Version 1.1.2</b></p>
+<ul>
+<li>Bugfix: Methoden <span style="font-family:monospace">de.thm.mni.oop.fcanvas.components.Polygon.getCentroidX()</span> und 
+<span style="font-family:monospace">de.thm.mni.oop.fcanvas.components.Polygon.getCentroidY()</span> gefixed. Centroid wurde vorher
+nur einmal Berechnet und beim Bewegen eines Polygons nicht mehr aktualisiert.</li>
+</ul>
+
+<p><b>Verbesserungen mit Version 1.2</b></p>
+<ul>
+<li>Antialiasing-Einstellung hinzugefügt.</li>
+<li>Getter und Setter für Fenstergröße hinzugefügt.</li>
+<li>Verbessertes Handling von Key- und Mouse-Events, neue "sinceLastAsked" und "isDown"-Methoden.</li>
+</ul>
+
+<p><b>Verbesserungen mit Version 1.3</b></p>
+<ul>
+<li>Neue Funktionen <span style="font-family:monospace">FCanvas.getKeyPressesSinceLastAsked(int)</span> und 
+<span style="font-family:monospace">FCanvas.getMouseButtonPressesSinceLastAsked(int)</span> erlauben das Abfragen von Tastatur-
+und Maus-Events ohne dass ein Klick verpasst oder doppelt gewertet wird.
+</li>
+<li>Neue Funktion <span style="font-family:monospace">FCanvas.saveToImage(String)</span> erlaubt Speichern des Canvas als Bilddatei.</li>
+</ul>
+</body>
+</html>
