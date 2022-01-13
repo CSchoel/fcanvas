@@ -423,6 +423,7 @@ public class FCanvas {
 	 * @since 1.2
 	 * @deprecated ersetzt durch {@link #getKeyPressesSinceLastAsked(int)}
 	 */
+	@Deprecated(since="1.3", forRemoval=true)
 	public static boolean wasKeyPressedSinceLastAsked(int key) {
 		long now = System.currentTimeMillis();
 		Long lastAsked = keyLastAsked.get(key);
@@ -477,6 +478,7 @@ public class FCanvas {
 	 * @deprecated ersetzt durch {@link FCanvas#getMouseButtonPressesSinceLastAsked(int)}
 	 * @since 1.2
 	 */
+	@Deprecated(since="1.3", forRemoval=true)
 	public static boolean wasMouseButtonPressedSinceLastAsked(int button) {
 		long now = System.currentTimeMillis();
 		Long lastAsked = buttonLastAsked.get(button);
@@ -544,6 +546,7 @@ public class FCanvas {
 	 * @deprecated ersetzt durch {@link #isKeyDown(int)}
 	 * @since 1.1
 	 */
+	@Deprecated(since="1.3", forRemoval=true)
 	public static boolean isControlDown() {
 		return isKeyDown(KeyEvent.VK_CONTROL);
 	}
@@ -553,6 +556,7 @@ public class FCanvas {
 	 * @deprecated ersetzt durch {@link #isKeyDown(int)}
 	 * @since 1.1
 	 */
+	@Deprecated(since="1.3", forRemoval=true)
 	public static boolean isShiftDown() {
 		return isKeyDown(KeyEvent.VK_SHIFT);
 	}
@@ -562,6 +566,7 @@ public class FCanvas {
 	 * @deprecated ersetzt durch {@link #isKeyDown(int)}
 	 * @since 1.1
 	 */
+	@Deprecated(since="1.3", forRemoval=true)
 	public static boolean isAltDown() {
 		return isKeyDown(KeyEvent.VK_ALT);
 	}
@@ -571,6 +576,7 @@ public class FCanvas {
 	 * @deprecated ersetzt durch {@link #isMouseButtonDown(int)}
 	 * @since 1.1
 	 */
+	@Deprecated(since="1.3", forRemoval=true)
 	public static boolean isMouse1Down() {
 		return isMouseButtonDown(MouseEvent.BUTTON1);
 	}
@@ -580,6 +586,7 @@ public class FCanvas {
 	 * @deprecated ersetzt durch {@link #isMouseButtonDown(int)}
 	 * @since 1.1
 	 */
+	@Deprecated(since="1.3", forRemoval=true)
 	public static boolean isMouse2Down() {
 		return isMouseButtonDown(MouseEvent.BUTTON2);
 	}
@@ -589,6 +596,7 @@ public class FCanvas {
 	 * @deprecated ersetzt durch {@link #isMouseButtonDown(int)}
 	 * @since 1.1
 	 */
+	@Deprecated(since="1.3", forRemoval=true)
 	public static boolean isMouse3Down() {
 		return isMouseButtonDown(MouseEvent.BUTTON3);
 	}
