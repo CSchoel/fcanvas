@@ -26,6 +26,11 @@ sourceSets {
     }
 }
 
+// add source files to jar so that students can browse javadoc in IDE
+tasks.jar {
+    from(sourceSets["main"].getAllSource())
+}
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
