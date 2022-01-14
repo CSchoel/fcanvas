@@ -13,6 +13,7 @@ jobs:
         with:
           distribution: adopt
           java-version: 17
+      - run: ./gradlew build
       - uses: CSchoel/release-notes-from-changelog@v1
       - name: Create Release using GitHub CLI
         env:
