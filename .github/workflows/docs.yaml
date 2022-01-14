@@ -1,0 +1,23 @@
+# Publishes Javadoc to GitHub pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: adopt
+          java-version: 17
+      - run: ./gradlew javadoc
+      - name: Deploy docs
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
+        with:
+          branch: gh-pages
+          folder: build/docs/javadoc
