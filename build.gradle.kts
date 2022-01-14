@@ -26,6 +26,15 @@ sourceSets {
     }
 }
 
+tasks.javadoc {
+    // variable is required because options is a property with a getter
+    val o = options
+    if (o is StandardJavadocDocletOptions) {
+        // enables @pre tag
+        o.tags("pre:a:Preconditions: ")
+    }
+}
+
 // add source files to jar so that students can browse javadoc in IDE
 tasks.jar {
     from(sourceSets["main"].getAllSource())
