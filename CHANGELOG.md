@@ -45,4 +45,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Components have now a clear order on the z-axis: Components that have been drawn later occlude components that have been drawn earlier.
 
-[1.3.0]: https://github.com/CSchoel/fcanvas/tags/v1.3.0
+[1.3.0]: https://github.com/CSchoel/fcanvas/releases/tag/v1.3.0
