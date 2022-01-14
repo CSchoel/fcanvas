@@ -29,7 +29,7 @@ sourceSets {
 tasks.javadoc {
     val overview = "build/docs/overview.html"
     doFirst {
-        val pb = ProcessBuilder("pandoc", "doc/fcanvas-tutorial.md", "-s", "-o", overview);
+        val pb = ProcessBuilder("pandoc", "doc/fcanvas-tutorial.md" , "-s", "--template=template.html", "--no-highlight", "-o", overview);
         pb.start().waitFor();
     }
     // variable is required because options is a property with a getter
