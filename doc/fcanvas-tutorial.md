@@ -39,7 +39,7 @@ FCanvas.drawRectangle(30,10,100,200);
 FCanvas.show();
 ```
 
-Die Farbe, Liniengröße, Füllung und andere Eigenschaften eines Rechtecks lassen sich natürlich auch verändern. Wie das funktioniert wird in Abschnitt <a href="#sec:mod" data-reference-type="ref" data-reference="sec:mod">3.2</a> beschrieben.
+Die Farbe, Liniengröße, Füllung und andere Eigenschaften eines Rechtecks lassen sich natürlich auch verändern. Wie das funktioniert wird in Abschnitt <a href="#modifikationen">Modifikationen</a> beschrieben.
 
 ### Oval
 
@@ -85,7 +85,7 @@ FCanvas.show();
 
 ## Modifikationen
 
-Alle Elemente aus Abschnitt <a href="#sec:elem" data-reference-type="ref" data-reference="sec:elem">3.1</a> lassen sich natürlich auch weiter modifizieren.
+Alle Elemente aus dem Abschnitt <a href="#grafikelemente">Grafikelemente</a> lassen sich natürlich auch weiter modifizieren.
 
 Die folgende Tabelle zeigt welche Funktionen es gibt um Elementeigenschaften zu ändern und auf welche Elemente sie wirken:
 
