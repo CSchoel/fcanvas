@@ -92,12 +92,12 @@ Die folgende Tabelle zeigt welche Funktionen es gibt um Elementeigenschaften zu 
 |                   |                              |          |      |         |       |      |
 |:------------------|:-----------------------------|:---------|:-----|:--------|:------|:-----|
 | Funktion          | Eigenschaft                  | Rechteck | Oval | Polygon | Linie | Text |
-| `setStrokeWidth ` | Strichbreite in Pixeln       |          |      |         |       |      |
-| `setStrokeColor ` | Strichfarbe in RGB(A)        |          |      |         |       |      |
-| `setFillColor `   | Füllfarbe in RGB(A)          |          |      |         |       |      |
-| `setRotation `    | Rotation in Grad             |          |      |         |       |      |
-| `move `           | Position als Punkt (*x*,*y*) |          |      |         |       |      |
-| `setFontSize `    | Schriftgröße                 |          |      |         |       |      |
+| `setStrokeWidth ` | Strichbreite in Pixeln       |     ✓    |  ✓   |    ✓    |   ✓   |      |
+| `setStrokeColor ` | Strichfarbe in RGB(A)        |     ✓    |  ✓   |    ✓    |   ✓   |   ✓  |
+| `setFillColor `   | Füllfarbe in RGB(A)          |     ✓    |  ✓   |    ✓    |       |      |
+| `setRotation `    | Rotation in Grad             |     ✓    |  ✓   |    ✓    |   ✓   |   ✓  |
+| `move `           | Position als Punkt (*x*,*y*) |     ✓    |  ✓   |    ✓    |   ✓   |   ✓  |
+| `setFontSize `    | Schriftgröße                 |          |      |         |       |   ✓  |
 
 Um einzelne Elemente identifizieren zu können, liefert jede `drawX`-Methode eine ID vom Typ `long` zurück. Alle Modifizierungsmethoden erwarten eine solche ID als Parameter.
 
