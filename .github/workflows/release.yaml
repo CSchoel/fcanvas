@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-java@v2
         with:
           distribution: adopt
-          version: 17
+          java-version: 17
       - uses: CSchoel/release-notes-from-changelog@v1
       - name: Create Release using GitHub CLI
         env:
