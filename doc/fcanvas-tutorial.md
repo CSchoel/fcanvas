@@ -117,7 +117,7 @@ Wichtig ist außerdem noch anzumerken, dass der Aufruf von `FCanvas.show()` nat�
 
 ## Animationsschleife
 
-Wenn man schon dabei sind, grafische Animationen zu programmieren, will man in der Regel auch einen flüssigen Bildverlauf haben statt nur einigen ruckelig aneinandergereihten Bildern. Dazu bietet es sich an, eine Schleife zu verwenden, die genügend Bilder in der Sekunde verarbeiten kann, um den Eindruck einer flüssigen Bewegung zu erzeugen. Dazu reichen etwa 30 Bilder in der Sekunde aus, also eine Wartezeit von $\\frac{1000}{30} \\approx 33$ Millisekunden.
+Wenn man schon dabei sind, grafische Animationen zu programmieren, will man in der Regel auch einen flüssigen Bildverlauf haben statt nur einigen ruckelig aneinandergereihten Bildern. Dazu bietet es sich an, eine Schleife zu verwenden, die genügend Bilder in der Sekunde verarbeiten kann, um den Eindruck einer flüssigen Bewegung zu erzeugen. Dazu reichen etwa 30 Bilder in der Sekunde aus, also eine Wartezeit von 1000/30 ≅ 33 Millisekunden.
 
 Diese Animationsschleife kann dann entweder so lange laufen bis die Animation vorbei ist oder bis das Fenster geschlossen wurde. In letzterem Fall können Sie als Bedingung in ihrer while-Schleife die Abfrage `FCanvas.isVisible()` verwenden.
 
