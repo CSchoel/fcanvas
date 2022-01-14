@@ -34,8 +34,10 @@ Wie in der Computergrafik üblich beginnt das Koordinatensystem dieses Fensters 
 
 Eines der einfachsten Grafikelemente ist das Rechteck. Folgendes Codebeispiel zeichnet ein 100 Pixel breites und 200 Pixel hohes Rechteck mit schwarzem Rand und transparenter Füllung dessen obere linke Ecke 10 Pixel vom oberen und 30 Pixel vom linken Rand entfernt ist.
 
-    FCanvas.drawRectangle(30,10,100,200);
-    FCanvas.show();
+```java
+FCanvas.drawRectangle(30,10,100,200);
+FCanvas.show();
+```
 
 Die Farbe, Liniengröße, Füllung und andere Eigenschaften eines Rechtecks lassen sich natürlich auch verändern. Wie das funktioniert wird in Abschnitt <a href="#sec:mod" data-reference-type="ref" data-reference="sec:mod">3.2</a> beschrieben.
 
@@ -43,24 +45,30 @@ Die Farbe, Liniengröße, Füllung und andere Eigenschaften eines Rechtecks lass
 
 Ovale lassen sich genauso zeichnen wie Rechtecke, nur dass hier die obere linke Ecke die Ecke der bounding box - also des umschließenden Rechtecks - bezeichnet wird. Der Effekt lässt sich am einfachsten mit dem folgenden Codebeispiel erklären:
 
-    FCanvas.drawRectangle(20,10,100,75);
-    FCanvas.drawOval(20,10,100,75);
-    FCanvas.show();
+```java
+FCanvas.drawRectangle(20,10,100,75);
+FCanvas.drawOval(20,10,100,75);
+FCanvas.show();
+```
 
 ### Linie
 
 Linien definieren sich durch einen Start- und einen Endpunkt. Das folgende Beispiel zeichnet eine schwarze Linie vom Punkt (100,200) zum Punkt (300,400):
 
-    FCanvas.drawLine(100,200,300,400);
-    FCanvas.show();
+```java
+FCanvas.drawLine(100,200,300,400);
+FCanvas.show();
+```
 
 ### Text
 
 Auch ein Text kann an eine beliebige Position geschrieben werden. Dabei wird nun aber nicht der linke *obere* Punkt angegeben, sondern der Ankerpunkt liegt auf der Baseline des Textes. Das Konzept der Baseline lässt sich am leichtesten an einem Beispiel demonstrieren:
 
-    FCanvas.drawLine(100,100,300,100);
-    FCanvas.drawText("Alpaca",100,100);
-    FCanvas.show();
+```java
+FCanvas.drawLine(100,100,300,100);
+FCanvas.drawText("Alpaca",100,100);
+FCanvas.show();
+```
 
 ### Polygon
 
@@ -68,10 +76,12 @@ Das Polygon ist das einzige kompliziertere Grafikelement von FCanvas. Es besteht
 
 Das folgende Beispiel zeichnet einen einfachen vierzackigen Stern:
 
-    int[] x = {100,110,150,110,100, 90, 50,90};
-    int[] y = { 50, 90,100,110,150,110,100,90};
-    FCanvas.drawPolygon(x,y);
-    FCanvas.show();
+```java
+int[] x = {100,110,150,110,100, 90, 50,90};
+int[] y = { 50, 90,100,110,150,110,100,90};
+FCanvas.drawPolygon(x,y);
+FCanvas.show();
+```
 
 ## Modifikationen
 
@@ -93,10 +103,12 @@ Um einzelne Elemente identifizieren zu können, liefert jede `drawX`-Methode ein
 
 Das folgende Beispiel zeigt, wie man ein um 45 Grad gedrehtes Rechteck mit roter halbtransparenter Füllung zeichnet:
 
-    long id = FCanvas.drawRectangle(100,100,50,50);
-    FCanvas.setFillColor(id,255,0,0,128);
-    FCanvas.setRotation(id,45);
-    FCanvas.show();
+```java
+long id = FCanvas.drawRectangle(100,100,50,50);
+FCanvas.setFillColor(id,255,0,0,128);
+FCanvas.setRotation(id,45);
+FCanvas.show();
+```
 
 # Animationen
 
@@ -104,12 +116,14 @@ Das folgende Beispiel zeigt, wie man ein um 45 Grad gedrehtes Rechteck mit roter
 
 Um Animationen zu realisieren, muss die Ausführung von einzelnen Zeichenbefehlen verzögert werden. Dazu gibt es in Java die Methode `Thread.sleep(long)` mit der man den aktuellen Prozess schlafenlegen kann für eine in Millisekunden gemessene Zeitspanne. Da diese Methode die Ausnahme `InterruptedException` werfen kann, muss sie mit einem try-catch-Block umgeben werden wie in folgendem Beispiel:
 
-    FCanvas.show();
-    long id = FCanvas.drawOval(10,10,20,20);
-    //eine halbe Sekunde warten
-    try {Thread.sleep(500);} catch (Exception e) {}
-    //dann den Kreis mit blauer Farbe füllen
-    FCanvas.setFillColor(id,0,0,255);
+```java
+FCanvas.show();
+long id = FCanvas.drawOval(10,10,20,20);
+//eine halbe Sekunde warten
+try {Thread.sleep(500);} catch (Exception e) {}
+//dann den Kreis mit blauer Farbe füllen
+FCanvas.setFillColor(id,0,0,255);
+```
 
 Falls Sie sich noch nicht mit Ausnahmen in Java beschäftigt haben, lassen Sie sich nicht verwirren. Sie können die Zeile mit dem Aufruf von `Thread.sleep` erst einmal einfach kopieren und genau so in ihrem Code verwenden. Sie müssen nur statt der 500 natürlich die Anzahl an Millisekunden eintragen, die sie für ihre Animation warten wollen.
 
@@ -123,18 +137,20 @@ Diese Animationsschleife kann dann entweder so lange laufen bis die Animation vo
 
 Das folgende Code-Stück zeigt genau dieses Verhalten am Beispiel einer um einen Punkt kreisenden gelben Kugel.
 
-    FCanvas.show();
-    long id = FCanvas.drawOval(10, 10, 50, 50);
-    FCanvas.setFillColor(id, 255, 255, 0);
-    FCanvas.setStrokeColor(id, 0, 0, 0, 0);
-    int t = 0;
-    while(FCanvas.isVisible()) {
-      int x = (int)Math.round(100*Math.sin(Math.toRadians(t)));
-      int y = (int)Math.round(100*Math.cos(Math.toRadians(t)));
-      FCanvas.move(id, 200+x, 200+y);
-      t = (t+3) % 360;
-      try {Thread.sleep(33);} catch (Exception e) {}
-    }
+```java
+FCanvas.show();
+long id = FCanvas.drawOval(10, 10, 50, 50);
+FCanvas.setFillColor(id, 255, 255, 0);
+FCanvas.setStrokeColor(id, 0, 0, 0, 0);
+int t = 0;
+while(FCanvas.isVisible()) {
+  int x = (int)Math.round(100*Math.sin(Math.toRadians(t)));
+  int y = (int)Math.round(100*Math.cos(Math.toRadians(t)));
+  FCanvas.move(id, 200+x, 200+y);
+  t = (t+3) % 360;
+  try {Thread.sleep(33);} catch (Exception e) {}
+}
+```
 
 # Interaktive Animationen
 
@@ -150,16 +166,18 @@ Die beiden oben genannten Methoden benötigen eine explizite Angabe, wieviele Mi
 
 Im folgenden Beispiel wird als Wartezeit genau der Wert verwendet, der auch an `Thread.sleep` übergeben wird, um einen Kreis rot bzw. blau zu Färben wenn die Pfeiltaste nach links bzw nach rechts gedrückt wurde.
 
-    FCanvas.show();
-    long id = FCanvas.drawOval(10, 10, 50, 50);
-    while(FCanvas.isVisible()) {
-      if (FCanvas.wasKeyPressed(KeyEvent.VK_LEFT, 30)) {
-        FCanvas.setFillColor(id, 255, 0, 0);
-      } else if (FCanvas.wasKeyPressed(KeyEvent.VK_RIGHT, 30)) {
-        FCanvas.setFillColor(id, 0, 0, 255);
-      }
-      try {Thread.sleep(30);} catch (Exception e) {}
-    }
+```java
+FCanvas.show();
+long id = FCanvas.drawOval(10, 10, 50, 50);
+while(FCanvas.isVisible()) {
+  if (FCanvas.wasKeyPressed(KeyEvent.VK_LEFT, 30)) {
+    FCanvas.setFillColor(id, 255, 0, 0);
+  } else if (FCanvas.wasKeyPressed(KeyEvent.VK_RIGHT, 30)) {
+    FCanvas.setFillColor(id, 0, 0, 255);
+  }
+  try {Thread.sleep(30);} catch (Exception e) {}
+}
+```
 
 Wenn Sie diesen Code ausführen, werden sie bemerken, dass sie manchmal mehrfach eine Taste drücken müssen, bevor die Farbe sich ändert. Das liegt daran, dass zu den 30 Millisekunden ja auch noch ein paar Millisekunden für die Ausführung der eigentlichen Animationsschleife hinzukommt.
 
@@ -167,7 +185,7 @@ Um dieses Problem zu umgehen, gibt es für Animationsschleifen, die sowieso imme
 
 Das gleiche Beispiel würde dann wie folgt aussehen:
 
-```
+```java
 FCanvas.show();
 long id = FCanvas.drawOval(10, 10, 50, 50);
 while(FCanvas.isVisible()) {
@@ -186,34 +204,38 @@ Wenn es auch möglich sein soll, eine Taste dauerhaft gedrückt zu halten, gibt 
 
 Das folgende Beispiel zeigt einen Kreis, der durch Gedrückthalten der Pfeiltasten nach links oder nach rechts bewegt werden kann.
 
-    FCanvas.show();
-    int x = 300;
-    int y = 300;
-    long id = FCanvas.drawOval(x, y, 50, 50);
-    while(FCanvas.isVisible()) {
-      if (FCanvas.isKeyDown(KeyEvent.VK_LEFT)) {
-        x -= 3;
-      } else if (FCanvas.isKeyDown(KeyEvent.VK_RIGHT)) {
-        x += 3;
-      }
-      FCanvas.move(id,x,y);
-      try {Thread.sleep(30);} catch (Exception e) {}
-    }
+```java
+FCanvas.show();
+int x = 300;
+int y = 300;
+long id = FCanvas.drawOval(x, y, 50, 50);
+while(FCanvas.isVisible()) {
+  if (FCanvas.isKeyDown(KeyEvent.VK_LEFT)) {
+    x -= 3;
+  } else if (FCanvas.isKeyDown(KeyEvent.VK_RIGHT)) {
+    x += 3;
+  }
+  FCanvas.move(id,x,y);
+  try {Thread.sleep(30);} catch (Exception e) {}
+}
+```
 
 ## Mausposition
 
 Auch die Mausposition lässt sich natürlich abfragen. Dazu dienen die Methoden `FCanvas. getLastMouseX` und `FCanvas.getLastMouseY`. Das folgende Beispiel implementiert einen Kreis, der der Maus folgt.
 
-    FCanvas.show();
-    int x = 300;
-    int y = 300;
-    long id = FCanvas.drawOval(x, y, 50, 50);
-    while(FCanvas.isVisible()) {
-      x = FCanvas.getLastMouseX()-25;
-      y = FCanvas.getLastMouseY()-25;
-      FCanvas.move(id,x,y);
-      try {Thread.sleep(30);} catch (Exception e) {}
-    }
+```java
+FCanvas.show();
+int x = 300;
+int y = 300;
+long id = FCanvas.drawOval(x, y, 50, 50);
+while(FCanvas.isVisible()) {
+  x = FCanvas.getLastMouseX()-25;
+  y = FCanvas.getLastMouseY()-25;
+  FCanvas.move(id,x,y);
+  try {Thread.sleep(30);} catch (Exception e) {}
+}
+```
 
 # Sonstiges
 
