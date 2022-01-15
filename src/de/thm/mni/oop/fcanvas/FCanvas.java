@@ -111,15 +111,15 @@ public class FCanvas {
 	}
 	private static class KeyVarsUpdater extends KeyAdapter {
 		public void keyPressed(KeyEvent e) {
-	    	if (e.getKeyCode() == KeyEvent.VK_UNDEFINED) return;
-	    	keysDown.put(e.getKeyCode(), true);
+			if (e.getKeyCode() == KeyEvent.VK_UNDEFINED) return;
+			keysDown.put(e.getKeyCode(), true);
 			keyPressCount.compute(e.getKeyCode(), (k, v) -> (v == null ? 0 : v) + 1)
-	    	keyLastSeen.put(e.getKeyCode(), System.currentTimeMillis());
-	    }
-	    public void keyReleased(KeyEvent e) {
-	    	if (e.getKeyCode() == KeyEvent.VK_UNDEFINED) return;
-	    	keysDown.put(e.getKeyCode(), false);
-	    }
+			keyLastSeen.put(e.getKeyCode(), System.currentTimeMillis());
+		}
+		public void keyReleased(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_UNDEFINED) return;
+			keysDown.put(e.getKeyCode(), false);
+		}
 	}
 	private static class Visualizer implements Runnable {
 		@Override
