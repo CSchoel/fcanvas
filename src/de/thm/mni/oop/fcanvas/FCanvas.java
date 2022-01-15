@@ -261,6 +261,7 @@ public class FCanvas {
 	 * @pre id must belong to an existing canvas object
 	 */
 	public static void move(long id, int x, int y) {
+		// TODO would a delta make more sense here?
 		gui.getPanel().moveComponent(id, x, y);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
