@@ -1,6 +1,6 @@
 # FCanvas
 
-FCanvas is a small and extremely simple Java library that allows novice Java programmers to draw on a canvas (similar to [Processing](https://processing.org/)).
+FCanvas is a small and extremely simple Java library that allows novice Java programmers to draw on a canvas (similar to [Processing](https://processing.org/)) while still learning the basics of the language.
 
 The whole library requires only the following knowledge about Java:
 
