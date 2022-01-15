@@ -63,6 +63,7 @@ public class FCanvas {
 	public static final String VERSION = "1.3";
 	/** File extensions, die von {@link #saveToImage(String)} erkannt werden */
 	public static final List<String> SUPPORTED_IMAGE_FORMATS = Arrays.asList(new String[]{"jpg","bmp","png","gif"});
+	/** Ask time used for methods of the {@code sinceLastAsked} family when the event is checked for the first time. */
 	public static final int FIRST_ASK_TIME = 30;
 	private static Map<Integer,Long> keyLastSeen = new ConcurrentHashMap<Integer,Long>();
 	private static Map<Integer,Long> keyLastAsked = new ConcurrentHashMap<Integer,Long>();
