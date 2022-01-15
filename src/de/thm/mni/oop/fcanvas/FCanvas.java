@@ -18,33 +18,39 @@ import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
 /**
- * <p>Diese Klasse implementiert einen Canvas, auf dem man mit statischen Methoden zeichnen kann.</p>
+ * <p>This class implements a canvas on which you can draw using static methods.</p>
+ *
+ * <p>The class is essentially a wrapper for the functionality of the {@link FCanvasPanel} class,
+ * which provides a simplified interface without the additional Swing methods.</p>
+ *
+ * <p>No knowledge of concurrency, GUI design, or objects is required to use the class.
+ * An understanding of arrays is also only required for the polygon methods.</p>
+ *
+ * <p><b>Examples:</b></p>
  * 
- * <p>Die Klasse ist im Wesentlichen ein Wrapper für die Funktionalität der Klasse {@link FCanvasPanel},
- * der eine vereinfachte Schnittstelle bietet ohne die zusätzlichen Swing-Methoden.</p>
+ * <p>Draw and display a red circle:</p>
  * 
- * <p>Zur Benutzung der Klasse ist weder Wissen über Nebenläufigkeit und GUI-Design noch über Objekte nötig. 
- * Ein Verständnis von Arrays ist ebenfalls nur für die Polygon-Methoden Voraussetzung.</p>
- * 
- * <p><b>Beispiele:</b></p>
- * Einen roten Kreis zeichnen und anzeigen:
  * <pre>
  * long o = drawOval(10,10,100,100);
  * setFillColor(255,0,0);
  * show();
  * </pre>
- * Eine Sinuskurve mit Strichbreite 3 zeichnen:
+ * 
+ * <p>Draw a sine wave with line width 3:</p>
+ * 
  * <pre>
- * int lst = 0;
- * for(int i = 0; i &lt; 200; i++) {
+ * int actual = 0;
+ * for(int i = 0; i < 200; i++) {
  *   int tmp = (int)Math.round(Math.sin(i/30.0)*200+300);
  *   long l = drawLine(i-1,lst,i,tmp);
  *   setStrokeWidth(l,3);
  *   lst = tmp;
  * }
  * </pre>
- * Die Farbe eines Kreises immer ändern wenn die Pfeiltaste nach links oder rechts
- * gedrückt wurde (abbruch mit ESC):
+ * 
+ * <p>Change the color of a circle whenever the left or right arrow key
+ * was pressed (cancel with ESC):</p>
+ * 
  * <pre>
  * long id = drawOval(100,100,50,50);
  * int interval = 30;
