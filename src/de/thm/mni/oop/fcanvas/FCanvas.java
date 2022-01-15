@@ -102,8 +102,7 @@ public class FCanvas {
 		@Override
 		public void mousePressed(MouseEvent e) {
 			buttonsDown.put(e.getButton(), true);
-			Long pc = buttonPressCount.get(e.getButton());
-			buttonPressCount.put(e.getButton(), pc == null ? 1 : pc+1);
+			buttonPressCount.compute(e.getButton(), (k, v) -> (v == null ? 0 : v) + 1);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
@@ -114,8 +113,7 @@ public class FCanvas {
 		public void keyPressed(KeyEvent e) {
 	    	if (e.getKeyCode() == KeyEvent.VK_UNDEFINED) return;
 	    	keysDown.put(e.getKeyCode(), true);
-	    	Long pc = keyPressCount.get(e.getKeyCode());
-	    	keyPressCount.put(e.getKeyCode(), pc == null ? 1 : pc+1);
+			keyPressCount.compute(e.getKeyCode(), (k, v) -> (v == null ? 0 : v) + 1)
 	    	keyLastSeen.put(e.getKeyCode(), System.currentTimeMillis());
 	    }
 	    public void keyReleased(KeyEvent e) {
