@@ -30,7 +30,16 @@ tasks.javadoc {
     val overview = "build/docs/overview.html"
     doFirst {
         // Convert markdown tutorial to HTML using pandoc
-        val pb = ProcessBuilder("pandoc", "doc/fcanvas-tutorial.md" , "-s", "-M", "document-css=false", "--no-highlight", "-o", overview);
+        val pb = ProcessBuilder(
+            "pandoc",
+            "doc/fcanvas-tutorial.md",
+            "-f",
+            "markdown-implicit_figures",
+            "-s",
+            "-M", "document-css=false",
+            "--no-highlight",
+            "-o", overview)
+        ;
         pb.start().waitFor();
     }
     // variable is required because options is a property with a getter
@@ -46,6 +55,10 @@ tasks.javadoc {
         // copy mudskipper image to correct folder
         copy {
             from("logo/Schlammspringer.png")
+            into("build/docs/javadoc/resources")
+        }
+        copy {
+            from("logo/fcanvas-final.svg")
             into("build/docs/javadoc/resources")
         }
     }

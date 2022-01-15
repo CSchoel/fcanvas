@@ -1,5 +1,7 @@
 # Was ist FCanvas?
 
+![FCanvas-Logo](resources/fcanvas-final.svg)
+
 FCanvas ist eine schlanke leicht zu benutzende Java-Library zum Zeichnen und Animieren von einfachen Grafikobjekten. Sie setzt keine Kenntnisse über Java, Grafische Benutzerschnittstellen oder Computergrafik voraus, die über das Aufrufen von statischen Java-Methoden hinaus geht. Im Endeffekt handelt es sich dabei um eine Kapselung der Java 2D API durch die Klasse `de.thm.mni.oop.fcanvas.FCanvas` als einzige Benutzerschnittstelle.
 
 Die Library wurde entwickelt um Studenten beim Lernen der Programmiersprache Java schnell zu ermöglichen auch grafische Beispielaufgaben zu lösen und sogar kleine Spiele selbst zu programmieren. Sie bietet eine extrem einfache Bedienung und bewahrt dabei noch so viel Performance und Reaktivität wie möglich.
