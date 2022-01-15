@@ -3,7 +3,7 @@ package de.thm.mni.oop.fcanvas;
 import javax.swing.JFrame;
 
 /**
- * Diese Klasse bietet eine minimalistische SwingGUI zum Anzeigen eines
+ * This class provides a minimalistic Swing GUI for displaying
  * {@link FCanvasPanel}s.
  * 
  * @author Christopher Schölzel
@@ -13,8 +13,7 @@ public class FCanvasGUI extends JFrame {
 	private static final long serialVersionUID = -332099432394940188L;
 	private FCanvasPanel canvas;
 	/**
-	 * Erzeugt ein neues GUI-Fenster mit einer Startgröße von 800x600 Pixeln, das
-	 * ein einzelnes {@link FCanvasPanel} enthält.
+	 * Creates a new GUI window with a starting size of 800x600 pixels containing a single {@link FCanvasPanel}.
 	 */
 	public FCanvasGUI() {
 		canvas = new FCanvasPanel();
@@ -25,8 +24,8 @@ public class FCanvasGUI extends JFrame {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	/**
-	 * Gibt das FCanvasPanel zurück, das in diesem Fenster angezeigt wird.
-	 * @return das FCanvasPanel dieses Fensters
+	 * Returns the FCanvasPanel displayed in this window.
+	 * @return the FCanvasPanel of that window
 	 */
 	public FCanvasPanel getPanel() {
 		return canvas;
