@@ -60,7 +60,7 @@ import javax.swing.SwingUtilities;
  */
 public class FCanvas {
 	/** Version {@value #VERSION} */
-	public static final String VERSION = "1.3";
+	public static final String VERSION = "1.3.1";
 	/** File extensions, die von {@link #saveToImage(String)} erkannt werden */
 	public static final List<String> SUPPORTED_IMAGE_FORMATS = Arrays.asList(new String[]{"jpg","bmp","png","gif"});
 	/** Ask time used for methods of the {@code sinceLastAsked} family when the event is checked for the first time. */
