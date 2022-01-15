@@ -87,7 +87,7 @@ FCanvas.show();
 
 Alle Elemente aus dem Abschnitt <a href="#grafikelemente">Grafikelemente</a> lassen sich natürlich auch weiter modifizieren.
 
-Die folgende Tabelle zeigt welche Funktionen es gibt um Elementeigenschaften zu ändern und auf welche Elemente sie wirken:
+Die folgende Tabelle zeigt welche Funktionen es gibt, um Elementeigenschaften zu ändern und auf welche Elemente sie wirken:
 
 Table: Übersicht, welche Eigenschaften auf welche Grafikelemente zutreffen
 
