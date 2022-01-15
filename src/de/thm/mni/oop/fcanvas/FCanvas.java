@@ -113,7 +113,7 @@ public class FCanvas {
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_UNDEFINED) return;
 			keysDown.put(e.getKeyCode(), true);
-			keyPressCount.compute(e.getKeyCode(), (k, v) -> (v == null ? 0 : v) + 1)
+			keyPressCount.compute(e.getKeyCode(), (k, v) -> (v == null ? 0 : v) + 1);
 			keyLastSeen.put(e.getKeyCode(), System.currentTimeMillis());
 		}
 		public void keyReleased(KeyEvent e) {
