@@ -39,7 +39,7 @@ Novices that just want to rotate a rectangle might be discouraged by this, espec
 FCanvas therefore only provides a single transformation function `setRotation(long, float)`, which allows to set the rotation of a graphic object around its center in degrees.
 This is much more intuitive for most novices and introduces only small costs for experts that want to create complex structures.
 
-### Pull mechanism for input events
+### Polling mechanism for input events
 
 A big challenge for animations is handling keyboard and mouse input within a single-threaded application.
 FCanvas solves this by keeping track of input events internally and allowing the user to poll which events have arrived since they have last asked.
