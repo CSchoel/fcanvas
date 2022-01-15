@@ -67,7 +67,7 @@ import javax.swing.SwingUtilities;
 public class FCanvas {
 	/** Version {@value #VERSION} */
 	public static final String VERSION = "1.3.1";
-	/** File extensions, die von {@link #saveToImage(String)} erkannt werden */
+	/** File extensions recognized by {@link #saveToImage(String)} */
 	public static final List<String> SUPPORTED_IMAGE_FORMATS = Arrays.asList(new String[]{"jpg","bmp","png","gif"});
 	/** Ask time used for methods of the {@code sinceLastAsked} family when the event is checked for the first time. */
 	public static final int FIRST_ASK_TIME = 30;
@@ -84,7 +84,7 @@ public class FCanvas {
 	private volatile static Point lastMousePoint = new Point(0,0);
 	private static FCanvasGUI gui = new FCanvasGUI();
 	private static boolean autoupdate = true;
-	/** privater Konstruktor um zu verhindern, dass Objekte der Klasse erzeugt werden */
+	/** Private constructor to prohibit instantiation */
 	private FCanvas() {}
 	private static class MouseVarsUpdater extends MouseAdapter {
 		@Override
@@ -136,18 +136,18 @@ public class FCanvas {
 		}
 	}
 	/**
-	 * <p>Zeigt das Canvas-Fenster an.</p>
-	 * 
-	 * <p>Grafische Komponenten können sowohl vor als auch nach dem Aufruf dieser Methode
-	 * hinzugefügt und verändert werden.</p>
-	 * 
-	 * <p>Achtung: Das laufende Programm kann erst beendet werden, wenn das Fenster vom Benutzer oder
-	 * aus dem Code mit dem Aufruf von {@link #close()} geschlossen wurde.</p>
-	 * 
-	 * @see #close()
-	 */
+	* <p>Shows the Canvas window.</p>
+	*
+	* <p>Graphic components can be added and modified both before
+	* and after calling this method.</p>
+	*
+	* Caution: The running program cannot be terminated until the window
+	* has been closed by the user or by calling {@link #close()}.
+	*
+	* @see #close()
+	*/
 	public static void show() {
-		//TODO bug wenn zweimal aufgerufen
+		//TODO bug if called twice
 		gui.getPanel().addKeyListener(new KeyVarsUpdater());
 		gui.getPanel().addMouseListener(new MouseVarsUpdater());
 		gui.getPanel().addMouseMotionListener(new MouseVarsUpdater());
@@ -158,21 +158,21 @@ public class FCanvas {
 		}
 	}
 	/**
-	 * Schließt das Canvas-Fenster.
+	 * Closes the Canvas window.
 	 * 
-	 * Nachdem das Fenster geschlossen wurde, kann es nicht wieder geöffnet werden.
+	 * Once the window is closed, it cannot be reopened.
 	 */
 	public static void close() {
 		SwingUtilities.invokeLater(new Disposer());
 	}
 	/**
-	 * Zeichnet ein Rechteck auf den Canvas.
+	 * Draws a rectangle on the canvas.
 	 * 
-	 * @param left x-Koordinate der linken oberen Ecke des Rechtecks
-	 * @param top y-Koordinate der linken oberen Ecke des Rechtecks
-	 * @param width Breite des Rechtecks
-	 * @param height Höhe des Rechtecks
-	 * @return id des erstellten Rechtecks
+	 * @param left x-coordinate of the upper-left corner of the rectangle
+	 * @param top Y-coordinate of the upper-left corner of the rectangle
+	 * @param width Width of the rectangle
+	 * @param height Height of the rectangle
+	 * @return id of the created rectangle
 	 */
 	public static long drawRectangle(int left, int top, int width, int height) {
 		long id = gui.getPanel().addRectangle(left, top, width, height);
@@ -180,13 +180,13 @@ public class FCanvas {
 		return id;
 	}
 	/**
-	 * Zeichnet eine gerade Linie zwischen den Punkten (x1,y1) und (x2,y2) auf den Canvas.
+	 * Draws a straight line between points (x1,y1) and (x2,y2) on the canvas.
 	 * 
-	 * @param x1 x-Koordinate des ersten Punkts
-	 * @param y1 y-Koordinate des ersten Punkts
-	 * @param x2 x-Koordinate des zweiten Punkts
-	 * @param y2 y-Koordinate des zweiten Punkts
-	 * @return id der erstellten Linie
+	 * @param x1 x-coordinate of the first point
+	 * @param y1 y coordinate of the first point
+	 * @param x2 x-coordinate of the second point
+	 * @param y2 y coordinate of the second point
+	 * @return id of the created line
 	 */
 	public static long drawLine(int x1, int y1, int x2, int y2) {
 		long id = gui.getPanel().addLine(x1,y1,x2,y2);
@@ -194,13 +194,13 @@ public class FCanvas {
 		return id;
 	}
 	/**
-	 * Zeichnet ein Oval auf den Canvas.
+	 * Draws an oval on the canvas.
 	 * 
-	 * @param left x-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) des Ovals
-	 * @param top  y-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) des Ovals
-	 * @param width Breite des Ovals
-	 * @param height Höhe des Ovals
-	 * @return id des erstellten Ovals
+	 * @param left x-coordinate of the top left point of the oval's bounding box
+	 * @param top y-coordinate of the upper left point of the oval's bounding box
+	 * @param width Width of the oval
+	 * @param height Height of the oval
+	 * @return id of the created oval
 	 */
 	public static long drawOval(int left, int top, int width, int height) {
 		long id = gui.getPanel().addOval(left,top,width,height);
@@ -208,12 +208,12 @@ public class FCanvas {
 		return id;
 	}
 	/**
-	 * Zeichnet einen Text auf den Canvas.
+	 * Draws a text on the canvas.
 	 * 
-	 * @param text der Text, der gezeichnet werden soll
-	 * @param left die x-Koordinate des ersten Zeichens
-	 * @param baseline die y-Koordinate der Baseline des ersten Zeichens
-	 * @return id des erstellten Textes
+	 * @param text the text to draw
+	 * @param left the x-coordinate of the first character
+	 * @param baseline the y-coordinate of the baseline of the first character
+	 * @return id of the created text
 	 */
 	public static long drawText(String text, int left, int baseline) {
 		long id = gui.getPanel().addText(text,left,baseline);
@@ -221,11 +221,11 @@ public class FCanvas {
 		return id;
 	}
 	/**
-	 * Zeichnet ein Polygon auf den Canvas.
+	 * Draws a polygon on the canvas.
 	 * 
-	 * @param xcoords array der x-Koordinaten der Polygon-Punkte
-	 * @param ycoords array der y-Koordinaten der Polygon-Punkte
-	 * @return id des erstellten Polygons
+	 * @param xcoords array of x-coordinates of polygon points
+	 * @param ycoords array of y-coordinates of polygon points
+	 * @return id of the created polygon
 	 */
 	public static long drawPolygon(int[] xcoords,int[] ycoords) {
 		long id = gui.getPanel().addPolygon(xcoords,ycoords);
@@ -233,181 +233,180 @@ public class FCanvas {
 		return id;
 	}
 	/**
-	 * Entfernt ein Objekt vom Canvas.
+	 * Removes an object from the canvas.
 	 * 
-	 * @param id id des Objektes, das entfernt werden soll
-	 * @pre id muss zu einem existierenden Canvas-Objekt gehören
+	 * @param id id of the object to be removed
+	 * @pre id must belong to an existing canvas object
 	 */
 	public static void remove(long id) {
 		gui.getPanel().removeComponent(id);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * <p>Bewegt ein Objekt auf dem Canvas.</p>
+	 * <p>Moves an object on the canvas.</p>
 	 * 
-	 * <p>Die Bedeutung der Parameter x und y unterscheiden sich je nach Typ des
-	 * Objektes, das Bewegt werden soll:</p>
+	 * <p>The meaning of the x and y parameters differ depending on the type of
+	 * object to be moved:</p>
 	 * 
 	 * <ul>
-	 * <li><em>Ovale und Rechtecke</em>: (x,y) ist der neue linke obere Punkt des Objektes.
-	 * <li><em>Linien und Polygone</em>: (x,y) ist die neue Koordinate des ersten Punktes des Objektes.
-	 * <li><em>Text</em>: x ist die neue x-Koordinate des ersten Zeichens, y ist die neue y-Koordinate der
-	 *     Baseline des ersten Zeichens.
+	 * <li><em>Ovals and Rectangles</em>: (x,y) is the new top left point of the object.
+	 * <li><em>Lines and polygons</em>: (x,y) is the new coordinate of the first point of the object.
+	 * <li><em>Text</em>: x is the new x-coordinate of the first character, y is the new y-coordinate of the
+	 *      Baseline of the first character.
 	 * </ul>
 	 * 
-	 * @param id id des Objektes, das bewegt werden soll
-	 * @param x x-Koordinate des neuen Ursprungspunktes
-	 * @param y y-Koordinate des neuen Ursprungspunktes
-	 * @pre id muss zu einem existierenden Canvas-Objekt gehören
+	 * @param id id of the object to be moved
+	 * @param x x-coordinate of the new origin point
+	 * @param y Y coordinate of the new origin point
+	 * @pre id must belong to an existing canvas object
 	 */
 	public static void move(long id, int x, int y) {
 		gui.getPanel().moveComponent(id, x, y);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * Ändert die Schriftgröße eines Textobjektes.
+	 * Changes the font size of a text object.
 	 * 
-	 * @param id die id des Textobjektes
-	 * @param points die neue Schriftgröße in pt
-	 * @pre id muss zu einem existierenden Text-Objekt gehören
+	 * @param id the id of the text object
+	 * @param points the new font size in pt
+	 * @pre id must belong to an existing text object
 	 */
 	public static void setFontSize(long id, int points) {
 		gui.getPanel().setFontSize(id, points);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * Ändert die Strichbreite für das Objekt.
+	 * Changes the stroke width for the object.
 	 * 
-	 * Bei Ovalen, Rechtecken, Linien und Polygonen ist damit die breite des Rands gemeint.
-	 * Bei Texten hat diese Methode keinen Effekt.
+	 * In the case of ovals, rectangles, lines and polygons, this means the width of the border.
+	 * This method has no effect on text.
 	 * 
-	 * @param id die id des Objektes
-	 * @param w die neue Strichbreite (in Pixeln)
-	 * @pre id muss zu einem existierenden Canvas-Objekt gehören
+	 * @param id the id of the object
+	 * @param w the new stroke width (in pixels)
+	 * @pre id must belong to an existing canvas object
 	 */
 	public static void setStrokeWidth(long id ,int w) {
 		gui.getPanel().setStrokeWidth(id, w);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * Ändert die Füllfarbe eines Objektes.
-	 * 
-	 * Hat keinen Effekt für Linien und Texte.
+	 * Changes the fill color of an object.
 	 *
-	 * @param id die id des Objektes
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
-	 * @pre id muss zu einem existierenden Canvas-Objekt gehören
+	 * Has no effect on lines and text.
+	 *
+	 * @param id the id of the object
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
+	 * @pre id must belong to an existing canvas object
 	 */
 	public static void setFillColor(long id ,int r, int g, int b) {
 		gui.getPanel().setFillColor(id, r,g,b,255);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * Ändert die Füllfarbe eines Objektes.
-	 * 
-	 * Hat keinen Effekt für Linien und Texte.
+	 * Changes the fill color of an object.
 	 *
-	 * @param id die id des Objektes
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
-	 * @param alpha Wert für den Alphakanal (0 bis 255, 0 = durchsichtig)
-	 * @pre id muss zu einem existierenden Canvas-Objekt gehören
+	 * Has no effect on lines and text.
+	 *
+	 * @param id the id of the object
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
+	 * @param alpha value for the alpha channel (0 to 255, 0 = transparent)
+	 * @pre id must belong to an existing canvas object
 	 */
 	public static void setFillColor(long id ,int r, int g, int b, int alpha) {
 		gui.getPanel().setFillColor(id, r,g,b,alpha);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * Ändert die Strichfarbe eines Objektes.
-	 * 
-	 * @param id die id des Objektes
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
-	 * @pre id muss zu einem existierenden Canvas-Objekt gehören
+	 * Changes the stroke color of an object.
+	 *
+	 * @param id the id of the object
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
+	 * @pre id must belong to an existing canvas object
 	 */
 	public static void setStrokeColor(long id ,int r, int g, int b) {
 		gui.getPanel().setStrokeColor(id, r,g,b,255);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * Ändert die Strichfarbe eines Objektes.
+	 * Changes the stroke color of an object.
 	 * 
-	 * Bei <code>alpha == 0</code> wird der Strich unsichtbar.
+	 * With <code>alpha == 0</code> the bar becomes invisible.
 	 * 
-	 * @param id die id des Objektes
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
-	 * @param alpha Wert für den Alphakanal (0 bis 255, 0 = durchsichtig)
-	 * @pre id muss zu einem existierenden Canvas-Objekt gehören
+	 * @param id the id of the object
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
+	 * @param alpha value for the alpha channel (0 to 255, 0 = transparent)
+	 * @pre id must belong to an existing canvas object
 	 */
 	public static void setStrokeColor(long id ,int r, int g, int b, int alpha) {
 		gui.getPanel().setStrokeColor(id, r,g,b,alpha);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * <p>Ändert den Rotationswinkel für ein Objekt.</p>
+	 * <p>Changes the rotation angle for an object.</p>
 	 * 
-	 * <p>Rechtecke, Ovale, Linien und Polygone werden um ihren Mittelpunkt rotiert.</p>
+	 * <p>Rectangles, ovals, lines and polygons are rotated around their center.</p>
 	 * 
-	 * <p>Texte werden um ihren Ursprungspunkt (left,baseline) rotiert.</p>
+	 * <p>Texts are rotated around their origin (left,baseline).</p>
 	 * 
-	 * @param id die id des Objektes
-	 * @param degrees Rotationswinkel in grad
+	 * @param id the id of the object
+	 * @param degrees rotation angle in degrees
 	 */
 	public static void setRotation(long id, float degrees) {
 		gui.getPanel().setRotation(id, degrees);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * <p>Ändert die Hintergrundfarbe des Canvas.</p>
+	 * <p>Changes the background color of the canvas.</p>
 	 * 
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
 	 */
 	public static void setBackgroundColor(int r, int g, int b) {
 		gui.getPanel().setBackgroundColor(r, g, b);
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * Entfernt alle Objekte vom Canvas.
+	 * Removes all objects from the canvas.
 	 */
 	public static void clear() {
 		gui.getPanel().clear();
 		if (autoupdate) gui.getPanel().updateCanvas();
 	}
 	/**
-	 * <p>Macht alle Änderungen am Canvas sichtbar.</p>
-	 * <p>Wird nur benötigt, wenn die autoupdate-Funktion ausgeschaltet wurde.</p>
+	 * <p>Makes all changes to the canvas visible.</p>
+	 * <p>Only required if the autoupdate function has been switched off.</p>
 	 * @see #setAutoUpdate(boolean)
 	 */
 	public static void update() {
 		gui.getPanel().updateCanvas();
 	}
 	/**
-	 * <p>Schaltet die Autoupdate-Funktion ein und aus.</p>
-	 * <p>Wenn die Funktion ausgeschaltet ist, muss {@link #update()} verwendet
-	 * werden, bevor Änderungen am Canvas sichtbar werden.</p>
-	 * @param auto wenn <code>true</code> wird Autoupdate-Funktion eingeschaltet, ansonsten ausgeschaltet
+	 * <p>Turns the autoupdate function on and off.</p>
+	 * <p>If the feature is turned off, {@link #update()} must be used
+	 * before changes to the canvas become visible.</p>
+	 * @param auto if <code>true</code> autoupdate function is enabled, otherwise disabled
 	 * @see #update()
 	 */
 	public static void setAutoUpdate(boolean auto) {
 		autoupdate = auto;
 	}
 	/**
-	 * <p>Prüft ob vor <code>since</code> oder weniger millisekunden die Taste <code>key</code>
-	 * gedrückt wurde.</p>
-	 * <p>Die IDs der Tasten sind in der Klasse {@link KeyEvent} zu finden.</p>
-	 * <p>Wurden zwei oder mehr verschiedene Tasten in dem angegebenen Zeitraum gedrückt,
-	 * wird nur die zuletzt gedrückte erkannt.</p>
-	 * @param key die ID der Taste, die überprüft werden soll (z.B. {@link KeyEvent#VK_0}, {@link KeyEvent#VK_ALT})
-	 * @param since Anzahl an Millisekunden die seit dem Drücken der Taste höchstens vergangen sein darf
-	 * @return <code>true</code> wenn die gewählte Taste vor <code>since</code> oder weniger ms gedrückt wurde
+	 * <p>Checks if the <code>key</code> was pressed <code>since</code> or less milliseconds ago.</p>
+	 * <p>The key IDs can be found in the {@link KeyEvent} class.</p>
+	 * <p>If two or more different keys were pressed in the specified time period,
+	 * only the last one pressed will be recognized.</p>
+	 * @param key the ID of the key to check (e.g. {@link KeyEvent#VK_0}, {@link KeyEvent#VK_ALT})
+	 * @param since Maximum number of milliseconds that may have elapsed since the key was pressed
+	 * @return <code>true</code> if the selected key was pressed before <code>since</code> or less ms
 	 * @see KeyEvent
 	 * @since 1.1
 	 */
@@ -420,15 +419,15 @@ public class FCanvas {
 		return false;
 	}
 	/**
-	 * <p>Prüft ob die Taste <code>key</code> gedrückt wurde seit die selbe Taste zum letzten mal mit 
-	 * {@link #wasKeyPressed(int, long)} oder {@link #wasKeyPressedSinceLastAsked(int)} abgefragt wurde.</p>
-	 * <p>Für die erste Abfrage, wenn noch keine der beiden Methoden aufgerufen wurde, 
-	 * wird eine Default-Abfragezeit von {@value #FIRST_ASK_TIME} ms verwendet.</p>
-	 * @param key die ID der Taste, die überprüft werden soll (z.B. {@link KeyEvent#VK_0}, {@link KeyEvent#VK_ALT})
-	 * @return <code>true</code> wenn die gewählte Taste seit dem letzten Abfragen gedrückt wurde
+	 * <p>Checks if the <code>key</code> key has been pressed since the last time the same key was pressed
+	 * using {@link #wasKeyPressed(int, long)} or {@link #wasKeyPressedSinceLastAsked(int)}.</p>
+	 * <p>For the first query, if neither method has been called yet,
+	 * a default query time of {@value #FIRST_ASK_TIME} ms is used.</p>
+	 * @param key the ID of the key to check (e.g. {@link KeyEvent#VK_0}, {@link KeyEvent#VK_ALT})
+	 * @return <code>true</code> if the selected key has been pressed since the last query
 	 * @see KeyEvent
 	 * @since 1.2
-	 * @deprecated ersetzt durch {@link #getKeyPressesSinceLastAsked(int)}
+	 * @deprecated replaced with {@link #getKeyPressesSinceLastAsked(int)}
 	 */
 	@Deprecated(since="1.3", forRemoval=true)
 	public static boolean wasKeyPressedSinceLastAsked(int key) {
@@ -437,12 +436,12 @@ public class FCanvas {
 		return wasKeyPressed(key,lastAsked == null ? FIRST_ASK_TIME : now-lastAsked);
 	}
 	/**
-	 * <p>Gibt an, wie oft die Taste <code>key</code> gedrückt wurde, seit
-	 * die selbe Taste mit einem Aufruf dieser Methode abgefragt wurde.</p>
-	 * <p>Beim ersten Aufruf dieser Funktion wird die Anzahl aller Tastendrücke seit
-	 * dem Start des Programms zurückgegeben.</p>
-	 * @param key die ID der Taste, die überprüft werden soll (z.B. {@link KeyEvent#VK_0}, {@link KeyEvent#VK_ALT})
-	 * @return Anzahl der Tastendrücke mit der Taste <code>key</code> seit dem letzten Aufruf
+	 * <p>The number of times the <code>key</code> has been pressed since
+	 * the same key was queried with a call to this method.</p>
+	 * <p>The first time this function is called, it returns the number of key presses since
+	 * the program was started.</p>
+	 * @param key the ID of the key to check (e.g. {@link KeyEvent#VK_0}, {@link KeyEvent#VK_ALT})
+	 * @return Number of keystrokes with the <code>key</code> key since the last call
 	 * @see KeyEvent
 	 * @since 1.3
 	 */
@@ -455,14 +454,13 @@ public class FCanvas {
 		return (int)(currentCount - lastCount);
 	}
 	/**
-	 * <p>Prüft ob vor <code>since</code> oder weniger millisekunden die Maustaste <code>button</code>
-	 * gedrückt wurde.</p>
-	 * <p>Die IDs der Tasten sind in der Klasse {@link MouseEvent} zu finden.</p>
-	 * <p>Wurden zwei oder mehr verschiedene Tasten in dem angegebenen Zeitraum gedrückt,
-	 * wird nur die zuletzt gedrückte erkannt.</p>
-	 * @param button die ID der Taste, die überprüft werden soll (z.B. {@link MouseEvent#BUTTON1}, {@link MouseEvent#BUTTON3})
-	 * @param since Anzahl an Millisekunden die seit dem Drücken der Taste höchstens vergangen sein darf
-	 * @return <code>true</code> wenn die gewählte Taste vor <code>since</code> oder weniger ms gedrückt wurde
+	 * <p>Checks if the mouse button <code>button</code> was pressed <code>since</code> or less milliseconds ago.</p>
+	 * <p>The IDs of the buttons can be found in the {@link MouseEvent} class.</p>
+	 * <p>If two or more different keys were pressed in the specified time period,
+	 * only the last one pressed will be recognized.</p>
+	 * @param button the ID of the button to check (e.g. {@link MouseEvent#BUTTON1}, {@link MouseEvent#BUTTON3})
+	 * @param since Maximum number of milliseconds that may have elapsed since the key was pressed
+	 * @return <code>true</code> if the selected key was pressed before <code>since</code> or less ms
 	 * @see MouseEvent
 	 * @since 1.1
 	 */
@@ -475,14 +473,14 @@ public class FCanvas {
 		return false;
 	}
 	/**
-	 * <p>Prüft ob die Maustaste <code>button</code> gedrückt wurde seit die selbe Taste zum letzten mal mit 
-	 * {@link #wasMouseButtonPressed(int, long)} oder {@link #wasMouseButtonPressedSinceLastAsked(int)} abgefragt wurde.</p>
-	 * <p>Für die erste Abfrage, wenn noch keine der beiden Methoden aufgerufen wurde, 
-	 * wird eine Default-Abfragezeit von {@value #FIRST_ASK_TIME} ms verwendet.</p>
-	 * @param button die ID der Taste, die überprüft werden soll (z.B. {@link MouseEvent#BUTTON1}, {@link MouseEvent#BUTTON3})
-	 * @return <code>true</code> wenn die gewählte Taste seit dem letzten Abfragen gedrückt wurde
+	 * <p>Checks if the mouse button <code>button</code> has been pressed since the last time the same button was pressed
+	 * using {@link #wasMouseButtonPressed(int, long)} or {@link #wasMouseButtonPressedSinceLastAsked(int)}.</p>
+	 * <p>For the first query, if neither method has been called yet,
+	 * a default query time of {@value #FIRST_ASK_TIME} ms is used.</p>
+	 * @param button the ID of the button to check (e.g. {@link MouseEvent#BUTTON1}, {@link MouseEvent#BUTTON3})
+	 * @return <code>true</code> if the selected key has been pressed since the last query
 	 * @see MouseEvent
-	 * @deprecated ersetzt durch {@link FCanvas#getMouseButtonPressesSinceLastAsked(int)}
+	 * @deprecated replaced with {@link FCanvas#getMouseButtonPressesSinceLastAsked(int)}
 	 * @since 1.2
 	 */
 	@Deprecated(since="1.3", forRemoval=true)
@@ -492,12 +490,12 @@ public class FCanvas {
 		return wasMouseButtonPressed(button,lastAsked == null ? FIRST_ASK_TIME : now-lastAsked);
 	}
 	/**
-	 * <p>Gibt an, wie oft die Maustaste <code>button</code> gedrückt wurde, seit
-	 * die selbe Taste mit einem Aufruf dieser Methode abgefragt wurde.</p>
-	 * <p>Beim ersten Aufruf dieser Funktion wird die Anzahl aller Klicks seit
-	 * dem Start des Programms zurückgegeben.</p>
-	 * @param button die ID der Taste, die überprüft werden soll (z.B. {@link MouseEvent#BUTTON1}, {@link MouseEvent#BUTTON3})
-	 * @return Anzahl der Klicks mit der Maustaste <code>button</code> seit dem letzten Aufruf
+	 * <p>The number of times the <code>button</code> mouse button has been pressed since
+	 * the same key was queried with a call to this method.</p>
+	 * <p>The first time this function is called, it returns the number of clicks since
+	 * the program was started.</p>
+	 * @param button the ID of the button to check (e.g. {@link MouseEvent#BUTTON1}, {@link MouseEvent#BUTTON3})
+	 * @return Number of clicks of the mouse button <code>button</code> since the last call
 	 * @see MouseEvent
 	 * @since 1.3
 	 */
@@ -510,25 +508,25 @@ public class FCanvas {
 		return (int)(currentCount - lastCount);
 	}
 	/**
-	 * Gibt die x-Koordinate der letzten bekannten Mausposition zurück.
-	 * @return x-Koordinate der Maus
+	 * Returns the x-coordinate of the last known mouse position.
+	 * @return x-coordinate of the mouse
 	 * @since 1.1
 	 */
 	public static int getLastMouseX() {
 		return lastMousePoint.x;
 	}
 	/**
-	 * Gibt die y-Koordinate der letzten bekannten Mausposition zurück.
-	 * @return y-Koordinate der Maus
+	 * Returns the y-coordinate of the last known mouse position.
+	 * @return y-coordinate of the mouse
 	 * @since 1.1
 	 */
 	public static int getLastMouseY() {
 		return lastMousePoint.y;
 	}
 	/**
-	 * Gibt an, ob die Taste <code>key</code> gerade gedrückt gehalten wird.
-	 * @param key die ID der Taste, die überprüft werden soll (z.B. {@link KeyEvent#VK_0}, {@link KeyEvent#VK_ALT})
-	 * @return <code>true</code> wenn die Taste <code>key</code> gerade gedrückt gehalten wird
+	 * Indicates whether the key <code>key</code> is currently being held down.
+	 * @param key the ID of the key to check (e.g. {@link KeyEvent#VK_0}, {@link KeyEvent#VK_ALT})
+	 * @return <code>true</code> if the key <code>key</code> is currently being held down
 	 * @see KeyEvent
 	 * @since 1.2
 	 */
@@ -537,9 +535,9 @@ public class FCanvas {
 		return kd == null ? false : kd;
 	}
 	/**
-	 * Gibt an, ob die Maustaste <code>button</code> gerade gedrückt gehalten wird.
-	 * @param button die ID der Taste, die überprüft werden soll (z.B. {@link MouseEvent#BUTTON1}, {@link MouseEvent#BUTTON3})
-	 * @return <code>true</code> wenn die Taste <code>button</code> gerade gedrückt gehalten wird
+	 * Indicates whether the mouse button <code>button</code> is currently being held down.
+	 * @param button the ID of the button to check (e.g. {@link MouseEvent#BUTTON1}, {@link MouseEvent#BUTTON3})
+	 * @return <code>true</code> if the mouse button <code>button</code> is currently held down
 	 * @see MouseEvent
 	 * @since 1.2
 	 */
@@ -548,9 +546,9 @@ public class FCanvas {
 		return bd == null ? false : bd;
 	}
 	/**
-	 * Gibt an, ob die Strg-Taste gedrückt gehalten wird.
-	 * @return <code>true</code> wenn der Benutzer gerade Strg gedrückt hält
-	 * @deprecated ersetzt durch {@link #isKeyDown(int)}
+	 * Indicates whether the Ctrl key is held down.
+	 * @return <code>true</code> if the user is currently holding ctrl
+	 * @deprecated replaced by {@link #isKeyDown(int)}
 	 * @since 1.1
 	 */
 	@Deprecated(since="1.3", forRemoval=true)
@@ -558,9 +556,9 @@ public class FCanvas {
 		return isKeyDown(KeyEvent.VK_CONTROL);
 	}
 	/**
-	 * Gibt an, ob die Shift-Taste gedrückt gehalten wird.
-	 * @return <code>true</code> wenn der Benutzer gerade Shift gedrückt hält
-	 * @deprecated ersetzt durch {@link #isKeyDown(int)}
+	 * Indicates whether the Shift key is held down.
+	 * @return <code>true</code> if the user is currently holding Shift
+	 * @deprecated replaced by {@link #isKeyDown(int)}
 	 * @since 1.1
 	 */
 	@Deprecated(since="1.3", forRemoval=true)
@@ -568,9 +566,9 @@ public class FCanvas {
 		return isKeyDown(KeyEvent.VK_SHIFT);
 	}
 	/**
-	 * Gibt an, ob die Alt-Taste gedrückt gehalten wird.
-	 * @return <code>true</code> wenn der Benutzer gerade Alt gedrückt hält
-	 * @deprecated ersetzt durch {@link #isKeyDown(int)}
+	 * Indicates whether the Alt key is held down.
+	 * @return <code>true</code> if the user is currently holding Alt
+	 * @deprecated replaced by {@link #isKeyDown(int)}
 	 * @since 1.1
 	 */
 	@Deprecated(since="1.3", forRemoval=true)
@@ -578,9 +576,9 @@ public class FCanvas {
 		return isKeyDown(KeyEvent.VK_ALT);
 	}
 	/**
-	 * Gibt an, ob die linke Maustaste gedrückt gehalten wird.
-	 * @return <code>true</code> wenn der Benutzer gerade die linke Maustaste gedrückt hält
-	 * @deprecated ersetzt durch {@link #isMouseButtonDown(int)}
+	 * Indicates whether the left mouse button is held down.
+	 * @return <code>true</code> if the user is currently holding down the left mouse button
+	 * @deprecated replaced by {@link #isMouseButtonDown(int)}
 	 * @since 1.1
 	 */
 	@Deprecated(since="1.3", forRemoval=true)
@@ -588,9 +586,9 @@ public class FCanvas {
 		return isMouseButtonDown(MouseEvent.BUTTON1);
 	}
 	/**
-	 * Gibt an, ob die mittlere Maustaste gedrückt gehalten wird.
-	 * @return <code>true</code> wenn der Benutzer gerade die mittlere Maustaste gedrückt hält
-	 * @deprecated ersetzt durch {@link #isMouseButtonDown(int)}
+	 * Indicates whether the middle mouse button is held down.
+	 * @return <code>true</code> if the user is currently holding the middle mouse button
+	 * @deprecated replaced by {@link #isMouseButtonDown(int)}
 	 * @since 1.1
 	 */
 	@Deprecated(since="1.3", forRemoval=true)
@@ -598,9 +596,9 @@ public class FCanvas {
 		return isMouseButtonDown(MouseEvent.BUTTON2);
 	}
 	/**
-	 * Gibt an, ob die rechte Maustaste gedrückt gehalten wird.
-	 * @return <code>true</code> wenn der Benutzer gerade die rechte Maustaste gedrückt hält
-	 * @deprecated ersetzt durch {@link #isMouseButtonDown(int)}
+	 * Indicates whether the right mouse button is held down.
+	 * @return <code>true</code> if the user is currently holding down the right mouse button
+	 * @deprecated replaced by {@link #isMouseButtonDown(int)}
 	 * @since 1.1
 	 */
 	@Deprecated(since="1.3", forRemoval=true)
@@ -608,36 +606,36 @@ public class FCanvas {
 		return isMouseButtonDown(MouseEvent.BUTTON3);
 	}
 	/**
-	 * <p>Gibt an, ob das Canvas-Fenster gerade angezeigt wird.</p>
+	 * <p>Indicates whether the Canvas window is currently visible.</p>
 	 * 
-	 * <p>Diese Methode kann zum Beispiel dazu verwendet werden, um eine Animations-Schleife
-	 * abzubrechen, wenn das Fenster vom Benutzer geschlossen wird.</p>
+	 * <p>This method can be used, for example, to break an animation loop
+	 * when the window is closed by the user.</p>
 	 * 
-	 * @return <code>true</code> wenn das Fenster sichtbar ist, <code>false</code> sonst
+	 * @return <code>true</code> if the window is visible, <code>false</code> otherwise
 	 */
 	public static boolean isVisible() {
 		return gui.isVisible();
 	}
 	/**
-	 * Gibt die aktuelle Breite des Zeichenbereichs zurück. 
-	 * @return die Breite des Canvas
+	 * Returns the current width of the drawing area.
+	 * @return the width of the canvas
 	 * @since 1.2
 	 */
 	public static int getCanvasWidth() {
 		return gui.getPanel().getWidth();
 	}
 	/**
-	 * Gibt die aktuelle Höhe des Zeichenbereichs zurück. 
-	 * @return die Höhe des Canvas
+	 * Returns the current height of the canvas.
+	 * @return the height of the canvas
 	 * @since 1.2
 	 */
 	public static int getCanvasHeight() {
 		return gui.getPanel().getHeight();
 	}
 	/**
-	 * Ändert die größe des Zeichenbereichs.
-	 * @param w die neue Breite des Zeichenbereichs
-	 * @param h die neue Höhe des Zeichenbereichs
+	 * Changes the size of the drawing area.
+	 * @param w the new width of the canvas
+	 * @param h the new height of the canvas
 	 * @since 1.2
 	 */
 	public static void setCanvasSize(int w, int h) {
@@ -646,22 +644,22 @@ public class FCanvas {
 		gui.setSize(w+woff,h+hoff);
 	}
 	/**
-	 * <p>Ändert die Antialiasing-Einstellungen.</p>
-	 * <p>Antialiasing ist per Default ausgeschaltet. Es verbraucht mehr Rechenleistung,
-	 * gibt den gezeichneten Objekten dafür aber glattere Kanten.</p>
-	 * @param enabled wenn <code>true</code> wird Antialiasing eingeschaltet
+	 * <p>Changes antialiasing settings.</p>
+	 * <p>Antialiasing is turned off by default. It consumes more computing power,
+	 * but gives the drawn objects smoother edges.</p>
+	 * @param enabled if <code>true</code> turns on antialiasing
 	 * @since 1.2
 	 */
 	public static void setAntialiasingEnabled(boolean enabled) {
 		gui.getPanel().setAntialiasingEnabled(enabled);
 	}
 	/**
-	 * <p>Speichert die aktuelle Grafik als Bilddatei.</p>
-	 * <p>Die Dateinamenerweiterung bestimmt dabei das Speicherformat. Unterstützte
-	 * Formate stehen in der Variable {@link #SUPPORTED_IMAGE_FORMATS}. Wird eine
-	 * Erweiterung nicht unterstützt, wird automatisch PNG als Format verwendet.</p>
-	 * @param fname der name der Bilddatei
-	 * @throws IOException wenn die Datei nicht beschrieben werden konnte
+	 * <p>Saves the current graphic as an image file.</p>
+	 * <p>The file name extension determines the storage format. Supported
+	 * Formats are listed in the variable {@link #SUPPORTED_IMAGE_FORMATS}.
+	 * If an xtension is not supported, PNG is used by default.</p>
+	 * @param fname the name of the image file
+	 * @throws IOException if the file could not be written
 	 * @see #SUPPORTED_IMAGE_FORMATS
 	 */
 	public static void saveToImage(String fname) throws IOException {
