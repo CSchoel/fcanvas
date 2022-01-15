@@ -3,7 +3,7 @@ package de.thm.mni.oop.fcanvas.components;
 import java.awt.Font;
 
 /**
- * Stellt einen Text dar.
+ * Represents a piece of text.
  * 
  * @author Christopher Schölzel
  */
@@ -13,10 +13,10 @@ public class Text extends AbstractComponent {
 	private int baseline;
 	private Font font;
 	/**
-	 * Erstellt eine neue Textkomponente.
-	 * @param text der Text, der angezeigt werden soll
-	 * @param left die x-Koordinate des ersten Zeichens
-	 * @param baseline die y-Koordinate der Baseline des ersten Zeichens
+	 * Creates a new text component.
+	 * @param text the text to be displayed
+	 * @param left the x-coordinate of the first character
+	 * @param baseline the y-coordinate of the baseline of the first character
 	 */
 	public Text(String text, int left, int baseline) {
 		this.text = text;
@@ -25,58 +25,58 @@ public class Text extends AbstractComponent {
 		this.font = new Font("SansSerif", Font.PLAIN, 12);
 	}
 	/**
-	 * Ändert die Schriftgröße des Textes.
-	 * @param size neue Schriftgröße in pt
+	 * Changes the font size of the text.
+	 * @param size new font size in pt
 	 */
 	public void setFontSize(int size) {
 		this.font = new Font(font.getFontName(),font.getStyle(),size);
 	}
 	/**
-	 * Gibt den Text zurück der angezeigt werden soll.
-	 * @return Text, der angezeigt werden soll
+	 * Returns the text to be displayed.
+	 * @return Text to be displayed
 	 */
 	public String getText() {
 		return text;
 	}
 	/**
-	 * Ändert den Text der angezeigt werden soll.
-	 * @param text neuer Text
+	 * Changes the text to be displayed.
+	 * @param text new text
 	 */
 	public void setText(String text) {
 		this.text = text;
 	}
 	/**
-	 * Gibt die x-Koordinate des ersten Zeichens zurück.
-	 * @return x-Koordinate des erten Zeichens
+	 * Returns the x-coordinate of the first character.
+	 * @return x-coordinate of the first character
 	 */
 	public int getLeft() {
 		return left;
 	}
 	/**
-	 * Ändert die x-Koordinate des ersten Zeichens.
-	 * @param left neue x-Koordinate
+	 * Changes the x-coordinate of the first character.
+	 * @param left new x coordinate
 	 */
 	public void setLeft(int left) {
 		this.left = left;
 	}
 	/**
-	 * Gibt die y-Koordinate der Baseline des ersten Zeichens zurück
-	 * @return y-Koordinate der Baseline
+	 * Returns the y-coordinate of the baseline of the first character
+	 * @return y-coordinate of the baseline
 	 */
 	public int getBaseline() {
 		return baseline;
 	}
 	/**
-	 * Ändert die y-Koordinate der Baseline
-	 * @param baseline neue y-Koordinate
+	 * Changes the y-coordinate of the baseline
+	 * @param baseline new y coordinate
 	 */
 	public void setBaseline(int baseline) {
 		this.baseline = baseline;
 	}
 	/**
-	 * Gibt das Font-Objekt zurück, das benutzt werden soll um den Text mit einem
-	 * {@link java.awt.Graphics2D}-Objekt zu zeichnen.
-	 * @return Font
+	 * Returns the Font object to use to surround the text with a
+	 * {@link java.awt.Graphics2D} object to draw.
+	 * @return font
 	 */
 	public Font getFont() {
 		return font;

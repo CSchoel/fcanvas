@@ -5,8 +5,7 @@ import java.awt.Color;
 import java.awt.Stroke;
 
 /**
- * Abstrakte Basisklasse für alle Klassen sie das interface {@link FCanvasComponent}
- * implementieren.
+ * Abstract base class for all classes that implement the {@link FCanvasComponent} interface.
  * 
  * @author Christopher Schölzel
  * @see FCanvasComponent
@@ -62,11 +61,10 @@ public abstract class AbstractComponent implements FCanvasComponent {
 		return cstroke;
 	}
 	/**
-	 * Hilfsfunktion, die ein Stroke-Objekt erzeugt, das eine Kopie des übergebenen Strokes
-	 * mit anderer breite ist.
-	 * @param s das alte Stroke-Objekt
-	 * @param width die neue Breite in Pixeln
-	 * @return eine Kopie von s mit der Breite width
+	 * Helper function that creates a Stroke object that is a copy of the supplied Stroke with a different width.
+	 * @param s the old Stroke object
+	 * @param width the new width in pixels
+	 * @return a copy of s with width <code>width</code>
 	 */
 	protected static BasicStroke withDifferentWidth(BasicStroke s, int width) {
 		BasicStroke s2 = new BasicStroke(width,s.getEndCap(), s.getLineJoin(), s.getMiterLimit(), s.getDashArray(), s.getDashPhase());

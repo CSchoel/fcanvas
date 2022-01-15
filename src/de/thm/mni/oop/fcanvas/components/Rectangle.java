@@ -1,7 +1,7 @@
 package de.thm.mni.oop.fcanvas.components;
 
 /**
- * Stellt ein Rechteck dar.
+ * Represents a rectangle.
  * @author Christopher Schölzel
  */
 public class Rectangle extends AbstractComponent {
@@ -10,11 +10,11 @@ public class Rectangle extends AbstractComponent {
 	private int width;
 	private int height;
 	/**
-	 * Erstellt ein neues Rechteck
-	 * @param left x-Koordinate des linken oberen Punktes
-	 * @param top y-Koordinate des linken oberen Punktes
-	 * @param width Breite des Rechtecks
-	 * @param height Höhe des Rechtecks
+	 * Creates a new rectangle
+	 * @param left x-coordinate of the top left point
+	 * @param top Y coordinate of the top left point
+	 * @param width Width of the rectangle
+	 * @param height Height of the rectangle
 	 */
 	public Rectangle(int left, int top, int width, int height) {
 		this.top = top;
@@ -24,57 +24,57 @@ public class Rectangle extends AbstractComponent {
 		this.rotation = 0;
 	}
 	/**
-	 * Gibt die y-Koordinate der linken oberen Ecke zurück
-	 * @return y-Koordinate der linken oberen Ecke
+	 * Returns the y-coordinate of the upper-left corner
+	 * @return y-coordinate of the upper-left corner
 	 */
 	public int getTop() {
 		return top;
 	}
 	/**
-	 * Ändert die y-Koordinate der linken oberen Ecke
-	 * @param top neue y-Koordinate
+	 * Changes the y-coordinate of the top-left corner
+	 * @param top new y-coordinate
 	 */
 	public void setTop(int top) {
 		this.top = top;
 	}
 	/**
-	 * Gibt die x-Koordinate der linken oberen Ecke zurück
-	 * @return x-Koordinate de rlinken oberen Ecke
+	 * Returns the x-coordinate of the upper-left corner
+	 * @return x-coordinate of the upper left corner
 	 */
 	public int getLeft() {
 		return left;
 	}
 	/**
-	 * Ändert die x-Koordinate der linken oberen Ecke
-	 * @param left neue x-Koordinate
+	 * Changes the x coordinate of the top left corner
+	 * @param left new x coordinate
 	 */
 	public void setLeft(int left) {
 		this.left = left;
 	}
 	/**
-	 * Gibt die Breite des Rechtecks zurück.
-	 * @return Breite des Rechtecks
+	 * Returns the width of the rectangle.
+	 * @return Rectangle width
 	 */
 	public int getWidth() {
 		return width;
 	}
 	/**
-	 * Ändert die Breite des Rechtecks.
-	 * @param width neue Breite
+	 * Changes the width of the rectangle.
+	 * @param width new width
 	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
 	/**
-	 * Gibt die Höhe des Rechtecks zurück.
-	 * @return Höhe des Rechtecks
+	 * Returns the height of the rectangle.
+	 * @return Rectangle height
 	 */
 	public int getHeight() {
 		return height;
 	}
 	/**
-	 * Ändert die Höhe des Rechtecks.
-	 * @param height neue Höhe
+	 * Changes the height of the rectangle.
+	 * @param height new height
 	 */
 	public void setHeight(int height) {
 		this.height = height;

@@ -5,77 +5,78 @@ import java.awt.Paint;
 import java.awt.Stroke;
 
 /**
- * <p>Eine Komponente, die in einem {@link de.thm.mni.oop.fcanvas.FCanvasPanel} verwendet wird.</p>
- * 
- * <p>Jede Komponente enthält alle Informationen, die zum Zeichnen der Komponente nötig sind.
- * Sie bietet grundlegende Methoden zum setzen Veränderlicher Eigenschaften und Getter für die 
- * Verwendung mit einem {@link java.awt.Graphics2D} Objekt an.</p>
+ * <p>A component used in a {@link de.thm.mni.oop.fcanvas.FCanvasPanel}.</p>
+ *   *
+ * <p>Each component contains all the information needed to draw the component.
+ * It provides basic methods for setting properties and getters for use with a
+ * {@link java.awt.Graphics2D} object.</p>
  * 
  * @author Christopher Schölzel
  * @see AbstractComponent
  */
 public interface FCanvasComponent {
 	/**
-	 * Ändert den Rotationswinkel. Falls möglich sollte dieser eine Rotation um das Zentrum der
-	 * Komponente ausdrücken.
+	 * Changes the rotation angle. If possible, this should express a rotation around
+	 * the center of the component.
 	 * 
-	 * @param degree winkel in Grad
+	 * @param degree angle in degrees
 	 */
 	public void setRotation(float degree);
 	/**
-	 * Gibt den Rotationswinkel zurück.
-	 * @return Rotationswinkel in Grad
+	 * Returns the rotation angle.
+	 * @return Rotation angle in degrees
 	 */
 	public float getRotation();
 	/**
-	 * Ändert die Füllfarbe der Komponente.
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
-	 * @param a Wert für den Alphakanal (0 bis 255)
+	 * Changes the fill color of the component.
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
+	 * @param a value for the alpha channel (0 to 255)
 	 */
 	public void setFillColor(int r, int g, int b, int a);
 	/**
-	 * Ändert die Strichfarbe der Komponente.
+	 * Changes the stroke color of the component.
 	 * 
-	 * Bei Komponenten, die einen gefüllten Bereich angeben ist der Strich die Randlinie. 
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
-	 * @param a Wert für den Alphakanal (0 bis 255)
+	 * For components that specify a filled area, the dash is the border line.
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
+	 * @param a value for the alpha channel (0 to 255)
 	 */
 	public void setStrokeColor(int r, int g, int b, int a);
 	/**
-	 * Ändert die Strichbreite der Komponente. 
+	 * Changes the stroke width of the component.
 	 * 
-	 * Bei Komponenten, die einen gefüllten Bereich angeben ist der Strich die Randlinie. 
-	 * @param w neue Strichbreite in Pixeln
+	 * For components that specify a filled area, the stroke is the border line.
+	 * @param w new stroke width in pixels
 	 */
 	public void setStrokeWidth(int w);
 	/**
-	 * Gibt das Stroke-Objekt zurück, das zum Zeichnen der Komponente mit einem 
-	 * {@link java.awt.Graphics2D}-Objekt verwendet werden soll.
-	 * @return Stroke-Objekt mit den Strich-Eigenschaften der Komponente
+	 * Returns the Stroke object to use to draw the component with a
+	 * {@link java.awt.Graphics2D} object.
+	 * @return Stroke object containing the component's Stroke properties
 	 */
 	public Stroke getStroke();
 	/**
-	 * Gibt das Paint-Objekt zurück, das zum Zeichnen der Komponente mit einem
-	 * {@link java.awt.Graphics2D}-Objekt verwendet werden soll.
-	 * @return Paint-Objekt mit dem Fülleigenschaften der Komponente
+	 * Returns the Paint object to use to paint the component with a
+	 * {@link java.awt.Graphics2D} object.
+	 * @return Paint object with the component's fill properties
 	 */
 	public Paint getFillColor();
 	/**
-	 * Gibt das Color-Objekt zurück, das zum Zeichnen des Striches der Komponente mit einem 
-	 * {@link java.awt.Graphics2D}-Objekt verwendet werden soll.
-	 *
-	 * Bei Komponenten, die einen gefüllten Bereich angeben ist der Strich die Randlinie. 
+	 * Returns the Color object to use to draw the component's stroke
+	 * using a {@link java.awt.Graphics2D} object.
+	 * 
+	 * For components that specify a filled area, the dash is the border line.
+	 * @return the color of the component's stroke
 	 * @return die Farbe des Striches der Komponente
 	 */
 	public Color getStrokeColor();
 	/**
-	 * Bewegt den Ursprungspunkt der Komponente.
-	 * @param x die x-Koordinate des neuen Ursprungspunktes
-	 * @param y die y-Koordinate des neuen Ursprungspunktes
+	 * Moves the origin point of the component.
+	 * @param x the x coordinate of the new origin point
+	 * @param y the y coordinate of the new origin point
 	 */
 	public void move(int x, int y);
 }

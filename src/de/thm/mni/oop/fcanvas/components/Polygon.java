@@ -1,7 +1,7 @@
 package de.thm.mni.oop.fcanvas.components;
 
 /**
- * Stellt ein Polygon dar.
+ * Represents a polygon.
  * @author Christopher Schölzel
  *
  */
@@ -11,9 +11,9 @@ public class Polygon extends AbstractComponent {
 	private float centroidX;
 	private float centroidY;
 	/**
-	 * Erstellt ein neues Polygon
-	 * @param xar x-Koordinaten der Polygonpunkte
-	 * @param yar y-Koordinaten der Polygonpunkte
+	 * Creates a new polygon
+	 * @param xar x-coordinates of the polygon points
+	 * @param yar y-coordinates of the polygon points
 	 */
 	public Polygon(int[] xar, int[] yar) {
 		this.xar = xar;
@@ -42,29 +42,29 @@ public class Polygon extends AbstractComponent {
 		calcCentroid();
 	}
 	/**
-	 * Gibt die x-Koordinate des geometrischen Zentrums des Polygons zurück.
-	 * @return x-Koordinate des geometrischen Zentrums
+	 * Returns the x-coordinate of the polygon's geometric center.
+	 * @return x-coordinate of the geometric center
 	 */
 	public float getCentroidX() {
 		return centroidX;
 	}
 	/**
-	 * Gibt die y-Koordinate des geometrischen Zentrums des Polygons zurück.
-	 * @return y-Koordinate des geometrischen Zentrums
+	 * Returns the y-coordinate of the geometric center of the polygon.
+	 * @return Y-coordinate of the geometric center
 	 */
 	public float getCentroidY() {
 		return centroidY;
 	}
 	/**
-	 * Gibt die x-Koordinaten der Polygonpunkte zurück
-	 * @return x-Koordinaten der Polygonpunkte
+	 * Returns the x-coordinates of the polygon points
+	 * @return x-coordinates of the polygon points
 	 */
 	public int[] getXCoords() {
 		return xar;
 	}
 	/**
-	 * Gibt die y-Koordinaten der Polygonpunkte zurück
-	 * @return y-Koordinaten der Polygonpunkte
+	 * Returns the y coordinates of the polygon points
+	 * @return y-coordinates of the polygon points
 	 */
 	public int[] getYCoords() {
 		return yar;

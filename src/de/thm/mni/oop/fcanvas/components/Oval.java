@@ -1,7 +1,7 @@
 package de.thm.mni.oop.fcanvas.components;
 
 /**
- * Stellt ein Oval dar.
+ * Represents an oval.
  * 
  * @author Christopher Schölzel
  */
@@ -11,11 +11,11 @@ public class Oval extends AbstractComponent {
 	private int width;
 	private int height;
 	/**
-	 * Erstellt ein neues Oval.
-	 * @param left x-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box)
-	 * @param top y-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box)
-	 * @param width breite des Ovals
-	 * @param height höhe des Ovals
+	 * Creates a new oval.
+	 * @param left x-coordinate of the upper left point of the enclosing rectangle (bounding box)
+	 * @param top y coordinate of the upper left point of the enclosing rectangle (bounding box)
+	 * @param width Width of the oval
+	 * @param height Height of the oval
 	 */
 	public Oval(int left, int top, int width, int height) {
 		this.left = left;
@@ -24,57 +24,57 @@ public class Oval extends AbstractComponent {
 		this.height = height;
 	}
 	/**
-	 * Gibt die x-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) zurück
-	 * @return x-Koordinate des linken oberen Punktes der Bounding Box
+	 * Returns the x coordinate of the upper left point of the enclosing rectangle (bounding box).
+	 * @return x-coordinate of the upper left point of the bounding box
 	 */
 	public int getLeft() {
 		return left;
 	}
 	/**
-	 * Ändert die x-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box)
-	 * @param left neue x-Koordinate des linken oberen Punktes der Bounding Box
+	 * Changes the x-coordinate of the upper left point of the enclosing rectangle (bounding box)
+	 * @param left new x-coordinate of the upper left point of the bounding box
 	 */
 	public void setLeft(int left) {
 		this.left = left;
 	}
 	/**
-	 * Gibt die y-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) zurück
-	 * @return y-Koordinate des linken oberen Punktes der Bounding Box
+	 * Returns the y-coordinate of the upper left point of the enclosing rectangle (bounding box).
+	 * @return Y coordinate of the upper left point of the bounding box
 	 */
 	public int getTop() {
 		return top;
 	}
 	/**
-	 * Ändert die y-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box)
-	 * @param top neue y-Koordinate des linken oberen Punktes der Bounding Box
+	 * Changes the y-coordinate of the upper left point of the enclosing rectangle (bounding box)
+	 * @param top new y-coordinate of the top left point of the bounding box
 	 */
 	public void setTop(int top) {
 		this.top = top;
 	}
 	/**
-	 * Gibt die Breite des Ovals zurück
-	 * @return breite des Ovals
+	 * Returns the width of the oval
+	 * @return width of the oval
 	 */
 	public int getWidth() {
 		return width;
 	}
 	/**
-	 * Ändert die Breite des Ovals.
-	 * @param width Breite des Ovals
+	 * Changes the width of the oval.
+	 * @param width Width of the oval
 	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
 	/**
-	 * Gibt die Breite des Ovals zurück
-	 * @return breite des Ovals
+	 * Returns the width of the oval
+	 * @return width of the oval
 	 */
 	public int getHeight() {
 		return height;
 	}
 	/**
-	 * Ändert die Höhe des Ovals.
-	 * @param height Höhe des Ovals
+	 * Changes the height of the oval.
+	 * @param height Height of the oval
 	 */
 	public void setHeight(int height) {
 		this.height = height;
