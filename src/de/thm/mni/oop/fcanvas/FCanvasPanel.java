@@ -23,14 +23,11 @@ import de.thm.mni.oop.fcanvas.components.Rectangle;
 import de.thm.mni.oop.fcanvas.components.Text;
 
 /**
- * <p>Diese Klasse beinhaltet die Funktionalität hinter der FCanvas-Schnittstelle.</p>
+ * <p>This class contains the functionality behind the FCanvas interface.</p>
  * 
- * <p>Das FCanvasPanel überschreibt die Methode {@link #paintComponent(Graphics)} der JPanel-Klasse,
- * um eine Anzahl von intern gespeicherten Objekten zu zeichnen.</p>
+ * <p>The FCanvasPanel overrides the {@link #paintComponent(Graphics)} method of the JPanel class to paint a number of internally stored objects.</p>
  * 
- * <p>Die Methoden zum hinzufügen, entfernen und modifizieren von Komponenten sind thread-safe und 
- * können auch von außerhalb des Event Dispatch Thread aufgerufen werden.</p>
- * 
+ * <p>The methods for adding, removing and modifying components are thread-safe and can also be called from outside the event dispatch thread.</p>
  * @author Christopher Schölzel
  */
 public class FCanvasPanel extends JPanel {
@@ -44,7 +41,7 @@ public class FCanvasPanel extends JPanel {
 	private List<Long> sortedKeys;
 	private boolean useAntialiasing = false;
 	/**
-	 * Erstellt ein neues CanvasPanel mit weißem Hintergrund.
+	 * Creates a new CanvasPanel with white background.
 	 */
 	public FCanvasPanel() {
 		components = new HashMap<Long,FCanvasComponent>();
@@ -95,7 +92,7 @@ public class FCanvasPanel extends JPanel {
 		}
 	}
 	/**
-	 * Erhöht die Größe des zwischengespeicherten BufferedImage falls nötig
+	 * Increases the size of the cached BufferedImage if necessary
 	 */
 	public void updateImageBuffer(int maxx, int maxy) {
 		if (bufferMaxX > maxx && bufferMaxY > maxy) return;
@@ -122,11 +119,11 @@ public class FCanvasPanel extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		//Graphics-objekt kopieren, damit Veränderungen sich nicht auf andere Komponenten auswirken
+		//Copy Graphics object so changes do not affect other components
 		Graphics2D g2 = (Graphics2D)g.create();
 		Object val = useAntialiasing ? RenderingHints.VALUE_ANTIALIAS_ON : RenderingHints.VALUE_ANTIALIAS_OFF;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, val);
-		//alte Transformationsmatrix merken zum Zurücksetzen
+		//remember old transformation matrix to reset
 		AffineTransform t = g2.getTransform();
 		//List<Long> sortedKeys = new ArrayList<Long>(components.keySet());
 		//Collections.sort(sortedKeys);
@@ -138,10 +135,10 @@ public class FCanvasPanel extends JPanel {
 				Rectangle r = (Rectangle) c;
 				g2.rotate(Math.toRadians(r.getRotation()),r.getLeft()+r.getWidth()/2.0,r.getTop()+r.getHeight()/2.0);
 				g2.setPaint(r.getFillColor());
-				//erst muss das gefüllte Rechteck gezeichnet werden
+				// draw the filled rectangle first
 				g2.fillRect(r.getLeft(), r.getTop(), r.getWidth(), r.getHeight());
 				g2.setPaint(r.getStrokeColor());
-				//und dann der Rahmen darüber
+				// and then the border
 				g2.drawRect(r.getLeft(), r.getTop(), r.getWidth(), r.getHeight());
 			} else if (c instanceof Oval) {
 				Oval o = (Oval)c;
@@ -177,18 +174,16 @@ public class FCanvasPanel extends JPanel {
 		PixelSetter ps = new PixelSetter(p,c);
 		SwingUtilities.invokeLater(ps);
 	}
-	
 	/**
-	 * <p>Fügt ein Rechteck hinzu.</p>
+	 * <p>Adds a rectangle.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param left x-Koordinate der linken oberen Ecke des Rechtecks
-	 * @param top y-Koordinate der linken oberen Ecke des Rechtecks
-	 * @param width Breite des Rechtecks
-	 * @param height Höhe des Rechtecks
-	 * @return id des erstellten Rechtecks
+	 * @param left x-coordinate of the upper-left corner of the rectangle
+	 * @param top Y-coordinate of the upper-left corner of the rectangle
+	 * @param width Width of the rectangle
+	 * @param height Height of the rectangle
+	 * @return id of the created rectangle
 	 */
 	public synchronized long addRectangle(int left, int top, int width, int height) {
 		final Rectangle r = new Rectangle(left,top,width,height);
@@ -198,16 +193,15 @@ public class FCanvasPanel extends JPanel {
 		return id;
 	}
 	/**
-	 * <p>Fügt ein Oval hinzu.</p>
+	 * <p>Adds an oval.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param left x-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) des Ovals
-	 * @param top  y-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) des Ovals
-	 * @param width Breite des Ovals
-	 * @param height Höhe des Ovals
-	 * @return id des erstellten Ovals
+	 * @param left x-coordinate of the top left point of the oval's bounding box
+	 * @param top Y coordinate of the upper left point of the bounding box of the oval
+	 * @param width Width of the oval
+	 * @param height Height of the oval
+	 * @return id of the created oval
 	 */
 	public synchronized long addOval(int left, int top, int width, int height) {
 		final Oval o = new Oval(left,top,width,height);
@@ -217,16 +211,15 @@ public class FCanvasPanel extends JPanel {
 		return id;
 	}
 	/**
-	 * <p>Fügt eine gerade Linie zwischen den Punkten (x1,y1) und (x2,y2) hinzu.</p>
+	 * <p>Adds a straight line between the points (x1,y1) and (x2,y2).</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param x1 x-Koordinate des ersten Punkts
-	 * @param y1 y-Koordinate des ersten Punkts
-	 * @param x2 x-Koordinate des zweiten Punkts
-	 * @param y2 y-Koordinate des zweiten Punkts
-	 * @return id der erstellten Linie
+	 * @param x1 x-coordinate of the first point
+	 * @param y1 y coordinate of the first point
+	 * @param x2 x-coordinate of the second point
+	 * @param y2 y coordinate of the second point
+	 * @return id of the created line
 	 */
 	public synchronized long addLine(int x1, int y1, int x2, int y2) {
 		final Line l = new Line(x1,y1,x2,y2);
@@ -236,14 +229,13 @@ public class FCanvasPanel extends JPanel {
 		return id;
 	}
 	/**
-	 * <p>Fügt ein Polygon hinzu.</p>
+	 * <p>Adds a polygon.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param xcoords array der x-Koordinaten der Polygon-Punkte
-	 * @param ycoords array der y-Koordinaten der Polygon-Punkte
-	 * @return id des erstellten Polygons
+	 * @param xcoords array of x-coordinates of polygon points
+	 * @param ycoords array of y-coordinates of polygon points
+	 * @return id of the created polygon
 	 */
 	public synchronized long addPolygon(int[] xcoords, int[] ycoords) {
 		final Polygon p = new Polygon(xcoords,ycoords);
@@ -253,15 +245,14 @@ public class FCanvasPanel extends JPanel {
 		return id;
 	}
 	/**
-	 * <p>Fügt einen Text hinzu.</p>
+	 * <p>Adds a text.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param text der Text, der gezeichnet werden soll
-	 * @param left die x-Koordinate des ersten Zeichens
-	 * @param baseline die y-Koordinate der Baseline des ersten Zeichens
-	 * @return id des erstellten Textes
+	 * @param text the text to draw
+	 * @param left the x-coordinate of the first character
+	 * @param baseline the y-coordinate of the baseline of the first character
+	 * @return id of the created text
 	 */
 	public synchronized long addText(String text, int left, int baseline) {
 		final Text t = new Text(text,left,baseline);
@@ -271,14 +262,13 @@ public class FCanvasPanel extends JPanel {
 		return id;
 	}
 	/**
-	 * <p>Ändert die Schriftgröße einer Textkomponente.</p>
+	 * <p>Changes the font size of a text component.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param id die id der Textkomponente
-	 * @param points die neue Schriftgröße in pt
-	 * @pre id muss zu einer existierenden Textkomponente gehören
+	 * @param id the id of the text component
+	 * @param points the new font size in pt
+	 * @pre id must belong to an existing text component
 	 */
 	public synchronized void setFontSize(final long id, final int points) {
 		Runnable run = new Runnable(){
@@ -293,19 +283,18 @@ public class FCanvasPanel extends JPanel {
 		SwingUtilities.invokeLater(run);
 	}
 	/**
-	 * <p>Ändert die Füllfarbe einer Komponente.</p>
+	 * <p>Changes the fill color of a component.</p>
 	 * 
-	 * <p>Hat keinen Effekt für Linien und Texte.</p>
+	 * <p>Has no effect on lines and text.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 *
-	 * @param id die id der Komponente
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
-	 * @param a Wert für den Alphakanal (0 bis 255)
-	 * @pre id muss zu einer existierenden Komponente gehören
+	 * @param id the id of the component
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
+	 * @param a value for the alpha channel (0 to 255)
+	 * @pre id must belong to an existing component
 	 */
 	public synchronized void setFillColor(final long id,final int r,final int g,final int b,final int a) {
 		Runnable run = new Runnable(){
@@ -317,19 +306,18 @@ public class FCanvasPanel extends JPanel {
 		SwingUtilities.invokeLater(run);
 	}
 	/**
-	 * <p>Ändert die Strichfarbe einer Komponente.</p>
+	 * <p>Changes the stroke color of a component.</p>
 	 * 
-	 * <p>Bei <code>alpha == 0</code> wird der Strich unsichtbar.</p>
+	 * <p>With <code>alpha == 0</code> the bar becomes invisible.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param id die id der Komponente
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
-	 * @param a Wert für den Alphakanal (0 bis 255)
-	 * @pre id muss zu einer existierenden Komponente gehören
+	 * @param id the id of the component
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
+	 * @param a value for the alpha channel (0 to 255)
+	 * @pre id must belong to an existing component
 	 */
 	public synchronized void setStrokeColor(final long id,final int r,final int g,final int b,final int a) {
 		Runnable run = new Runnable(){
@@ -341,17 +329,16 @@ public class FCanvasPanel extends JPanel {
 		SwingUtilities.invokeLater(run);
 	}
 	/**
-	 * <p>Ändert die Strichbreite für die Komponente.</p>
+	 * <p>Changes the stroke width for the component.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * Bei Ovalen, Rechtecken und Polygonen ist damit die breite des Rands gemeint.
-	 * Bei Texten hat diese Methode keinen Effekt.
+	 * In the case of ovals, rectangles and polygons, this means the width of the border.
+	 * This method has no effect on text.
 	 * 
-	 * @param id die id der Komponente
-	 * @param w die neue Strichbreite (in Pixeln)
-	 * @pre id muss zu einer existierenden Komponente gehören
+	 * @param id the id of the component
+	 * @param w the new stroke width (in pixels)
+	 * @pre id must belong to an existing component
 	 */
 	public synchronized void setStrokeWidth(final long id,final int w) {
 		Runnable run = new Runnable(){
@@ -364,17 +351,16 @@ public class FCanvasPanel extends JPanel {
 		SwingUtilities.invokeLater(run);
 	}
 	/**
-	 * <p>Ändert den Rotationswinkel für eine Komponente.</p>
+	 * <p>Changes the rotation angle for a component.</p>
 	 * 
-	 * <p>Rechtecke, Ovale, Linien und Polygone werden um ihren Mittelpunkt rotiert.</p>
+	 * <p>Rectangles, ovals, lines and polygons are rotated around their center.</p>
 	 * 
-	 * <p>Texte werden um ihren Ursprungspunkt (left,baseline) rotiert.</p>
+	 * <p>Texts are rotated around their origin (left,baseline).</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param id die id der Komponente
-	 * @param r Rotationswinkel in grad
+	 * @param id the id of the component
+	 * @param r rotation angle in degrees
 	 */
 	public synchronized void setRotation(final long id,final float r) {
 		Runnable run = new Runnable(){
@@ -386,25 +372,24 @@ public class FCanvasPanel extends JPanel {
 		SwingUtilities.invokeLater(run);
 	}
 	/**
-	 * <p>Bewegt eine Komponente.</p>
+	 * <p>Moves a component.</p>
 	 * 
-	 * <p>Die Bedeutung der Parameter x und y unterscheiden sich je nach Typ der
-	 * Komponente, die bewegt werden soll:</p>
+	 * <p>The meaning of the x and y parameters differ depending on the type of
+	 * Component to move:</p>
 	 * 
 	 * <ul>
-	 * <li><em>Ovale und Rechtecke</em>: (x,y) ist der neue linke obere Punkt der Komponente.
-	 * <li><em>Linien und Polygone</em>: (x,y) ist die neue Koordinate des ersten Punktes der Komponente.
-	 * <li><em>Text</em>: x ist die neue x-Koordinate des ersten Zeichens, y ist die neue y-Koordinate der
-	 *     Baseline des ersten Zeichens.
+	 * <li><em>Ovals and Rectangles</em>: (x,y) is the new top left point of the component.
+	 * <li><em>Lines and polygons</em>: (x,y) is the new coordinate of the first point of the component.
+	 * <li><em>Text</em>:x is the new x-coordinate of the first character, y is the new y-coordinate of
+	 * the first character's baseline.
 	 * </ul>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param id id der Komponente, die bewegt werden soll
-	 * @param x x-Koordinate des neuen Ursprungspunktes
-	 * @param y y-Koordinate des neuen Ursprungspunktes
-	 * @pre id muss zu einer existierenden Komponente gehören
+	 * @param id id of the component to move
+	 * @param x x-coordinate of the new origin point
+	 * @param y Y coordinate of the new origin point
+	 * @pre id must belong to an existing component
 	 */
 	public synchronized void moveComponent(final long id,final int x, final int y) {
 		Runnable run = new Runnable(){
@@ -416,36 +401,34 @@ public class FCanvasPanel extends JPanel {
 		SwingUtilities.invokeLater(run);
 	}
 	/**
-	 * Hilfsunktion, um eine Komponente anhand ihrer id zu finden.
-	 * @param id die id der Komponente
-	 * @return die jeweilige Komponente oder <code>null</code> falls keine Komponente mit dieser id existiert
+	 * Helper function to find a component by its id.
+	 * @param id the id of the component
+	 * @return the respective component or <code>null</code> if no component with this id exists
 	 */
 	protected FCanvasComponent getFCComponent(long id) {
 		if (components.containsKey(id)) return components.get(id);
 		return null;
 	}
 	/**
-	 * <p>Entfernt eine Komponente.</p>
+	 * <p>Removes a component.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param id id des Objektes, das entfernt werden soll
-	 * @pre id muss zu einer existierenden Komponente gehören
+	 * @param id id of the object to be removed
+	 * @pre id must belong to an existing component
 	 */
 	public synchronized void removeComponent(final long id) {
 		Runnable run = new ComponentRemover(id);
 		SwingUtilities.invokeLater(run);
 	}
 	/**
-	 * <p>Ändert die Hintergrundfarbe des Panels.</p>
+	 * <p>Changes the background color of the panel.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 * 
-	 * @param r Wert für den Rotkanal (0 bis 255)
-	 * @param g Wert für den Grünkanal (0 bis 255)
-	 * @param b Wert für den Blaukanal (0 bis 255)
+	 * @param r value for the red channel (0 to 255)
+	 * @param g value for the green channel (0 to 255)
+	 * @param b value for the blue channel (0 to 255)
 	 */
 	public synchronized void setBackgroundColor(final int r,final int g,final int b) {
 		Runnable run = new Runnable(){
@@ -457,10 +440,9 @@ public class FCanvasPanel extends JPanel {
 		SwingUtilities.invokeLater(run);
 	}
 	/**
-	 * <p>Entfernt alle Objekte.</p>
+	 * <p>Removes all objects.</p>
 	 * 
-	 * <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
-	 * aufgerufen werden.</p>
+	 * <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
 	 */
 	public synchronized void clear() {
 		Runnable run = new Runnable(){
@@ -473,15 +455,15 @@ public class FCanvasPanel extends JPanel {
 		SwingUtilities.invokeLater(run);
 	}
 	/**
-	 * <p>Ändert die Antialiasing-Einstellungen (per Default disabled).</p>
-	 * @param enabled wenn <code>true</code> wird Antialiasing verwendet
+	 * <p>Changes antialiasing settings (disabled by default).</p>
+	 * @param enabled if <code>true</code> uses antialiasing
 	 */
 	public synchronized void setAntialiasingEnabled(boolean enabled) {
 		useAntialiasing = enabled;
 	}
 	/**
-	 * <p>Zeichnet die aktuelle Grafik auf ein BufferedImage</p>
-	 * @return BufferedImage mit einem Abbild des aktuellen Canvas-Inhalt
+	 * <p>Draws the current graphic to a BufferedImage</p>
+	 * @return BufferedImage with an image of the current canvas content
 	 */
 	public synchronized BufferedImage toImage() {
 		int type = BufferedImage.TYPE_INT_ARGB;
