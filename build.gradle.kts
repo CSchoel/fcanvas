@@ -29,6 +29,7 @@ sourceSets {
 tasks.javadoc {
     val overview = "build/docs/overview.html"
     doFirst {
+        // Convert markdown tutorial to HTML using pandoc
         val pb = ProcessBuilder("pandoc", "doc/fcanvas-tutorial.md" , "-s", "-M", "document-css=false", "--no-highlight", "-o", overview);
         pb.start().waitFor();
     }
@@ -37,6 +38,7 @@ tasks.javadoc {
     if (o is StandardJavadocDocletOptions) {
         // enables @pre tag
         o.tags("pre:a:Preconditions: ")
+        // includes tutorial in overview page
         o.overview(overview)
     }
 }
