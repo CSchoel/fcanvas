@@ -50,6 +50,222 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1 class="title">FCanvas 1.3.0 API</h1>
 </div>
+<div class="block"><h1 id="was-ist-fcanvas">Was ist FCanvas?</h1>
+<p>FCanvas ist eine schlanke leicht zu benutzende Java-Library zum Zeichnen und Animieren von einfachen Grafikobjekten. Sie setzt keine Kenntnisse über Java, Grafische Benutzerschnittstellen oder Computergrafik voraus, die über das Aufrufen von statischen Java-Methoden hinaus geht. Im Endeffekt handelt es sich dabei um eine Kapselung der Java 2D API durch die Klasse <code>de.thm.mni.oop.fcanvas.FCanvas</code> als einzige Benutzerschnittstelle.</p>
+<p>Die Library wurde entwickelt um Studenten beim Lernen der Programmiersprache Java schnell zu ermöglichen auch grafische Beispielaufgaben zu lösen und sogar kleine Spiele selbst zu programmieren. Sie bietet eine extrem einfache Bedienung und bewahrt dabei noch so viel Performance und Reaktivität wie möglich.</p>
+<h1 id="einbinden-in-eclipse">Einbinden in Eclipse</h1>
+<p>Eine JAR-Datei können sie auf verschiedenen Wegen als Library in Eclipse einbinden: Im ganzen Workspace als Teil der System Library oder nur in einem einzelnen Projekt.</p>
+<h2 id="in-einem-einzelprojekt">In einem Einzelprojekt</h2>
+<p>Um FCanvas in einem Einzelprojekt in Eclipse einzubinden machen sie einen Rechtsklick auf das Projekt und wählen sie dann Properties → Java Build Path → Libraries → Add external JARs.. In dem dortigen Auswahldialog müssen sie nun den Pfad zur JAR-Datei von FCanvas angeben und die Auswahl bestätigen.</p>
+<h2 id="im-ganzen-workspace">Im ganzen Workspace</h2>
+<p>Das Einbinden für den gesamten Workspace ist ein wenig komplizierter. Eclipse erlaubt es zu einer System Library weitere JAR-Dateien hinzuzufügen. Klicken sie dazu im Eclipse-Hauptmenü auf Window → Preferences → Java → Installed JREs. Dort sollte sich ihr Java 8 JDK befinden und mit einem Häkchen als default markiert sein. Klicken sie auf dieses JDK und wählen sie aus dem rechten Menü den Button Edit.. um nun im dort erscheinenden Dialogfenster unter Add external JARs.. wieder die JAR-Datei von FCanvas anzugeben.</p>
+<p>Ab sofort können Sie nun FCanvas in allen Projekten verwenden</p>
+<h2 id="durchsuchen-der-dokumentation-und-quelldateien">Durchsuchen der Dokumentation und Quelldateien</h2>
+<p>Die JAR-Datei der FCanvas-Library enthält auch die Quelldateien. Das erlaubt ihnen nicht nur die Javadoc-Kommentare durchzulesen, indem sie wie bei der Java API die Maus über den jeweiligen Funktionsaufruf halten oder FCanvas. eingeben und die angezeigte Auswahlliste zur Code-Komplettierung durchgehen, sondern auch mit dem Drücken der Taste F3 jederzeit in den Quellcode der jeweiligen Funktion zu springen. Auf diese Weise können sie sich genau anschauen, wie die Library im Einzelnen realisiert ist, wenn Sie sich dafür interessieren.</p>
+<h1 id="zeichnen">Zeichnen</h1>
+<p>FCanvas arbeitet mit einem einzigen Grafikfenster, das mit der Methode <code>FCanvas.show()</code> angezeigt werden kann. Auf diesem Fenster lassen sich einfache Grafikelemente zeichnen, die im folgenden aufgeführt sind.</p>
+<p>Wie in der Computergrafik üblich beginnt das Koordinatensystem dieses Fensters mit dem Punkt (0,0) an der linken oberen Ecke des Fensters. Die Größe des Zeichenbereichs lässt sich dabei mit der Methode <code>FCanvas.setCanvasSize(int,int)</code> einstellen.</p>
+<h2 id="grafikelmente">Grafikelmente</h2>
+<h3 id="rechteck">Rechteck</h3>
+<p>Eines der einfachsten Grafikelemente ist das Rechteck. Folgendes Codebeispiel zeichnet ein 100 Pixel breites und 200 Pixel hohes Rechteck mit schwarzem Rand und transparenter Füllung dessen obere linke Ecke 10 Pixel vom oberen und 30 Pixel vom linken Rand entfernt ist.</p>
+<pre class="java"><code>FCanvas.drawRectangle(30,10,100,200);
+FCanvas.show();</code></pre>
+<p>Die Farbe, Liniengröße, Füllung und andere Eigenschaften eines Rechtecks lassen sich natürlich auch verändern. Wie das funktioniert wird in Abschnitt <a href="#modifikationen">Modifikationen</a> beschrieben.</p>
+<h3 id="oval">Oval</h3>
+<p>Ovale lassen sich genauso zeichnen wie Rechtecke, nur dass hier die obere linke Ecke die Ecke der bounding box - also des umschließenden Rechtecks - bezeichnet wird. Der Effekt lässt sich am einfachsten mit dem folgenden Codebeispiel erklären:</p>
+<pre class="java"><code>FCanvas.drawRectangle(20,10,100,75);
+FCanvas.drawOval(20,10,100,75);
+FCanvas.show();</code></pre>
+<h3 id="linie">Linie</h3>
+<p>Linien definieren sich durch einen Start- und einen Endpunkt. Das folgende Beispiel zeichnet eine schwarze Linie vom Punkt (100,200) zum Punkt (300,400):</p>
+<pre class="java"><code>FCanvas.drawLine(100,200,300,400);
+FCanvas.show();</code></pre>
+<h3 id="text">Text</h3>
+<p>Auch ein Text kann an eine beliebige Position geschrieben werden. Dabei wird nun aber nicht der linke <em>obere</em> Punkt angegeben, sondern der Ankerpunkt liegt auf der Baseline des Textes. Das Konzept der Baseline lässt sich am leichtesten an einem Beispiel demonstrieren:</p>
+<pre class="java"><code>FCanvas.drawLine(100,100,300,100);
+FCanvas.drawText(&quot;Alpaca&quot;,100,100);
+FCanvas.show();</code></pre>
+<h3 id="polygon">Polygon</h3>
+<p>Das Polygon ist das einzige kompliziertere Grafikelement von FCanvas. Es besteht aus einer Reihe von Punkten <em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>, …, <em>p</em><sub><em>n</em></sub> wobei jeweils eine Linie zwischen <em>p</em><sub>1</sub> und <em>p</em><sub>2</sub>, <em>p</em><sub>2</sub> und <em>p</em><sub>3</sub> usw gezeichnet wird bis zur letzten Linie von <em>p</em><sub><em>n</em></sub> zu <em>p</em><sub>1</sub>, die die Form abschließt. Die Punkte werden als zwei Arrays übergeben bei denen das erste Array die x-Koordinaten der Punkte enthält und das zweite Array die y-Koordinaten.</p>
+<p>Das folgende Beispiel zeichnet einen einfachen vierzackigen Stern:</p>
+<pre class="java"><code>int[] x = {100,110,150,110,100, 90, 50,90};
+int[] y = { 50, 90,100,110,150,110,100,90};
+FCanvas.drawPolygon(x,y);
+FCanvas.show();</code></pre>
+<h2 id="modifikationen">Modifikationen</h2>
+<p>Alle Elemente aus dem Abschnitt <a href="#grafikelemente">Grafikelemente</a> lassen sich natürlich auch weiter modifizieren.</p>
+<p>Die folgende Tabelle zeigt welche Funktionen es gibt, um Elementeigenschaften zu ändern und auf welche Elemente sie wirken:</p>
+<table>
+<caption>Übersicht, welche Eigenschaften auf welche Grafikelemente zutreffen</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Funktion</th>
+<th style="text-align: left;">Eigenschaft</th>
+<th style="text-align: left;">Rechteck</th>
+<th style="text-align: left;">Oval</th>
+<th style="text-align: left;">Polygon</th>
+<th style="text-align: left;">Linie</th>
+<th style="text-align: left;">Text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>setStrokeWidth</code></td>
+<td style="text-align: left;">Strichbreite in Pixeln</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>setStrokeColor</code></td>
+<td style="text-align: left;">Strichfarbe in RGB(A)</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>setFillColor</code></td>
+<td style="text-align: left;">Füllfarbe in RGB(A)</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>setRotation</code></td>
+<td style="text-align: left;">Rotation in Grad</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>move</code></td>
+<td style="text-align: left;">Position als Punkt (<em>x</em>,<em>y</em>)</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+<td style="text-align: left;">✓</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>setFontSize</code></td>
+<td style="text-align: left;">Schriftgröße</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">✓</td>
+</tr>
+</tbody>
+</table>
+<p>Um einzelne Elemente identifizieren zu können, liefert jede <code>drawX</code>-Methode eine ID vom Typ <code>long</code> zurück. Alle Modifizierungsmethoden erwarten eine solche ID als Parameter.</p>
+<p>Das folgende Beispiel zeigt, wie man ein um 45 Grad gedrehtes Rechteck mit roter halbtransparenter Füllung zeichnet:</p>
+<pre class="java"><code>long id = FCanvas.drawRectangle(100,100,50,50);
+FCanvas.setFillColor(id,255,0,0,128);
+FCanvas.setRotation(id,45);
+FCanvas.show();</code></pre>
+<h1 id="animationen">Animationen</h1>
+<h2 id="zeichnen-in-schritten">Zeichnen in Schritten</h2>
+<p>Um Animationen zu realisieren, muss die Ausführung von einzelnen Zeichenbefehlen verzögert werden. Dazu gibt es in Java die Methode <code>Thread.sleep(long)</code> mit der man den aktuellen Prozess schlafenlegen kann für eine in Millisekunden gemessene Zeitspanne. Da diese Methode die Ausnahme <code>InterruptedException</code> werfen kann, muss sie mit einem try-catch-Block umgeben werden wie in folgendem Beispiel:</p>
+<pre class="java"><code>FCanvas.show();
+long id = FCanvas.drawOval(10,10,20,20);
+//eine halbe Sekunde warten
+try {Thread.sleep(500);} catch (Exception e) {}
+//dann den Kreis mit blauer Farbe füllen
+FCanvas.setFillColor(id,0,0,255);</code></pre>
+<p>Falls Sie sich noch nicht mit Ausnahmen in Java beschäftigt haben, lassen Sie sich nicht verwirren. Sie können die Zeile mit dem Aufruf von <code>Thread.sleep</code> erst einmal einfach kopieren und genau so in ihrem Code verwenden. Sie müssen nur statt der 500 natürlich die Anzahl an Millisekunden eintragen, die sie für ihre Animation warten wollen.</p>
+<p>Wichtig ist außerdem noch anzumerken, dass der Aufruf von <code>FCanvas.show()</code> natürlich immer als erste Zeile in einer Animation auftauchen muss. Vor diesem Aufruf wird das Fenster nicht angezeigt und die Animation läuft nur im Hintergrund ab.</p>
+<h2 id="animationsschleife">Animationsschleife</h2>
+<p>Wenn man schon dabei sind, grafische Animationen zu programmieren, will man in der Regel auch einen flüssigen Bildverlauf haben statt nur einigen ruckelig aneinandergereihten Bildern. Dazu bietet es sich an, eine Schleife zu verwenden, die genügend Bilder in der Sekunde verarbeiten kann, um den Eindruck einer flüssigen Bewegung zu erzeugen. Dazu reichen etwa 30 Bilder in der Sekunde aus, also eine Wartezeit von 1000/30 ≅ 33 Millisekunden.</p>
+<p>Diese Animationsschleife kann dann entweder so lange laufen bis die Animation vorbei ist oder bis das Fenster geschlossen wurde. In letzterem Fall können Sie als Bedingung in ihrer while-Schleife die Abfrage <code>FCanvas.isVisible()</code> verwenden.</p>
+<p>Das folgende Code-Stück zeigt genau dieses Verhalten am Beispiel einer um einen Punkt kreisenden gelben Kugel.</p>
+<pre class="java"><code>FCanvas.show();
+long id = FCanvas.drawOval(10, 10, 50, 50);
+FCanvas.setFillColor(id, 255, 255, 0);
+FCanvas.setStrokeColor(id, 0, 0, 0, 0);
+int t = 0;
+while(FCanvas.isVisible()) {
+  int x = (int)Math.round(100*Math.sin(Math.toRadians(t)));
+  int y = (int)Math.round(100*Math.cos(Math.toRadians(t)));
+  FCanvas.move(id, 200+x, 200+y);
+  t = (t+3) % 360;
+  try {Thread.sleep(33);} catch (Exception e) {}
+}</code></pre>
+<h1 id="interaktive-animationen">Interaktive Animationen</h1>
+<p>Nun, wo wir es beherrschen flüssige Bewegungen darzustellen, fehlt zu einem ersten kleinen Spiel eigentlich nur noch die Interaktion mit dem Benutzer. Diese kann natürlich einfach mit <code>JOptionPane</code> über Dialogfenster realisiert werden, aber wer will schon jedesmal erst einen Dialog wegklicken bevor er irgendetwas in einem Spiel tun kann? FCanvas bietet deshalb auch die Möglichkeit auf Eingabe über Maus und Tastatur zu reagieren.</p>
+<p>Als kleiner Disclaimer sei hier vorneweg angemerkt, dass diese Eingabeabfragen aufgrund der einfachen Struktur von FCanvas nicht völlig exakt realisiert werden können. Erwarten Sie also nicht eine völlig saubere Spielsteuerung zu erhalten, die nie eine Eingabe verpasst und innerhalb weniger Millisekunden reagiert. Dazu müssten sie die unterliegende Funktionalität des Swing-Toolkits direkt verwenden.</p>
+<h2 id="einzelne-klicks-und-tastendrücke">Einzelne Klicks und Tastendrücke</h2>
+<p>Abfragen der Form Wurde die Taste X seit den letzten Y Millisekunden gedrückt? können mit den Funktionen <code>FCanvas.wasKeyPressed</code> bzw <code>FCanvas.wasMouseButtonPressed</code> realisiert werden. Die Definitionen der Zahlencodes für die einzelnen Tasten finden Sie jeweils in den Klassen <code>java.awt.event.KeyEvent</code> bzw. <code>java.awt.event.MouseEvent</code>.</p>
+<p>Die beiden oben genannten Methoden benötigen eine explizite Angabe, wieviele Millisekunden man in die Vergangenheit schauen will. Natürlich ist es schwierig hier den richtigen Wert zu wählen. Ist die Zeitspanne zu kurz, kann es sein dass man einen Klick verpasst. Ist die Zeitspanne aber zu groß, kann es passieren, dass man einen einzelnen Klick mehrfach zählt.</p>
+<p>Im folgenden Beispiel wird als Wartezeit genau der Wert verwendet, der auch an <code>Thread.sleep</code> übergeben wird, um einen Kreis rot bzw. blau zu Färben wenn die Pfeiltaste nach links bzw nach rechts gedrückt wurde.</p>
+<pre class="java"><code>FCanvas.show();
+long id = FCanvas.drawOval(10, 10, 50, 50);
+while(FCanvas.isVisible()) {
+  if (FCanvas.wasKeyPressed(KeyEvent.VK_LEFT, 30)) {
+    FCanvas.setFillColor(id, 255, 0, 0);
+  } else if (FCanvas.wasKeyPressed(KeyEvent.VK_RIGHT, 30)) {
+    FCanvas.setFillColor(id, 0, 0, 255);
+  }
+  try {Thread.sleep(30);} catch (Exception e) {}
+}</code></pre>
+<p>Wenn Sie diesen Code ausführen, werden sie bemerken, dass sie manchmal mehrfach eine Taste drücken müssen, bevor die Farbe sich ändert. Das liegt daran, dass zu den 30 Millisekunden ja auch noch ein paar Millisekunden für die Ausführung der eigentlichen Animationsschleife hinzukommt.</p>
+<p>Um dieses Problem zu umgehen, gibt es für Animationsschleifen, die sowieso immer wieder periodisch Eingaben abfragen die Methoden <code>FCanvas.getKeyPressesSinceLastAsked</code> bzw. <code>FCanvas. getMouseButtonPressesSinceLastAsked</code>. Wie der Name schon sagt zählen diese Methoden die Tastendrücke seit der letzten Abfrage. Beim allerersten Aufruf werden dann natürlich alle Tastendrücke seit dem Start des Programms gezählt.</p>
+<p>Das gleiche Beispiel würde dann wie folgt aussehen:</p>
+<pre class="java"><code>FCanvas.show();
+long id = FCanvas.drawOval(10, 10, 50, 50);
+while(FCanvas.isVisible()) {
+  if (FCanvas.getKeyPressesSinceLastAsked(KeyEvent.VK_LEFT) &gt; 0) {
+    FCanvas.setFillColor(id, 255, 0, 0);
+  } else if (FCanvas.getKeyPressesSinceLastAsked(KeyEvent.VK_RIGHT) &gt; 0) {
+    FCanvas.setFillColor(id, 0, 0, 255);
+  }
+  try {Thread.sleep(30);} catch (Exception e) {}
+}</code></pre>
+<h2 id="gedrückthalten">Gedrückthalten</h2>
+<p>Wenn es auch möglich sein soll, eine Taste dauerhaft gedrückt zu halten, gibt es außerdem noch die Methoden <code>FCanvas.isKeyDown</code> bzw. <code>FCanvas.isMouseButtonDown</code>. Diese geben jeweils den Zustand der Taste (gedrückt oder nicht gedrückt) zum aktuellen Zeitpunkt der Abfrage an.</p>
+<p>Das folgende Beispiel zeigt einen Kreis, der durch Gedrückthalten der Pfeiltasten nach links oder nach rechts bewegt werden kann.</p>
+<pre class="java"><code>FCanvas.show();
+int x = 300;
+int y = 300;
+long id = FCanvas.drawOval(x, y, 50, 50);
+while(FCanvas.isVisible()) {
+  if (FCanvas.isKeyDown(KeyEvent.VK_LEFT)) {
+    x -= 3;
+  } else if (FCanvas.isKeyDown(KeyEvent.VK_RIGHT)) {
+    x += 3;
+  }
+  FCanvas.move(id,x,y);
+  try {Thread.sleep(30);} catch (Exception e) {}
+}</code></pre>
+<h2 id="mausposition">Mausposition</h2>
+<p>Auch die Mausposition lässt sich natürlich abfragen. Dazu dienen die Methoden <code>FCanvas. getLastMouseX</code> und <code>FCanvas.getLastMouseY</code>. Das folgende Beispiel implementiert einen Kreis, der der Maus folgt.</p>
+<pre class="java"><code>FCanvas.show();
+int x = 300;
+int y = 300;
+long id = FCanvas.drawOval(x, y, 50, 50);
+while(FCanvas.isVisible()) {
+  x = FCanvas.getLastMouseX()-25;
+  y = FCanvas.getLastMouseY()-25;
+  FCanvas.move(id,x,y);
+  try {Thread.sleep(30);} catch (Exception e) {}
+}</code></pre>
+<h1 id="sonstiges">Sonstiges</h1>
+<p>Dieser Abschnitt behandelt alle weiteren Besonderheiten von FCanvas, die in keinen der anderen Abschnitte passen.</p>
+<h2 id="verdeckungen">Verdeckungen</h2>
+<p>Wenn zwei Grafikelemente sich überlappen, liegt das später erzeugte Element über dem zuerst erzeugten. Diese Reihenfolge lässt sich nicht ändern. Sollte es einmal unbedingt nötig sein, können Sie aber einfach das Element was nach oben rutschen soll zuerst mit <code>FCanvas.remove</code> löschen und dann wieder neu erzeugen.</p>
+<h2 id="performance-und-update-verhalten">Performance und Update-Verhalten</h2>
+<p>FCanvas zeichnet normalerweise bei jedem Aufruf einer Zeichenmethode das gesamte Bild neu. Wenn man eine Animation mit sehr kleinen Zeitschritten programmieren möchte, kann es Sinn machen diese automatischen Updates auszuschalten mit der Methode <code>FCanvas.setAutoUpdate</code>. Man muss dann das Zeichnen manuell mit der Methode <code>FCanvas.update</code> ausführen.</p>
+<h2 id="canvas-widthheight">Canvas Width/Height</h2>
+<p>Auf die Größe des Zeichenbereichs (Fenstergröße ohne den Rahmen) können Sie mit den Methoden <code>FCanvas.getCanvasWidth</code> bzw. <code>FCanvas.getCanvasHeight</code> zugreifen. Sie können die Größe des Zeichenbereichs auch aus dem Code heraus festsetzen mit der Methode <code>FCanvas.setCanvasSize</code>.</p>
+<h2 id="speichern-als-bilddatei">Speichern als Bilddatei</h2>
+<p>Seit Version 1.3 kann man den Inhalt des Canvas-Fensters mit der Methode <code>FCanvas.saveToImage</code> als Bilddatei abspeichern.</p></div>
 <div id="all-packages-table">
 <div class="caption"><span>Packages</span></div>
 <div class="summary-table two-column-summary">
