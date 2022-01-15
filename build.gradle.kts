@@ -40,6 +40,14 @@ tasks.javadoc {
         o.tags("pre:a:Preconditions: ")
         // includes tutorial in overview page
         o.overview(overview)
+        o.header("<img src=\"{@docRoot}/resources/Schlammspringer.png\" alt=\"Mudskipper\"/>")
+    }
+    doLast{
+        // copy mudskipper image to correct folder
+        copy {
+            from("logo/Schlammspringer.png")
+            into("build/docs/javadoc/resources")
+        }
     }
 }
 
