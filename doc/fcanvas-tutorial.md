@@ -89,9 +89,10 @@ Alle Elemente aus dem Abschnitt <a href="#grafikelemente">Grafikelemente</a> las
 
 Die folgende Tabelle zeigt welche Funktionen es gibt um Elementeigenschaften zu ändern und auf welche Elemente sie wirken:
 
-|                   |                              |          |      |         |       |      |
-|:------------------|:-----------------------------|:---------|:-----|:--------|:------|:-----|
+Table: Übersicht, welche Eigenschaften auf welche Grafikelemente zutreffen
+
 | Funktion          | Eigenschaft                  | Rechteck | Oval | Polygon | Linie | Text |
+|:------------------|:-----------------------------|:---------|:-----|:--------|:------|:-----|
 | `setStrokeWidth ` | Strichbreite in Pixeln       |     ✓    |  ✓   |    ✓    |   ✓   |      |
 | `setStrokeColor ` | Strichfarbe in RGB(A)        |     ✓    |  ✓   |    ✓    |   ✓   |   ✓  |
 | `setFillColor `   | Füllfarbe in RGB(A)          |     ✓    |  ✓   |    ✓    |       |      |
