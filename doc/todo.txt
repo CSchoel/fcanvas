@@ -4,6 +4,7 @@
 - setPixel
 - keyPressedMostSinceLastAsked
 - rename oval -> ellipse
+- update tutorial from Eclipse to IntelliJ
 - simplify recalculation of centroid for polygon
 - polygon method with varargs that does not need arrays?
 - document setPixel methods
