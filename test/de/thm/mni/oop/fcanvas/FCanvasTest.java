@@ -42,7 +42,21 @@ public class FCanvasTest {
         Path actPath = IMAGE_DIR.resolve(filePrefix + "_act.png");
         ImageIO.write(expected, "png", expPath.toFile());
         ImageIO.write(actual, "png", actPath.toFile());
+        ImageIO.write(differenceImage(expected, actual), "png", IMAGE_DIR.resolve(filePrefix + "_diff.png").toFile());
         String msg = "Images %s and %s are not equal.".formatted(expPath, actPath);
         assertEquals(msg, expected, actual);
+    }
+
+    public static BufferedImage differenceImage(BufferedImage a, BufferedImage b) {
+        int[] colorA = a.getRGB(0, 0, a.getWidth(), a.getHeight(), null, 0, 0);
+        int[] colorB = b.getRGB(0, 0, b.getWidth(), b.getHeight(), null, 0, 0);
+        int[] colorDiff = new int[colorA.length];
+        assert colorA.length == colorB.length;
+        for (int i = 0; i < colorA.length; i++) {
+            colorDiff[i] = colorA[i] - colorB[i];
+        }
+        BufferedImage diff = new BufferedImage(a.getWidth(), a.getHeight(), BufferedImage.TYPE_INT_RGB);
+        diff.setRGB(0, 0, a.getWidth(), a.getHeight(), colorDiff, 0, 0);
+        return diff;
     }
 }
