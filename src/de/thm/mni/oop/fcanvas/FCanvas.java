@@ -82,7 +82,7 @@ public class FCanvas {
 	private static Map<Integer,Boolean> keysDown = new ConcurrentHashMap<Integer,Boolean>();
 	private static Map<Integer,Boolean> buttonsDown = new ConcurrentHashMap<Integer,Boolean>();
 	private volatile static Point lastMousePoint = new Point(0,0);
-	private static FCanvasGUI gui = new FCanvasGUI();
+	protected static FCanvasGUI gui = new FCanvasGUI();
 	private static boolean autoupdate = true;
 	/** Private constructor to prohibit instantiation */
 	private FCanvas() {}
