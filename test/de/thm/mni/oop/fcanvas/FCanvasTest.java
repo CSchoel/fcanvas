@@ -19,14 +19,15 @@ public class FCanvasTest {
         FCanvas.drawRectangle(10, 10, 100, 100);
         Thread.sleep(1000);
         BufferedImage ref = FCanvas.gui.getPanel().toImage();
-        System.out.println(ref);
-        System.out.println(bi);
-        saveImage(bi, IMAGE_DIR.resolve("bi.png"));
-        saveImage(ref, IMAGE_DIR.resolve("ref.png"));
-        assertEquals(bi, ref);
+        assertImageEquals(ref, bi, "rectangle");
     }
 
-    public static void saveImage(BufferedImage bi, Path dest) throws IOException {
-        ImageIO.write(bi, "png", dest.toFile());
+    public static void assertImageEquals(BufferedImage expected, BufferedImage actual, String filePrefix) throws IOException {
+        Path expPath = IMAGE_DIR.resolve(filePrefix + "_exp.png");
+        Path actPath = IMAGE_DIR.resolve(filePrefix + "_act.png");
+        ImageIO.write(expected, "png", expPath.toFile());
+        ImageIO.write(actual, "png", actPath.toFile());
+        String msg = "Images %s and %s are not equal.".formatted(expPath, actPath);
+        assertEquals(msg, expected, actual);
     }
 }
