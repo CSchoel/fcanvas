@@ -48,15 +48,20 @@ public class FCanvasTest {
     }
 
     public static BufferedImage differenceImage(BufferedImage a, BufferedImage b) {
-        int[] colorA = a.getRGB(0, 0, a.getWidth(), a.getHeight(), null, 0, 0);
-        int[] colorB = b.getRGB(0, 0, b.getWidth(), b.getHeight(), null, 0, 0);
-        int[] colorDiff = new int[colorA.length];
-        assert colorA.length == colorB.length;
-        for (int i = 0; i < colorA.length; i++) {
-            colorDiff[i] = colorA[i] - colorB[i];
-        }
         BufferedImage diff = new BufferedImage(a.getWidth(), a.getHeight(), BufferedImage.TYPE_INT_RGB);
-        diff.setRGB(0, 0, a.getWidth(), a.getHeight(), colorDiff, 0, 0);
+        // int[] colorA = a.getRGB(0, 0, a.getWidth(), a.getHeight(), null, 0, 0);
+        // int[] colorB = b.getRGB(0, 0, b.getWidth(), b.getHeight(), null, 0, 0);
+        // int[] colorDiff = new int[colorA.length];
+        // assert colorA.length == colorB.length;
+        // for (int i = 0; i < colorA.length; i++) {
+        //     colorDiff[i] = colorA[i] - colorB[i];
+        // }
+        // diff.setRGB(0, 0, a.getWidth(), a.getHeight(), colorDiff, 0, 0);
+        for (int y = 0; y < diff.getHeight(); y++) {
+            for (int x = 0; x < diff.getHeight(); x++) {
+                diff.setRGB(x, y, a.getRGB(x, y) - b.getRGB(x, y));
+            }
+        }
         return diff;
     }
 }
