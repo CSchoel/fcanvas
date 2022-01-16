@@ -6,6 +6,8 @@
  * User Manual available at https://docs.gradle.org/7.3.3/userguide/building_java_projects.html
  */
 
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 version = "1.3.1"
 
 plugins {
@@ -23,6 +25,13 @@ sourceSets {
         java {
             setSrcDirs(listOf("test"))
         }
+    }
+}
+
+tasks.test {
+    useJUnit()
+    testLogging {
+        events(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED)
     }
 }
 
