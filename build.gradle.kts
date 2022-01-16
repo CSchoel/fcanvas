@@ -7,6 +7,7 @@
  */
 
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 version = "1.3.1"
 
@@ -33,6 +34,7 @@ tasks.test {
     testLogging {
         events(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED)
         showStandardStreams = true
+        exceptionFormat = TestExceptionFormat.FULL
     }
 }
 
