@@ -18,6 +18,7 @@ public class FCanvasTest {
     @Test
     public void testRectangle() throws IOException, InterruptedException {
         FCanvas.show();
+        Thread.sleep(100);
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawRect(10, 10, 100, 100);
         FCanvas.drawRectangle(10, 10, 100, 100);
