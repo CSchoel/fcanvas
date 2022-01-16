@@ -40,7 +40,7 @@ import javax.swing.SwingUtilities;
  * 
  * <pre>
  * int actual = 0;
- * for(int i = 0; i < 200; i++) {
+ * for(int i = 0; i &lt; 200; i++) {
  *   int tmp = (int)Math.round(Math.sin(i/30.0)*200+300);
  *   long l = drawLine(i-1,lst,i,tmp);
  *   setStrokeWidth(l,3);
