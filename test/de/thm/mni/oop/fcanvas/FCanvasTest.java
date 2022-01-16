@@ -6,20 +6,34 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.nio.file.Path;
 import java.io.IOException;
+import java.awt.Color;
+import java.awt.Graphics2D;
 
 public class FCanvasTest {
 
     private static final Path IMAGE_DIR = Path.of(".");
 
+    record ImageSetup(BufferedImage image, Graphics2D graphics) {}
+
     @Test
     public void testRectangle() throws IOException, InterruptedException {
         FCanvas.show();
-        BufferedImage bi = new BufferedImage(FCanvas.getCanvasWidth(), FCanvas.getCanvasHeight(), BufferedImage.TYPE_INT_RGB);
-        bi.getGraphics().drawRect(10, 10, 100, 100);
+        ImageSetup setup = createFCanvasImageSetup();
+        setup.graphics.drawRect(10, 10, 100, 100);
         FCanvas.drawRectangle(10, 10, 100, 100);
         Thread.sleep(1000);
         BufferedImage ref = FCanvas.gui.getPanel().toImage();
-        assertImageEquals(ref, bi, "rectangle");
+        assertImageEquals(ref, setup.image, "rectangle");
+    }
+
+    public static ImageSetup createFCanvasImageSetup() {
+        BufferedImage bi = new BufferedImage(FCanvas.getCanvasWidth(), FCanvas.getCanvasHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = bi.createGraphics();
+        g.setPaint(Color.WHITE);
+        g.fillRect(0, 0, bi.getWidth(), bi.getHeight());
+        g.setBackground(Color.WHITE);
+        g.setPaint(Color.BLACK);
+        return new ImageSetup(bi, g);
     }
 
     public static void assertImageEquals(BufferedImage expected, BufferedImage actual, String filePrefix) throws IOException {
