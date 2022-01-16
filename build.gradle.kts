@@ -32,7 +32,7 @@ tasks.javadoc {
         // Convert markdown tutorial to HTML using pandoc
         val pb = ProcessBuilder(
             "pandoc",
-            "doc/fcanvas-tutorial.md",
+            "doc/fcanvas-tutorial-en.md",
             "-f",
             "markdown-implicit_figures",
             "-s",
