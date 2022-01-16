@@ -43,8 +43,13 @@ public class FCanvasTest {
         ImageIO.write(expected, "png", expPath.toFile());
         ImageIO.write(actual, "png", actPath.toFile());
         ImageIO.write(differenceImage(expected, actual), "png", IMAGE_DIR.resolve(filePrefix + "_diff.png").toFile());
-        String msg = "Images %s and %s are not equal.".formatted(expPath, actPath);
-        assertEquals(msg, expected, actual);
+        assertEquals(expected.getWidth(), actual.getWidth());
+        assertEquals(expected.getHeight(), actual.getHeight());
+        for (int y = 0; y < expected.getHeight(); y++) {
+            for (int x = 0; x < expected.getHeight(); x++) {
+                assertEquals("color mismatch at (%d, %d)".formatted(x, y), expected.getRGB(x, y), actual.getRGB(x, y));
+            }
+        }
     }
 
     public static BufferedImage differenceImage(BufferedImage a, BufferedImage b) {
