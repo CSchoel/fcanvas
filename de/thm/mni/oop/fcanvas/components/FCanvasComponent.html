@@ -79,11 +79,11 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">FCanvasComponent</span></div>
-<div class="block"><p>Eine Komponente, die in einem <a href="../FCanvasPanel.html" title="class in de.thm.mni.oop.fcanvas"><code>FCanvasPanel</code></a> verwendet wird.</p>
- 
- <p>Jede Komponente enthält alle Informationen, die zum Zeichnen der Komponente nötig sind.
- Sie bietet grundlegende Methoden zum setzen Veränderlicher Eigenschaften und Getter für die 
- Verwendung mit einem <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a> Objekt an.</p></div>
+<div class="block"><p>A component used in a <a href="../FCanvasPanel.html" title="class in de.thm.mni.oop.fcanvas"><code>FCanvasPanel</code></a>.</p>
+   *
+ <p>Each component contains all the information needed to draw the component.
+ It provides basic methods for setting properties and getters for use with a
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a> object.</p></div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -109,31 +109,31 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Paint.html" title="class or interface in java.awt" class="external-link">Paint</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getFillColor()" class="member-name-link">getFillColor</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Gibt das Paint-Objekt zurück, das zum Zeichnen der Komponente mit einem
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a>-Objekt verwendet werden soll.</div>
+<div class="block">Returns the Paint object to use to paint the component with a
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a> object.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>float</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getRotation()" class="member-name-link">getRotation</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Gibt den Rotationswinkel zurück.</div>
+<div class="block">Returns the rotation angle.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Stroke.html" title="class or interface in java.awt" class="external-link">Stroke</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getStroke()" class="member-name-link">getStroke</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Gibt das Stroke-Objekt zurück, das zum Zeichnen der Komponente mit einem 
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a>-Objekt verwendet werden soll.</div>
+<div class="block">Returns the Stroke object to use to draw the component with a
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a> object.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Color.html" title="class or interface in java.awt" class="external-link">Color</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getStrokeColor()" class="member-name-link">getStrokeColor</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Gibt das Color-Objekt zurück, das zum Zeichnen des Striches der Komponente mit einem 
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a>-Objekt verwendet werden soll.</div>
+<div class="block">Returns the Color object to use to draw the component's stroke
+ using a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a> object.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#move(int,int)" class="member-name-link">move</a><wbr>(int&nbsp;x,
  int&nbsp;y)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Bewegt den Ursprungspunkt der Komponente.</div>
+<div class="block">Moves the origin point of the component.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setFillColor(int,int,int,int)" class="member-name-link">setFillColor</a><wbr>(int&nbsp;r,
@@ -141,12 +141,12 @@ loadScripts(document, 'script');</script>
  int&nbsp;b,
  int&nbsp;a)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Ändert die Füllfarbe der Komponente.</div>
+<div class="block">Changes the fill color of the component.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setRotation(float)" class="member-name-link">setRotation</a><wbr>(float&nbsp;degree)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Ändert den Rotationswinkel.</div>
+<div class="block">Changes the rotation angle.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setStrokeColor(int,int,int,int)" class="member-name-link">setStrokeColor</a><wbr>(int&nbsp;r,
@@ -154,12 +154,12 @@ loadScripts(document, 'script');</script>
  int&nbsp;b,
  int&nbsp;a)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Ändert die Strichfarbe der Komponente.</div>
+<div class="block">Changes the stroke color of the component.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setStrokeWidth(int)" class="member-name-link">setStrokeWidth</a><wbr>(int&nbsp;w)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Ändert die Strichbreite der Komponente.</div>
+<div class="block">Changes the stroke width of the component.</div>
 </div>
 </div>
 </div>
@@ -179,11 +179,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setRotation(float)">
 <h3>setRotation</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setRotation</span><wbr><span class="parameters">(float&nbsp;degree)</span></div>
-<div class="block">Ändert den Rotationswinkel. Falls möglich sollte dieser eine Rotation um das Zentrum der
- Komponente ausdrücken.</div>
+<div class="block">Changes the rotation angle. If possible, this should express a rotation around
+ the center of the component.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>degree</code> - winkel in Grad</dd>
+<dd><code>degree</code> - angle in degrees</dd>
 </dl>
 </section>
 </li>
@@ -191,10 +191,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getRotation()">
 <h3>getRotation</h3>
 <div class="member-signature"><span class="return-type">float</span>&nbsp;<span class="element-name">getRotation</span>()</div>
-<div class="block">Gibt den Rotationswinkel zurück.</div>
+<div class="block">Returns the rotation angle.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>Rotationswinkel in Grad</dd>
+<dd>Rotation angle in degrees</dd>
 </dl>
 </section>
 </li>
@@ -205,13 +205,13 @@ loadScripts(document, 'script');</script>
  int&nbsp;g,
  int&nbsp;b,
  int&nbsp;a)</span></div>
-<div class="block">Ändert die Füllfarbe der Komponente.</div>
+<div class="block">Changes the fill color of the component.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
-<dd><code>a</code> - Wert für den Alphakanal (0 bis 255)</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
+<dd><code>a</code> - value for the alpha channel (0 to 255)</dd>
 </dl>
 </section>
 </li>
@@ -222,15 +222,15 @@ loadScripts(document, 'script');</script>
  int&nbsp;g,
  int&nbsp;b,
  int&nbsp;a)</span></div>
-<div class="block">Ändert die Strichfarbe der Komponente.
+<div class="block">Changes the stroke color of the component.
  
- Bei Komponenten, die einen gefüllten Bereich angeben ist der Strich die Randlinie.</div>
+ For components that specify a filled area, the dash is the border line.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
-<dd><code>a</code> - Wert für den Alphakanal (0 bis 255)</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
+<dd><code>a</code> - value for the alpha channel (0 to 255)</dd>
 </dl>
 </section>
 </li>
@@ -238,12 +238,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setStrokeWidth(int)">
 <h3>setStrokeWidth</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setStrokeWidth</span><wbr><span class="parameters">(int&nbsp;w)</span></div>
-<div class="block">Ändert die Strichbreite der Komponente. 
+<div class="block">Changes the stroke width of the component.
  
- Bei Komponenten, die einen gefüllten Bereich angeben ist der Strich die Randlinie.</div>
+ For components that specify a filled area, the stroke is the border line.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>w</code> - neue Strichbreite in Pixeln</dd>
+<dd><code>w</code> - new stroke width in pixels</dd>
 </dl>
 </section>
 </li>
@@ -251,11 +251,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getStroke()">
 <h3>getStroke</h3>
 <div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Stroke.html" title="class or interface in java.awt" class="external-link">Stroke</a></span>&nbsp;<span class="element-name">getStroke</span>()</div>
-<div class="block">Gibt das Stroke-Objekt zurück, das zum Zeichnen der Komponente mit einem 
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a>-Objekt verwendet werden soll.</div>
+<div class="block">Returns the Stroke object to use to draw the component with a
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a> object.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>Stroke-Objekt mit den Strich-Eigenschaften der Komponente</dd>
+<dd>Stroke object containing the component's Stroke properties</dd>
 </dl>
 </section>
 </li>
@@ -263,11 +263,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getFillColor()">
 <h3>getFillColor</h3>
 <div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Paint.html" title="class or interface in java.awt" class="external-link">Paint</a></span>&nbsp;<span class="element-name">getFillColor</span>()</div>
-<div class="block">Gibt das Paint-Objekt zurück, das zum Zeichnen der Komponente mit einem
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a>-Objekt verwendet werden soll.</div>
+<div class="block">Returns the Paint object to use to paint the component with a
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a> object.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>Paint-Objekt mit dem Fülleigenschaften der Komponente</dd>
+<dd>Paint object with the component's fill properties</dd>
 </dl>
 </section>
 </li>
@@ -275,13 +275,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getStrokeColor()">
 <h3>getStrokeColor</h3>
 <div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Color.html" title="class or interface in java.awt" class="external-link">Color</a></span>&nbsp;<span class="element-name">getStrokeColor</span>()</div>
-<div class="block">Gibt das Color-Objekt zurück, das zum Zeichnen des Striches der Komponente mit einem 
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a>-Objekt verwendet werden soll.
-
- Bei Komponenten, die einen gefüllten Bereich angeben ist der Strich die Randlinie.</div>
+<div class="block">Returns the Color object to use to draw the component's stroke
+ using a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html" title="class or interface in java.awt" class="external-link"><code>Graphics2D</code></a> object.
+ 
+ For components that specify a filled area, the dash is the border line.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>die Farbe des Striches der Komponente</dd>
+<dd>the color of the component's stroke</dd>
 </dl>
 </section>
 </li>
@@ -290,11 +290,11 @@ loadScripts(document, 'script');</script>
 <h3>move</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">move</span><wbr><span class="parameters">(int&nbsp;x,
  int&nbsp;y)</span></div>
-<div class="block">Bewegt den Ursprungspunkt der Komponente.</div>
+<div class="block">Moves the origin point of the component.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>x</code> - die x-Koordinate des neuen Ursprungspunktes</dd>
-<dd><code>y</code> - die y-Koordinate des neuen Ursprungspunktes</dd>
+<dd><code>x</code> - the x coordinate of the new origin point</dd>
+<dd><code>y</code> - the y coordinate of the new origin point</dd>
 </dl>
 </section>
 </li>

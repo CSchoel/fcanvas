@@ -91,13 +91,11 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">FCanvasPanel</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/javax/swing/JPanel.html" title="class or interface in javax.swing" class="external-link">JPanel</a></span></div>
-<div class="block"><p>Diese Klasse beinhaltet die Funktionalität hinter der FCanvas-Schnittstelle.</p>
+<div class="block"><p>This class contains the functionality behind the FCanvas interface.</p>
  
- <p>Das FCanvasPanel überschreibt die Methode <a href="#paintComponent(java.awt.Graphics)"><code>paintComponent(Graphics)</code></a> der JPanel-Klasse,
- um eine Anzahl von intern gespeicherten Objekten zu zeichnen.</p>
+ <p>The FCanvasPanel overrides the <a href="#paintComponent(java.awt.Graphics)"><code>paintComponent(Graphics)</code></a> method of the JPanel class to paint a number of internally stored objects.</p>
  
- <p>Die Methoden zum hinzufügen, entfernen und modifizieren von Komponenten sind thread-safe und 
- können auch von außerhalb des Event Dispatch Thread aufgerufen werden.</p></div>
+ <p>The methods for adding, removing and modifying components are thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -152,7 +150,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">FCanvasPanel</a>()</code></div>
 <div class="col-last even-row-color">
-<div class="block">Erstellt ein neues CanvasPanel mit weißem Hintergrund.</div>
+<div class="block">Creates a new CanvasPanel with white background.</div>
 </div>
 </div>
 </section>
@@ -174,7 +172,7 @@ loadScripts(document, 'script');</script>
  int&nbsp;x2,
  int&nbsp;y2)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Fügt eine gerade Linie zwischen den Punkten (x1,y1) und (x2,y2) hinzu.</div>
+<div class="block">Adds a straight line between the points (x1,y1) and (x2,y2).</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addOval(int,int,int,int)" class="member-name-link">addOval</a><wbr>(int&nbsp;left,
@@ -182,13 +180,13 @@ loadScripts(document, 'script');</script>
  int&nbsp;width,
  int&nbsp;height)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Fügt ein Oval hinzu.</div>
+<div class="block">Adds an oval.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addPolygon(int%5B%5D,int%5B%5D)" class="member-name-link">addPolygon</a><wbr>(int[]&nbsp;xcoords,
  int[]&nbsp;ycoords)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Fügt ein Polygon hinzu.</div>
+<div class="block">Adds a polygon.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addRectangle(int,int,int,int)" class="member-name-link">addRectangle</a><wbr>(int&nbsp;left,
@@ -196,31 +194,31 @@ loadScripts(document, 'script');</script>
  int&nbsp;width,
  int&nbsp;height)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Fügt ein Rechteck hinzu.</div>
+<div class="block">Adds a rectangle.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addText(java.lang.String,int,int)" class="member-name-link">addText</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  int&nbsp;left,
  int&nbsp;baseline)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Fügt einen Text hinzu.</div>
+<div class="block">Adds a text.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#clear()" class="member-name-link">clear</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Entfernt alle Objekte.</div>
+<div class="block">Removes all objects.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected <a href="components/FCanvasComponent.html" title="interface in de.thm.mni.oop.fcanvas.components">FCanvasComponent</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFCComponent(long)" class="member-name-link">getFCComponent</a><wbr>(long&nbsp;id)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Hilfsunktion, um eine Komponente anhand ihrer id zu finden.</div>
+<div class="block">Helper function to find a component by its id.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#moveComponent(long,int,int)" class="member-name-link">moveComponent</a><wbr>(long&nbsp;id,
  int&nbsp;x,
  int&nbsp;y)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Bewegt eine Komponente.</div>
+<div class="block">Moves a component.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#paintComponent(java.awt.Graphics)" class="member-name-link">paintComponent</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics.html" title="class or interface in java.awt" class="external-link">Graphics</a>&nbsp;g)</code></div>
@@ -228,19 +226,19 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removeComponent(long)" class="member-name-link">removeComponent</a><wbr>(long&nbsp;id)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Entfernt eine Komponente.</div>
+<div class="block">Removes a component.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAntialiasingEnabled(boolean)" class="member-name-link">setAntialiasingEnabled</a><wbr>(boolean&nbsp;enabled)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Ändert die Antialiasing-Einstellungen (per Default disabled).</div>
+<div class="block">Changes antialiasing settings (disabled by default).</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setBackgroundColor(int,int,int)" class="member-name-link">setBackgroundColor</a><wbr>(int&nbsp;r,
  int&nbsp;g,
  int&nbsp;b)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Ändert die Hintergrundfarbe des Panels.</div>
+<div class="block">Changes the background color of the panel.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setFillColor(long,int,int,int,int)" class="member-name-link">setFillColor</a><wbr>(long&nbsp;id,
@@ -249,13 +247,13 @@ loadScripts(document, 'script');</script>
  int&nbsp;b,
  int&nbsp;a)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Ändert die Füllfarbe einer Komponente.</div>
+<div class="block">Changes the fill color of a component.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setFontSize(long,int)" class="member-name-link">setFontSize</a><wbr>(long&nbsp;id,
  int&nbsp;points)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Ändert die Schriftgröße einer Textkomponente.</div>
+<div class="block">Changes the font size of a text component.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPixel(java.awt.Point,java.awt.Color)" class="member-name-link">setPixel</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Point.html" title="class or interface in java.awt" class="external-link">Point</a>&nbsp;p,
@@ -265,7 +263,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setRotation(long,float)" class="member-name-link">setRotation</a><wbr>(long&nbsp;id,
  float&nbsp;r)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Ändert den Rotationswinkel für eine Komponente.</div>
+<div class="block">Changes the rotation angle for a component.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStrokeColor(long,int,int,int,int)" class="member-name-link">setStrokeColor</a><wbr>(long&nbsp;id,
@@ -274,18 +272,18 @@ loadScripts(document, 'script');</script>
  int&nbsp;b,
  int&nbsp;a)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Ändert die Strichfarbe einer Komponente.</div>
+<div class="block">Changes the stroke color of a component.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStrokeWidth(long,int)" class="member-name-link">setStrokeWidth</a><wbr>(long&nbsp;id,
  int&nbsp;w)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Ändert die Strichbreite für die Komponente.</div>
+<div class="block">Changes the stroke width for the component.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/image/BufferedImage.html" title="class or interface in java.awt.image" class="external-link">BufferedImage</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toImage()" class="member-name-link">toImage</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Zeichnet die aktuelle Grafik auf ein BufferedImage</div>
+<div class="block">Draws the current graphic to a BufferedImage</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateCanvas()" class="member-name-link">updateCanvas</a>()</code></div>
@@ -296,7 +294,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateImageBuffer(int,int)" class="member-name-link">updateImageBuffer</a><wbr>(int&nbsp;maxx,
  int&nbsp;maxy)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Erhöht die Größe des zwischengespeicherten BufferedImage falls nötig</div>
+<div class="block">Increases the size of the cached BufferedImage if necessary</div>
 </div>
 </div>
 </div>
@@ -331,7 +329,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>FCanvasPanel</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">FCanvasPanel</span>()</div>
-<div class="block">Erstellt ein neues CanvasPanel mit weißem Hintergrund.</div>
+<div class="block">Creates a new CanvasPanel with white background.</div>
 </section>
 </li>
 </ul>
@@ -347,7 +345,7 @@ loadScripts(document, 'script');</script>
 <h3>updateImageBuffer</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateImageBuffer</span><wbr><span class="parameters">(int&nbsp;maxx,
  int&nbsp;maxy)</span></div>
-<div class="block">Erhöht die Größe des zwischengespeicherten BufferedImage falls nötig</div>
+<div class="block">Increases the size of the cached BufferedImage if necessary</div>
 </section>
 </li>
 <li>
@@ -381,18 +379,17 @@ loadScripts(document, 'script');</script>
  int&nbsp;top,
  int&nbsp;width,
  int&nbsp;height)</span></div>
-<div class="block"><p>Fügt ein Rechteck hinzu.</p>
+<div class="block"><p>Adds a rectangle.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>left</code> - x-Koordinate der linken oberen Ecke des Rechtecks</dd>
-<dd><code>top</code> - y-Koordinate der linken oberen Ecke des Rechtecks</dd>
-<dd><code>width</code> - Breite des Rechtecks</dd>
-<dd><code>height</code> - Höhe des Rechtecks</dd>
+<dd><code>left</code> - x-coordinate of the upper-left corner of the rectangle</dd>
+<dd><code>top</code> - Y-coordinate of the upper-left corner of the rectangle</dd>
+<dd><code>width</code> - Width of the rectangle</dd>
+<dd><code>height</code> - Height of the rectangle</dd>
 <dt>Returns:</dt>
-<dd>id des erstellten Rechtecks</dd>
+<dd>id of the created rectangle</dd>
 </dl>
 </section>
 </li>
@@ -403,18 +400,17 @@ loadScripts(document, 'script');</script>
  int&nbsp;top,
  int&nbsp;width,
  int&nbsp;height)</span></div>
-<div class="block"><p>Fügt ein Oval hinzu.</p>
+<div class="block"><p>Adds an oval.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>left</code> - x-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) des Ovals</dd>
-<dd><code>top</code> - y-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) des Ovals</dd>
-<dd><code>width</code> - Breite des Ovals</dd>
-<dd><code>height</code> - Höhe des Ovals</dd>
+<dd><code>left</code> - x-coordinate of the top left point of the oval's bounding box</dd>
+<dd><code>top</code> - Y coordinate of the upper left point of the bounding box of the oval</dd>
+<dd><code>width</code> - Width of the oval</dd>
+<dd><code>height</code> - Height of the oval</dd>
 <dt>Returns:</dt>
-<dd>id des erstellten Ovals</dd>
+<dd>id of the created oval</dd>
 </dl>
 </section>
 </li>
@@ -425,18 +421,17 @@ loadScripts(document, 'script');</script>
  int&nbsp;y1,
  int&nbsp;x2,
  int&nbsp;y2)</span></div>
-<div class="block"><p>Fügt eine gerade Linie zwischen den Punkten (x1,y1) und (x2,y2) hinzu.</p>
+<div class="block"><p>Adds a straight line between the points (x1,y1) and (x2,y2).</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>x1</code> - x-Koordinate des ersten Punkts</dd>
-<dd><code>y1</code> - y-Koordinate des ersten Punkts</dd>
-<dd><code>x2</code> - x-Koordinate des zweiten Punkts</dd>
-<dd><code>y2</code> - y-Koordinate des zweiten Punkts</dd>
+<dd><code>x1</code> - x-coordinate of the first point</dd>
+<dd><code>y1</code> - y coordinate of the first point</dd>
+<dd><code>x2</code> - x-coordinate of the second point</dd>
+<dd><code>y2</code> - y coordinate of the second point</dd>
 <dt>Returns:</dt>
-<dd>id der erstellten Linie</dd>
+<dd>id of the created line</dd>
 </dl>
 </section>
 </li>
@@ -445,16 +440,15 @@ loadScripts(document, 'script');</script>
 <h3>addPolygon</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name">addPolygon</span><wbr><span class="parameters">(int[]&nbsp;xcoords,
  int[]&nbsp;ycoords)</span></div>
-<div class="block"><p>Fügt ein Polygon hinzu.</p>
+<div class="block"><p>Adds a polygon.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>xcoords</code> - array der x-Koordinaten der Polygon-Punkte</dd>
-<dd><code>ycoords</code> - array der y-Koordinaten der Polygon-Punkte</dd>
+<dd><code>xcoords</code> - array of x-coordinates of polygon points</dd>
+<dd><code>ycoords</code> - array of y-coordinates of polygon points</dd>
 <dt>Returns:</dt>
-<dd>id des erstellten Polygons</dd>
+<dd>id of the created polygon</dd>
 </dl>
 </section>
 </li>
@@ -464,17 +458,16 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name">addText</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  int&nbsp;left,
  int&nbsp;baseline)</span></div>
-<div class="block"><p>Fügt einen Text hinzu.</p>
+<div class="block"><p>Adds a text.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>text</code> - der Text, der gezeichnet werden soll</dd>
-<dd><code>left</code> - die x-Koordinate des ersten Zeichens</dd>
-<dd><code>baseline</code> - die y-Koordinate der Baseline des ersten Zeichens</dd>
+<dd><code>text</code> - the text to draw</dd>
+<dd><code>left</code> - the x-coordinate of the first character</dd>
+<dd><code>baseline</code> - the y-coordinate of the baseline of the first character</dd>
 <dt>Returns:</dt>
-<dd>id des erstellten Textes</dd>
+<dd>id of the created text</dd>
 </dl>
 </section>
 </li>
@@ -483,16 +476,15 @@ loadScripts(document, 'script');</script>
 <h3>setFontSize</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setFontSize</span><wbr><span class="parameters">(long&nbsp;id,
  int&nbsp;points)</span></div>
-<div class="block"><p>Ändert die Schriftgröße einer Textkomponente.</p>
+<div class="block"><p>Changes the font size of a text component.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id der Textkomponente</dd>
-<dd><code>points</code> - die neue Schriftgröße in pt</dd>
+<dd><code>id</code> - the id of the text component</dd>
+<dd><code>points</code> - the new font size in pt</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einer existierenden Textkomponente gehören</dd>
+<dd>id must belong to an existing text component</dd>
 </dl>
 </section>
 </li>
@@ -504,21 +496,20 @@ loadScripts(document, 'script');</script>
  int&nbsp;g,
  int&nbsp;b,
  int&nbsp;a)</span></div>
-<div class="block"><p>Ändert die Füllfarbe einer Komponente.</p>
+<div class="block"><p>Changes the fill color of a component.</p>
  
- <p>Hat keinen Effekt für Linien und Texte.</p>
+ <p>Has no effect on lines and text.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id der Komponente</dd>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
-<dd><code>a</code> - Wert für den Alphakanal (0 bis 255)</dd>
+<dd><code>id</code> - the id of the component</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
+<dd><code>a</code> - value for the alpha channel (0 to 255)</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einer existierenden Komponente gehören</dd>
+<dd>id must belong to an existing component</dd>
 </dl>
 </section>
 </li>
@@ -530,21 +521,20 @@ loadScripts(document, 'script');</script>
  int&nbsp;g,
  int&nbsp;b,
  int&nbsp;a)</span></div>
-<div class="block"><p>Ändert die Strichfarbe einer Komponente.</p>
+<div class="block"><p>Changes the stroke color of a component.</p>
  
- <p>Bei <code>alpha == 0</code> wird der Strich unsichtbar.</p>
+ <p>With <code>alpha == 0</code> the bar becomes invisible.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id der Komponente</dd>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
-<dd><code>a</code> - Wert für den Alphakanal (0 bis 255)</dd>
+<dd><code>id</code> - the id of the component</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
+<dd><code>a</code> - value for the alpha channel (0 to 255)</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einer existierenden Komponente gehören</dd>
+<dd>id must belong to an existing component</dd>
 </dl>
 </section>
 </li>
@@ -553,19 +543,18 @@ loadScripts(document, 'script');</script>
 <h3>setStrokeWidth</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setStrokeWidth</span><wbr><span class="parameters">(long&nbsp;id,
  int&nbsp;w)</span></div>
-<div class="block"><p>Ändert die Strichbreite für die Komponente.</p>
+<div class="block"><p>Changes the stroke width for the component.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p>
  
- Bei Ovalen, Rechtecken und Polygonen ist damit die breite des Rands gemeint.
- Bei Texten hat diese Methode keinen Effekt.</div>
+ In the case of ovals, rectangles and polygons, this means the width of the border.
+ This method has no effect on text.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id der Komponente</dd>
-<dd><code>w</code> - die neue Strichbreite (in Pixeln)</dd>
+<dd><code>id</code> - the id of the component</dd>
+<dd><code>w</code> - the new stroke width (in pixels)</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einer existierenden Komponente gehören</dd>
+<dd>id must belong to an existing component</dd>
 </dl>
 </section>
 </li>
@@ -574,18 +563,17 @@ loadScripts(document, 'script');</script>
 <h3>setRotation</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setRotation</span><wbr><span class="parameters">(long&nbsp;id,
  float&nbsp;r)</span></div>
-<div class="block"><p>Ändert den Rotationswinkel für eine Komponente.</p>
+<div class="block"><p>Changes the rotation angle for a component.</p>
  
- <p>Rechtecke, Ovale, Linien und Polygone werden um ihren Mittelpunkt rotiert.</p>
+ <p>Rectangles, ovals, lines and polygons are rotated around their center.</p>
  
- <p>Texte werden um ihren Ursprungspunkt (left,baseline) rotiert.</p>
+ <p>Texts are rotated around their origin (left,baseline).</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id der Komponente</dd>
-<dd><code>r</code> - Rotationswinkel in grad</dd>
+<dd><code>id</code> - the id of the component</dd>
+<dd><code>r</code> - rotation angle in degrees</dd>
 </dl>
 </section>
 </li>
@@ -595,27 +583,26 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">moveComponent</span><wbr><span class="parameters">(long&nbsp;id,
  int&nbsp;x,
  int&nbsp;y)</span></div>
-<div class="block"><p>Bewegt eine Komponente.</p>
+<div class="block"><p>Moves a component.</p>
  
- <p>Die Bedeutung der Parameter x und y unterscheiden sich je nach Typ der
- Komponente, die bewegt werden soll:</p>
+ <p>The meaning of the x and y parameters differ depending on the type of
+ Component to move:</p>
  
  <ul>
- <li><em>Ovale und Rechtecke</em>: (x,y) ist der neue linke obere Punkt der Komponente.
- <li><em>Linien und Polygone</em>: (x,y) ist die neue Koordinate des ersten Punktes der Komponente.
- <li><em>Text</em>: x ist die neue x-Koordinate des ersten Zeichens, y ist die neue y-Koordinate der
-     Baseline des ersten Zeichens.
+ <li><em>Ovals and Rectangles</em>: (x,y) is the new top left point of the component.
+ <li><em>Lines and polygons</em>: (x,y) is the new coordinate of the first point of the component.
+ <li><em>Text</em>:x is the new x-coordinate of the first character, y is the new y-coordinate of
+ the first character's baseline.
  </ul>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - id der Komponente, die bewegt werden soll</dd>
-<dd><code>x</code> - x-Koordinate des neuen Ursprungspunktes</dd>
-<dd><code>y</code> - y-Koordinate des neuen Ursprungspunktes</dd>
+<dd><code>id</code> - id of the component to move</dd>
+<dd><code>x</code> - x-coordinate of the new origin point</dd>
+<dd><code>y</code> - Y coordinate of the new origin point</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einer existierenden Komponente gehören</dd>
+<dd>id must belong to an existing component</dd>
 </dl>
 </section>
 </li>
@@ -623,12 +610,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getFCComponent(long)">
 <h3>getFCComponent</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="components/FCanvasComponent.html" title="interface in de.thm.mni.oop.fcanvas.components">FCanvasComponent</a></span>&nbsp;<span class="element-name">getFCComponent</span><wbr><span class="parameters">(long&nbsp;id)</span></div>
-<div class="block">Hilfsunktion, um eine Komponente anhand ihrer id zu finden.</div>
+<div class="block">Helper function to find a component by its id.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id der Komponente</dd>
+<dd><code>id</code> - the id of the component</dd>
 <dt>Returns:</dt>
-<dd>die jeweilige Komponente oder <code>null</code> falls keine Komponente mit dieser id existiert</dd>
+<dd>the respective component or <code>null</code> if no component with this id exists</dd>
 </dl>
 </section>
 </li>
@@ -636,15 +623,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="removeComponent(long)">
 <h3>removeComponent</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removeComponent</span><wbr><span class="parameters">(long&nbsp;id)</span></div>
-<div class="block"><p>Entfernt eine Komponente.</p>
+<div class="block"><p>Removes a component.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - id des Objektes, das entfernt werden soll</dd>
+<dd><code>id</code> - id of the object to be removed</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einer existierenden Komponente gehören</dd>
+<dd>id must belong to an existing component</dd>
 </dl>
 </section>
 </li>
@@ -654,15 +640,14 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setBackgroundColor</span><wbr><span class="parameters">(int&nbsp;r,
  int&nbsp;g,
  int&nbsp;b)</span></div>
-<div class="block"><p>Ändert die Hintergrundfarbe des Panels.</p>
+<div class="block"><p>Changes the background color of the panel.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
 </dl>
 </section>
 </li>
@@ -670,20 +655,19 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="clear()">
 <h3>clear</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clear</span>()</div>
-<div class="block"><p>Entfernt alle Objekte.</p>
+<div class="block"><p>Removes all objects.</p>
  
- <p>Diese Methode ist thread-safe und kann auch von außerhalb des Event Dispatch Thread
- aufgerufen werden.</p></div>
+ <p>This method is thread-safe and can also be called from outside the event dispatch thread.</p></div>
 </section>
 </li>
 <li>
 <section class="detail" id="setAntialiasingEnabled(boolean)">
 <h3>setAntialiasingEnabled</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAntialiasingEnabled</span><wbr><span class="parameters">(boolean&nbsp;enabled)</span></div>
-<div class="block"><p>Ändert die Antialiasing-Einstellungen (per Default disabled).</p></div>
+<div class="block"><p>Changes antialiasing settings (disabled by default).</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>enabled</code> - wenn <code>true</code> wird Antialiasing verwendet</dd>
+<dd><code>enabled</code> - if <code>true</code> uses antialiasing</dd>
 </dl>
 </section>
 </li>
@@ -691,10 +675,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="toImage()">
 <h3>toImage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/image/BufferedImage.html" title="class or interface in java.awt.image" class="external-link">BufferedImage</a></span>&nbsp;<span class="element-name">toImage</span>()</div>
-<div class="block"><p>Zeichnet die aktuelle Grafik auf ein BufferedImage</p></div>
+<div class="block"><p>Draws the current graphic to a BufferedImage</p></div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>BufferedImage mit einem Abbild des aktuellen Canvas-Inhalt</dd>
+<dd>BufferedImage with an image of the current canvas content</dd>
 </dl>
 </section>
 </li>

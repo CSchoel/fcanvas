@@ -79,24 +79,28 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">FCanvas</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block"><p>Diese Klasse implementiert einen Canvas, auf dem man mit statischen Methoden zeichnen kann.</p>
+<div class="block"><p>This class implements a canvas on which you can draw using static methods.</p>
+
+ <p>The class is essentially a wrapper for the functionality of the <a href="FCanvasPanel.html" title="class in de.thm.mni.oop.fcanvas"><code>FCanvasPanel</code></a> class,
+ which provides a simplified interface without the additional Swing methods.</p>
+
+ <p>No knowledge of concurrency, GUI design, or objects is required to use the class.
+ An understanding of arrays is also only required for the polygon methods.</p>
+
+ <p><b>Examples:</b></p>
  
- <p>Die Klasse ist im Wesentlichen ein Wrapper für die Funktionalität der Klasse <a href="FCanvasPanel.html" title="class in de.thm.mni.oop.fcanvas"><code>FCanvasPanel</code></a>,
- der eine vereinfachte Schnittstelle bietet ohne die zusätzlichen Swing-Methoden.</p>
+ <p>Draw and display a red circle:</p>
  
- <p>Zur Benutzung der Klasse ist weder Wissen über Nebenläufigkeit und GUI-Design noch über Objekte nötig. 
- Ein Verständnis von Arrays ist ebenfalls nur für die Polygon-Methoden Voraussetzung.</p>
- 
- <p><b>Beispiele:</b></p>
- Einen roten Kreis zeichnen und anzeigen:
  <pre>
  long o = drawOval(10,10,100,100);
  setFillColor(255,0,0);
  show();
  </pre>
- Eine Sinuskurve mit Strichbreite 3 zeichnen:
+ 
+ <p>Draw a sine wave with line width 3:</p>
+ 
  <pre>
- int lst = 0;
+ int actual = 0;
  for(int i = 0; i &lt; 200; i++) {
    int tmp = (int)Math.round(Math.sin(i/30.0)*200+300);
    long l = drawLine(i-1,lst,i,tmp);
@@ -104,8 +108,10 @@ loadScripts(document, 'script');</script>
    lst = tmp;
  }
  </pre>
- Die Farbe eines Kreises immer ändern wenn die Pfeiltaste nach links oder rechts
- gedrückt wurde (abbruch mit ESC):
+ 
+ <p>Change the color of a circle whenever the left or right arrow key
+ was pressed (cancel with ESC):</p>
+ 
  <pre>
  long id = drawOval(100,100,50,50);
  int interval = 30;
@@ -136,7 +142,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#SUPPORTED_IMAGE_FORMATS" class="member-name-link">SUPPORTED_IMAGE_FORMATS</a></code></div>
 <div class="col-last odd-row-color">
-<div class="block">File extensions, die von <a href="#saveToImage(java.lang.String)"><code>saveToImage(String)</code></a> erkannt werden</div>
+<div class="block">File extensions recognized by <a href="#saveToImage(java.lang.String)"><code>saveToImage(String)</code></a></div>
 </div>
 <div class="col-first even-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color"><code><a href="#VERSION" class="member-name-link">VERSION</a></code></div>
@@ -160,12 +166,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#clear()" class="member-name-link">clear</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Entfernt alle Objekte vom Canvas.</div>
+<div class="block">Removes all objects from the canvas.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#close()" class="member-name-link">close</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Schließt das Canvas-Fenster.</div>
+<div class="block">Closes the Canvas window.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawLine(int,int,int,int)" class="member-name-link">drawLine</a><wbr>(int&nbsp;x1,
@@ -173,7 +179,7 @@ loadScripts(document, 'script');</script>
  int&nbsp;x2,
  int&nbsp;y2)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Zeichnet eine gerade Linie zwischen den Punkten (x1,y1) und (x2,y2) auf den Canvas.</div>
+<div class="block">Draws a straight line between points (x1,y1) and (x2,y2) on the canvas.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static long</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawOval(int,int,int,int)" class="member-name-link">drawOval</a><wbr>(int&nbsp;left,
@@ -181,13 +187,13 @@ loadScripts(document, 'script');</script>
  int&nbsp;width,
  int&nbsp;height)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Zeichnet ein Oval auf den Canvas.</div>
+<div class="block">Draws an oval on the canvas.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawPolygon(int%5B%5D,int%5B%5D)" class="member-name-link">drawPolygon</a><wbr>(int[]&nbsp;xcoords,
  int[]&nbsp;ycoords)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Zeichnet ein Polygon auf den Canvas.</div>
+<div class="block">Draws a polygon on the canvas.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static long</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawRectangle(int,int,int,int)" class="member-name-link">drawRectangle</a><wbr>(int&nbsp;left,
@@ -195,103 +201,103 @@ loadScripts(document, 'script');</script>
  int&nbsp;width,
  int&nbsp;height)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Zeichnet ein Rechteck auf den Canvas.</div>
+<div class="block">Draws a rectangle on the canvas.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static long</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawText(java.lang.String,int,int)" class="member-name-link">drawText</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  int&nbsp;left,
  int&nbsp;baseline)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Zeichnet einen Text auf den Canvas.</div>
+<div class="block">Draws a text on the canvas.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getCanvasHeight()" class="member-name-link">getCanvasHeight</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Gibt die aktuelle Höhe des Zeichenbereichs zurück.</div>
+<div class="block">Returns the current height of the canvas.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getCanvasWidth()" class="member-name-link">getCanvasWidth</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Gibt die aktuelle Breite des Zeichenbereichs zurück.</div>
+<div class="block">Returns the current width of the drawing area.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getKeyPressesSinceLastAsked(int)" class="member-name-link">getKeyPressesSinceLastAsked</a><wbr>(int&nbsp;key)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Gibt an, wie oft die Taste <code>key</code> gedrückt wurde, seit
- die selbe Taste mit einem Aufruf dieser Methode abgefragt wurde.</div>
+<div class="block">The number of times the <code>key</code> has been pressed since
+ the same key was queried with a call to this method.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getLastMouseX()" class="member-name-link">getLastMouseX</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Gibt die x-Koordinate der letzten bekannten Mausposition zurück.</div>
+<div class="block">Returns the x-coordinate of the last known mouse position.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getLastMouseY()" class="member-name-link">getLastMouseY</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Gibt die y-Koordinate der letzten bekannten Mausposition zurück.</div>
+<div class="block">Returns the y-coordinate of the last known mouse position.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getMouseButtonPressesSinceLastAsked(int)" class="member-name-link">getMouseButtonPressesSinceLastAsked</a><wbr>(int&nbsp;button)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Gibt an, wie oft die Maustaste <code>button</code> gedrückt wurde, seit
- die selbe Taste mit einem Aufruf dieser Methode abgefragt wurde.</div>
+<div class="block">The number of times the <code>button</code> mouse button has been pressed since
+ the same key was queried with a call to this method.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#isAltDown()" class="member-name-link">isAltDown</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
 </div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#isControlDown()" class="member-name-link">isControlDown</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
 </div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isKeyDown(int)" class="member-name-link">isKeyDown</a><wbr>(int&nbsp;key)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Gibt an, ob die Taste <code>key</code> gerade gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the key <code>key</code> is currently being held down.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#isMouse1Down()" class="member-name-link">isMouse1Down</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
 </div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#isMouse2Down()" class="member-name-link">isMouse2Down</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
 </div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#isMouse3Down()" class="member-name-link">isMouse3Down</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
 </div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isMouseButtonDown(int)" class="member-name-link">isMouseButtonDown</a><wbr>(int&nbsp;button)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Gibt an, ob die Maustaste <code>button</code> gerade gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the mouse button <code>button</code> is currently being held down.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#isShiftDown()" class="member-name-link">isShiftDown</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
 </div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isVisible()" class="member-name-link">isVisible</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Gibt an, ob das Canvas-Fenster gerade angezeigt wird.</div>
+<div class="block">Indicates whether the Canvas window is currently visible.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#main(java.lang.String%5B%5D)" class="member-name-link">main</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;args)</code></div>
@@ -301,40 +307,40 @@ loadScripts(document, 'script');</script>
  int&nbsp;x,
  int&nbsp;y)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Bewegt ein Objekt auf dem Canvas.</div>
+<div class="block">Moves an object on the canvas.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#remove(long)" class="member-name-link">remove</a><wbr>(long&nbsp;id)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Entfernt ein Objekt vom Canvas.</div>
+<div class="block">Removes an object from the canvas.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#saveToImage(java.lang.String)" class="member-name-link">saveToImage</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;fname)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Speichert die aktuelle Grafik als Bilddatei.</div>
+<div class="block">Saves the current graphic as an image file.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setAntialiasingEnabled(boolean)" class="member-name-link">setAntialiasingEnabled</a><wbr>(boolean&nbsp;enabled)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert die Antialiasing-Einstellungen.</div>
+<div class="block">Changes antialiasing settings.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setAutoUpdate(boolean)" class="member-name-link">setAutoUpdate</a><wbr>(boolean&nbsp;auto)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Schaltet die Autoupdate-Funktion ein und aus.</div>
+<div class="block">Turns the autoupdate function on and off.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setBackgroundColor(int,int,int)" class="member-name-link">setBackgroundColor</a><wbr>(int&nbsp;r,
  int&nbsp;g,
  int&nbsp;b)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert die Hintergrundfarbe des Canvas.</div>
+<div class="block">Changes the background color of the canvas.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setCanvasSize(int,int)" class="member-name-link">setCanvasSize</a><wbr>(int&nbsp;w,
  int&nbsp;h)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert die größe des Zeichenbereichs.</div>
+<div class="block">Changes the size of the drawing area.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setFillColor(long,int,int,int)" class="member-name-link">setFillColor</a><wbr>(long&nbsp;id,
@@ -342,7 +348,7 @@ loadScripts(document, 'script');</script>
  int&nbsp;g,
  int&nbsp;b)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert die Füllfarbe eines Objektes.</div>
+<div class="block">Changes the fill color of an object.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setFillColor(long,int,int,int,int)" class="member-name-link">setFillColor</a><wbr>(long&nbsp;id,
@@ -351,13 +357,13 @@ loadScripts(document, 'script');</script>
  int&nbsp;b,
  int&nbsp;alpha)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert die Füllfarbe eines Objektes.</div>
+<div class="block">Changes the fill color of an object.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setFontSize(long,int)" class="member-name-link">setFontSize</a><wbr>(long&nbsp;id,
  int&nbsp;points)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert die Schriftgröße eines Textobjektes.</div>
+<div class="block">Changes the font size of a text object.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setPixel(int,int,int,int,int)" class="member-name-link">setPixel</a><wbr>(int&nbsp;x,
@@ -374,7 +380,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setRotation(long,float)" class="member-name-link">setRotation</a><wbr>(long&nbsp;id,
  float&nbsp;degrees)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert den Rotationswinkel für ein Objekt.</div>
+<div class="block">Changes the rotation angle for an object.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setStrokeColor(long,int,int,int)" class="member-name-link">setStrokeColor</a><wbr>(long&nbsp;id,
@@ -382,7 +388,7 @@ loadScripts(document, 'script');</script>
  int&nbsp;g,
  int&nbsp;b)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert die Strichfarbe eines Objektes.</div>
+<div class="block">Changes the stroke color of an object.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setStrokeColor(long,int,int,int,int)" class="member-name-link">setStrokeColor</a><wbr>(long&nbsp;id,
@@ -391,50 +397,48 @@ loadScripts(document, 'script');</script>
  int&nbsp;b,
  int&nbsp;alpha)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert die Strichfarbe eines Objektes.</div>
+<div class="block">Changes the stroke color of an object.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setStrokeWidth(long,int)" class="member-name-link">setStrokeWidth</a><wbr>(long&nbsp;id,
  int&nbsp;w)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Ändert die Strichbreite für das Objekt.</div>
+<div class="block">Changes the stroke width for the object.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#show()" class="member-name-link">show</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Zeigt das Canvas-Fenster an.</div>
+<div class="block">Shows the Canvas window.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Macht alle Änderungen am Canvas sichtbar.</div>
+<div class="block">Makes all changes to the canvas visible.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#wasKeyPressed(int,long)" class="member-name-link">wasKeyPressed</a><wbr>(int&nbsp;key,
  long&nbsp;since)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Prüft ob vor <code>since</code> oder weniger millisekunden die Taste <code>key</code>
- gedrückt wurde.</div>
+<div class="block">Checks if the <code>key</code> was pressed <code>since</code> or less milliseconds ago.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#wasKeyPressedSinceLastAsked(int)" class="member-name-link">wasKeyPressedSinceLastAsked</a><wbr>(int&nbsp;key)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#getKeyPressesSinceLastAsked(int)"><code>getKeyPressesSinceLastAsked(int)</code></a></div>
+<div class="deprecation-comment">replaced with <a href="#getKeyPressesSinceLastAsked(int)"><code>getKeyPressesSinceLastAsked(int)</code></a></div>
 </div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#wasMouseButtonPressed(int,long)" class="member-name-link">wasMouseButtonPressed</a><wbr>(int&nbsp;button,
  long&nbsp;since)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Prüft ob vor <code>since</code> oder weniger millisekunden die Maustaste <code>button</code>
- gedrückt wurde.</div>
+<div class="block">Checks if the mouse button <code>button</code> was pressed <code>since</code> or less milliseconds ago.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#wasMouseButtonPressedSinceLastAsked(int)" class="member-name-link">wasMouseButtonPressedSinceLastAsked</a><wbr>(int&nbsp;button)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
 <div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#getMouseButtonPressesSinceLastAsked(int)"><code>getMouseButtonPressesSinceLastAsked(int)</code></a></div>
+<div class="deprecation-comment">replaced with <a href="#getMouseButtonPressesSinceLastAsked(int)"><code>getMouseButtonPressesSinceLastAsked(int)</code></a></div>
 </div>
 </div>
 </div>
@@ -473,7 +477,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="SUPPORTED_IMAGE_FORMATS">
 <h3>SUPPORTED_IMAGE_FORMATS</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">SUPPORTED_IMAGE_FORMATS</span></div>
-<div class="block">File extensions, die von <a href="#saveToImage(java.lang.String)"><code>saveToImage(String)</code></a> erkannt werden</div>
+<div class="block">File extensions recognized by <a href="#saveToImage(java.lang.String)"><code>saveToImage(String)</code></a></div>
 </section>
 </li>
 <li>
@@ -503,13 +507,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="show()">
 <h3>show</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">show</span>()</div>
-<div class="block"><p>Zeigt das Canvas-Fenster an.</p>
- 
- <p>Grafische Komponenten können sowohl vor als auch nach dem Aufruf dieser Methode
- hinzugefügt und verändert werden.</p>
- 
- <p>Achtung: Das laufende Programm kann erst beendet werden, wenn das Fenster vom Benutzer oder
- aus dem Code mit dem Aufruf von <a href="#close()"><code>close()</code></a> geschlossen wurde.</p></div>
+<div class="block"><p>Shows the Canvas window.</p>
+
+ <p>Graphic components can be added and modified both before
+ and after calling this method.</p>
+
+ Caution: The running program cannot be terminated until the window
+ has been closed by the user or by calling <a href="#close()"><code>close()</code></a>.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -524,9 +528,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="close()">
 <h3>close</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">close</span>()</div>
-<div class="block">Schließt das Canvas-Fenster.
+<div class="block">Closes the Canvas window.
  
- Nachdem das Fenster geschlossen wurde, kann es nicht wieder geöffnet werden.</div>
+ Once the window is closed, it cannot be reopened.</div>
 </section>
 </li>
 <li>
@@ -536,15 +540,15 @@ loadScripts(document, 'script');</script>
  int&nbsp;top,
  int&nbsp;width,
  int&nbsp;height)</span></div>
-<div class="block">Zeichnet ein Rechteck auf den Canvas.</div>
+<div class="block">Draws a rectangle on the canvas.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>left</code> - x-Koordinate der linken oberen Ecke des Rechtecks</dd>
-<dd><code>top</code> - y-Koordinate der linken oberen Ecke des Rechtecks</dd>
-<dd><code>width</code> - Breite des Rechtecks</dd>
-<dd><code>height</code> - Höhe des Rechtecks</dd>
+<dd><code>left</code> - x-coordinate of the upper-left corner of the rectangle</dd>
+<dd><code>top</code> - Y-coordinate of the upper-left corner of the rectangle</dd>
+<dd><code>width</code> - Width of the rectangle</dd>
+<dd><code>height</code> - Height of the rectangle</dd>
 <dt>Returns:</dt>
-<dd>id des erstellten Rechtecks</dd>
+<dd>id of the created rectangle</dd>
 </dl>
 </section>
 </li>
@@ -555,15 +559,15 @@ loadScripts(document, 'script');</script>
  int&nbsp;y1,
  int&nbsp;x2,
  int&nbsp;y2)</span></div>
-<div class="block">Zeichnet eine gerade Linie zwischen den Punkten (x1,y1) und (x2,y2) auf den Canvas.</div>
+<div class="block">Draws a straight line between points (x1,y1) and (x2,y2) on the canvas.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>x1</code> - x-Koordinate des ersten Punkts</dd>
-<dd><code>y1</code> - y-Koordinate des ersten Punkts</dd>
-<dd><code>x2</code> - x-Koordinate des zweiten Punkts</dd>
-<dd><code>y2</code> - y-Koordinate des zweiten Punkts</dd>
+<dd><code>x1</code> - x-coordinate of the first point</dd>
+<dd><code>y1</code> - y coordinate of the first point</dd>
+<dd><code>x2</code> - x-coordinate of the second point</dd>
+<dd><code>y2</code> - y coordinate of the second point</dd>
 <dt>Returns:</dt>
-<dd>id der erstellten Linie</dd>
+<dd>id of the created line</dd>
 </dl>
 </section>
 </li>
@@ -574,15 +578,15 @@ loadScripts(document, 'script');</script>
  int&nbsp;top,
  int&nbsp;width,
  int&nbsp;height)</span></div>
-<div class="block">Zeichnet ein Oval auf den Canvas.</div>
+<div class="block">Draws an oval on the canvas.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>left</code> - x-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) des Ovals</dd>
-<dd><code>top</code> - y-Koordinate des linken oberen Punktes des einschließenden Rechtecks (Bounding Box) des Ovals</dd>
-<dd><code>width</code> - Breite des Ovals</dd>
-<dd><code>height</code> - Höhe des Ovals</dd>
+<dd><code>left</code> - x-coordinate of the top left point of the oval's bounding box</dd>
+<dd><code>top</code> - y-coordinate of the upper left point of the oval's bounding box</dd>
+<dd><code>width</code> - Width of the oval</dd>
+<dd><code>height</code> - Height of the oval</dd>
 <dt>Returns:</dt>
-<dd>id des erstellten Ovals</dd>
+<dd>id of the created oval</dd>
 </dl>
 </section>
 </li>
@@ -592,14 +596,14 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name">drawText</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  int&nbsp;left,
  int&nbsp;baseline)</span></div>
-<div class="block">Zeichnet einen Text auf den Canvas.</div>
+<div class="block">Draws a text on the canvas.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>text</code> - der Text, der gezeichnet werden soll</dd>
-<dd><code>left</code> - die x-Koordinate des ersten Zeichens</dd>
-<dd><code>baseline</code> - die y-Koordinate der Baseline des ersten Zeichens</dd>
+<dd><code>text</code> - the text to draw</dd>
+<dd><code>left</code> - the x-coordinate of the first character</dd>
+<dd><code>baseline</code> - the y-coordinate of the baseline of the first character</dd>
 <dt>Returns:</dt>
-<dd>id des erstellten Textes</dd>
+<dd>id of the created text</dd>
 </dl>
 </section>
 </li>
@@ -608,13 +612,13 @@ loadScripts(document, 'script');</script>
 <h3>drawPolygon</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name">drawPolygon</span><wbr><span class="parameters">(int[]&nbsp;xcoords,
  int[]&nbsp;ycoords)</span></div>
-<div class="block">Zeichnet ein Polygon auf den Canvas.</div>
+<div class="block">Draws a polygon on the canvas.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>xcoords</code> - array der x-Koordinaten der Polygon-Punkte</dd>
-<dd><code>ycoords</code> - array der y-Koordinaten der Polygon-Punkte</dd>
+<dd><code>xcoords</code> - array of x-coordinates of polygon points</dd>
+<dd><code>ycoords</code> - array of y-coordinates of polygon points</dd>
 <dt>Returns:</dt>
-<dd>id des erstellten Polygons</dd>
+<dd>id of the created polygon</dd>
 </dl>
 </section>
 </li>
@@ -622,12 +626,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="remove(long)">
 <h3>remove</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">remove</span><wbr><span class="parameters">(long&nbsp;id)</span></div>
-<div class="block">Entfernt ein Objekt vom Canvas.</div>
+<div class="block">Removes an object from the canvas.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - id des Objektes, das entfernt werden soll</dd>
+<dd><code>id</code> - id of the object to be removed</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einem existierenden Canvas-Objekt gehören</dd>
+<dd>id must belong to an existing canvas object</dd>
 </dl>
 </section>
 </li>
@@ -637,24 +641,24 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">move</span><wbr><span class="parameters">(long&nbsp;id,
  int&nbsp;x,
  int&nbsp;y)</span></div>
-<div class="block"><p>Bewegt ein Objekt auf dem Canvas.</p>
+<div class="block"><p>Moves an object on the canvas.</p>
  
- <p>Die Bedeutung der Parameter x und y unterscheiden sich je nach Typ des
- Objektes, das Bewegt werden soll:</p>
+ <p>The meaning of the x and y parameters differ depending on the type of
+ object to be moved:</p>
  
  <ul>
- <li><em>Ovale und Rechtecke</em>: (x,y) ist der neue linke obere Punkt des Objektes.
- <li><em>Linien und Polygone</em>: (x,y) ist die neue Koordinate des ersten Punktes des Objektes.
- <li><em>Text</em>: x ist die neue x-Koordinate des ersten Zeichens, y ist die neue y-Koordinate der
-     Baseline des ersten Zeichens.
+ <li><em>Ovals and Rectangles</em>: (x,y) is the new top left point of the object.
+ <li><em>Lines and polygons</em>: (x,y) is the new coordinate of the first point of the object.
+ <li><em>Text</em>: x is the new x-coordinate of the first character, y is the new y-coordinate of the
+      Baseline of the first character.
  </ul></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - id des Objektes, das bewegt werden soll</dd>
-<dd><code>x</code> - x-Koordinate des neuen Ursprungspunktes</dd>
-<dd><code>y</code> - y-Koordinate des neuen Ursprungspunktes</dd>
+<dd><code>id</code> - id of the object to be moved</dd>
+<dd><code>x</code> - x-coordinate of the new origin point</dd>
+<dd><code>y</code> - Y coordinate of the new origin point</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einem existierenden Canvas-Objekt gehören</dd>
+<dd>id must belong to an existing canvas object</dd>
 </dl>
 </section>
 </li>
@@ -663,13 +667,13 @@ loadScripts(document, 'script');</script>
 <h3>setFontSize</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setFontSize</span><wbr><span class="parameters">(long&nbsp;id,
  int&nbsp;points)</span></div>
-<div class="block">Ändert die Schriftgröße eines Textobjektes.</div>
+<div class="block">Changes the font size of a text object.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id des Textobjektes</dd>
-<dd><code>points</code> - die neue Schriftgröße in pt</dd>
+<dd><code>id</code> - the id of the text object</dd>
+<dd><code>points</code> - the new font size in pt</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einem existierenden Text-Objekt gehören</dd>
+<dd>id must belong to an existing text object</dd>
 </dl>
 </section>
 </li>
@@ -678,16 +682,16 @@ loadScripts(document, 'script');</script>
 <h3>setStrokeWidth</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setStrokeWidth</span><wbr><span class="parameters">(long&nbsp;id,
  int&nbsp;w)</span></div>
-<div class="block">Ändert die Strichbreite für das Objekt.
+<div class="block">Changes the stroke width for the object.
  
- Bei Ovalen, Rechtecken, Linien und Polygonen ist damit die breite des Rands gemeint.
- Bei Texten hat diese Methode keinen Effekt.</div>
+ In the case of ovals, rectangles, lines and polygons, this means the width of the border.
+ This method has no effect on text.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id des Objektes</dd>
-<dd><code>w</code> - die neue Strichbreite (in Pixeln)</dd>
+<dd><code>id</code> - the id of the object</dd>
+<dd><code>w</code> - the new stroke width (in pixels)</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einem existierenden Canvas-Objekt gehören</dd>
+<dd>id must belong to an existing canvas object</dd>
 </dl>
 </section>
 </li>
@@ -698,17 +702,17 @@ loadScripts(document, 'script');</script>
  int&nbsp;r,
  int&nbsp;g,
  int&nbsp;b)</span></div>
-<div class="block">Ändert die Füllfarbe eines Objektes.
- 
- Hat keinen Effekt für Linien und Texte.</div>
+<div class="block">Changes the fill color of an object.
+
+ Has no effect on lines and text.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id des Objektes</dd>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
+<dd><code>id</code> - the id of the object</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einem existierenden Canvas-Objekt gehören</dd>
+<dd>id must belong to an existing canvas object</dd>
 </dl>
 </section>
 </li>
@@ -720,18 +724,18 @@ loadScripts(document, 'script');</script>
  int&nbsp;g,
  int&nbsp;b,
  int&nbsp;alpha)</span></div>
-<div class="block">Ändert die Füllfarbe eines Objektes.
- 
- Hat keinen Effekt für Linien und Texte.</div>
+<div class="block">Changes the fill color of an object.
+
+ Has no effect on lines and text.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id des Objektes</dd>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
-<dd><code>alpha</code> - Wert für den Alphakanal (0 bis 255, 0 = durchsichtig)</dd>
+<dd><code>id</code> - the id of the object</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
+<dd><code>alpha</code> - value for the alpha channel (0 to 255, 0 = transparent)</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einem existierenden Canvas-Objekt gehören</dd>
+<dd>id must belong to an existing canvas object</dd>
 </dl>
 </section>
 </li>
@@ -742,15 +746,15 @@ loadScripts(document, 'script');</script>
  int&nbsp;r,
  int&nbsp;g,
  int&nbsp;b)</span></div>
-<div class="block">Ändert die Strichfarbe eines Objektes.</div>
+<div class="block">Changes the stroke color of an object.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id des Objektes</dd>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
+<dd><code>id</code> - the id of the object</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einem existierenden Canvas-Objekt gehören</dd>
+<dd>id must belong to an existing canvas object</dd>
 </dl>
 </section>
 </li>
@@ -762,18 +766,18 @@ loadScripts(document, 'script');</script>
  int&nbsp;g,
  int&nbsp;b,
  int&nbsp;alpha)</span></div>
-<div class="block">Ändert die Strichfarbe eines Objektes.
+<div class="block">Changes the stroke color of an object.
  
- Bei <code>alpha == 0</code> wird der Strich unsichtbar.</div>
+ With <code>alpha == 0</code> the bar becomes invisible.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id des Objektes</dd>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
-<dd><code>alpha</code> - Wert für den Alphakanal (0 bis 255, 0 = durchsichtig)</dd>
+<dd><code>id</code> - the id of the object</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
+<dd><code>alpha</code> - value for the alpha channel (0 to 255, 0 = transparent)</dd>
 <dt>Preconditions: </dt>
-<dd>id muss zu einem existierenden Canvas-Objekt gehören</dd>
+<dd>id must belong to an existing canvas object</dd>
 </dl>
 </section>
 </li>
@@ -782,15 +786,15 @@ loadScripts(document, 'script');</script>
 <h3>setRotation</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setRotation</span><wbr><span class="parameters">(long&nbsp;id,
  float&nbsp;degrees)</span></div>
-<div class="block"><p>Ändert den Rotationswinkel für ein Objekt.</p>
+<div class="block"><p>Changes the rotation angle for an object.</p>
  
- <p>Rechtecke, Ovale, Linien und Polygone werden um ihren Mittelpunkt rotiert.</p>
+ <p>Rectangles, ovals, lines and polygons are rotated around their center.</p>
  
- <p>Texte werden um ihren Ursprungspunkt (left,baseline) rotiert.</p></div>
+ <p>Texts are rotated around their origin (left,baseline).</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>id</code> - die id des Objektes</dd>
-<dd><code>degrees</code> - Rotationswinkel in grad</dd>
+<dd><code>id</code> - the id of the object</dd>
+<dd><code>degrees</code> - rotation angle in degrees</dd>
 </dl>
 </section>
 </li>
@@ -800,12 +804,12 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setBackgroundColor</span><wbr><span class="parameters">(int&nbsp;r,
  int&nbsp;g,
  int&nbsp;b)</span></div>
-<div class="block"><p>Ändert die Hintergrundfarbe des Canvas.</p></div>
+<div class="block"><p>Changes the background color of the canvas.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>r</code> - Wert für den Rotkanal (0 bis 255)</dd>
-<dd><code>g</code> - Wert für den Grünkanal (0 bis 255)</dd>
-<dd><code>b</code> - Wert für den Blaukanal (0 bis 255)</dd>
+<dd><code>r</code> - value for the red channel (0 to 255)</dd>
+<dd><code>g</code> - value for the green channel (0 to 255)</dd>
+<dd><code>b</code> - value for the blue channel (0 to 255)</dd>
 </dl>
 </section>
 </li>
@@ -813,15 +817,15 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="clear()">
 <h3>clear</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clear</span>()</div>
-<div class="block">Entfernt alle Objekte vom Canvas.</div>
+<div class="block">Removes all objects from the canvas.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="update()">
 <h3>update</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span>()</div>
-<div class="block"><p>Macht alle Änderungen am Canvas sichtbar.</p>
- <p>Wird nur benötigt, wenn die autoupdate-Funktion ausgeschaltet wurde.</p></div>
+<div class="block"><p>Makes all changes to the canvas visible.</p>
+ <p>Only required if the autoupdate function has been switched off.</p></div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -836,12 +840,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setAutoUpdate(boolean)">
 <h3>setAutoUpdate</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAutoUpdate</span><wbr><span class="parameters">(boolean&nbsp;auto)</span></div>
-<div class="block"><p>Schaltet die Autoupdate-Funktion ein und aus.</p>
- <p>Wenn die Funktion ausgeschaltet ist, muss <a href="#update()"><code>update()</code></a> verwendet
- werden, bevor Änderungen am Canvas sichtbar werden.</p></div>
+<div class="block"><p>Turns the autoupdate function on and off.</p>
+ <p>If the feature is turned off, <a href="#update()"><code>update()</code></a> must be used
+ before changes to the canvas become visible.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>auto</code> - wenn <code>true</code> wird Autoupdate-Funktion eingeschaltet, ansonsten ausgeschaltet</dd>
+<dd><code>auto</code> - if <code>true</code> autoupdate function is enabled, otherwise disabled</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list">
@@ -856,17 +860,16 @@ loadScripts(document, 'script');</script>
 <h3>wasKeyPressed</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">wasKeyPressed</span><wbr><span class="parameters">(int&nbsp;key,
  long&nbsp;since)</span></div>
-<div class="block"><p>Prüft ob vor <code>since</code> oder weniger millisekunden die Taste <code>key</code>
- gedrückt wurde.</p>
- <p>Die IDs der Tasten sind in der Klasse <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent</code></a> zu finden.</p>
- <p>Wurden zwei oder mehr verschiedene Tasten in dem angegebenen Zeitraum gedrückt,
- wird nur die zuletzt gedrückte erkannt.</p></div>
+<div class="block"><p>Checks if the <code>key</code> was pressed <code>since</code> or less milliseconds ago.</p>
+ <p>The key IDs can be found in the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent</code></a> class.</p>
+ <p>If two or more different keys were pressed in the specified time period,
+ only the last one pressed will be recognized.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>key</code> - die ID der Taste, die überprüft werden soll (z.B. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_0" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_0</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_ALT" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_ALT</code></a>)</dd>
-<dd><code>since</code> - Anzahl an Millisekunden die seit dem Drücken der Taste höchstens vergangen sein darf</dd>
+<dd><code>key</code> - the ID of the key to check (e.g. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_0" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_0</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_ALT" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_ALT</code></a>)</dd>
+<dd><code>since</code> - Maximum number of milliseconds that may have elapsed since the key was pressed</dd>
 <dt>Returns:</dt>
-<dd><code>true</code> wenn die gewählte Taste vor <code>since</code> oder weniger ms gedrückt wurde</dd>
+<dd><code>true</code> if the selected key was pressed before <code>since</code> or less ms</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 <dt>See Also:</dt>
@@ -885,17 +888,17 @@ loadScripts(document, 'script');</script>
             <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
 </span><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">wasKeyPressedSinceLastAsked</span><wbr><span class="parameters">(int&nbsp;key)</span></div>
 <div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#getKeyPressesSinceLastAsked(int)"><code>getKeyPressesSinceLastAsked(int)</code></a></div>
+<div class="deprecation-comment">replaced with <a href="#getKeyPressesSinceLastAsked(int)"><code>getKeyPressesSinceLastAsked(int)</code></a></div>
 </div>
-<div class="block"><p>Prüft ob die Taste <code>key</code> gedrückt wurde seit die selbe Taste zum letzten mal mit 
- <a href="#wasKeyPressed(int,long)"><code>wasKeyPressed(int, long)</code></a> oder <a href="#wasKeyPressedSinceLastAsked(int)"><code>wasKeyPressedSinceLastAsked(int)</code></a> abgefragt wurde.</p>
- <p>Für die erste Abfrage, wenn noch keine der beiden Methoden aufgerufen wurde, 
- wird eine Default-Abfragezeit von <a href="#FIRST_ASK_TIME">30</a> ms verwendet.</p></div>
+<div class="block"><p>Checks if the <code>key</code> key has been pressed since the last time the same key was pressed
+ using <a href="#wasKeyPressed(int,long)"><code>wasKeyPressed(int, long)</code></a> or <a href="#wasKeyPressedSinceLastAsked(int)"><code>wasKeyPressedSinceLastAsked(int)</code></a>.</p>
+ <p>For the first query, if neither method has been called yet,
+ a default query time of <a href="#FIRST_ASK_TIME">30</a> ms is used.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>key</code> - die ID der Taste, die überprüft werden soll (z.B. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_0" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_0</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_ALT" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_ALT</code></a>)</dd>
+<dd><code>key</code> - the ID of the key to check (e.g. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_0" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_0</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_ALT" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_ALT</code></a>)</dd>
 <dt>Returns:</dt>
-<dd><code>true</code> wenn die gewählte Taste seit dem letzten Abfragen gedrückt wurde</dd>
+<dd><code>true</code> if the selected key has been pressed since the last query</dd>
 <dt>Since:</dt>
 <dd>1.2</dd>
 <dt>See Also:</dt>
@@ -911,15 +914,15 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getKeyPressesSinceLastAsked(int)">
 <h3>getKeyPressesSinceLastAsked</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getKeyPressesSinceLastAsked</span><wbr><span class="parameters">(int&nbsp;key)</span></div>
-<div class="block"><p>Gibt an, wie oft die Taste <code>key</code> gedrückt wurde, seit
- die selbe Taste mit einem Aufruf dieser Methode abgefragt wurde.</p>
- <p>Beim ersten Aufruf dieser Funktion wird die Anzahl aller Tastendrücke seit
- dem Start des Programms zurückgegeben.</p></div>
+<div class="block"><p>The number of times the <code>key</code> has been pressed since
+ the same key was queried with a call to this method.</p>
+ <p>The first time this function is called, it returns the number of key presses since
+ the program was started.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>key</code> - die ID der Taste, die überprüft werden soll (z.B. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_0" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_0</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_ALT" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_ALT</code></a>)</dd>
+<dd><code>key</code> - the ID of the key to check (e.g. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_0" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_0</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_ALT" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_ALT</code></a>)</dd>
 <dt>Returns:</dt>
-<dd>Anzahl der Tastendrücke mit der Taste <code>key</code> seit dem letzten Aufruf</dd>
+<dd>Number of keystrokes with the <code>key</code> key since the last call</dd>
 <dt>Since:</dt>
 <dd>1.3</dd>
 <dt>See Also:</dt>
@@ -936,17 +939,16 @@ loadScripts(document, 'script');</script>
 <h3>wasMouseButtonPressed</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">wasMouseButtonPressed</span><wbr><span class="parameters">(int&nbsp;button,
  long&nbsp;since)</span></div>
-<div class="block"><p>Prüft ob vor <code>since</code> oder weniger millisekunden die Maustaste <code>button</code>
- gedrückt wurde.</p>
- <p>Die IDs der Tasten sind in der Klasse <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent</code></a> zu finden.</p>
- <p>Wurden zwei oder mehr verschiedene Tasten in dem angegebenen Zeitraum gedrückt,
- wird nur die zuletzt gedrückte erkannt.</p></div>
+<div class="block"><p>Checks if the mouse button <code>button</code> was pressed <code>since</code> or less milliseconds ago.</p>
+ <p>The IDs of the buttons can be found in the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent</code></a> class.</p>
+ <p>If two or more different keys were pressed in the specified time period,
+ only the last one pressed will be recognized.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>button</code> - die ID der Taste, die überprüft werden soll (z.B. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON1" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON1</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON3" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON3</code></a>)</dd>
-<dd><code>since</code> - Anzahl an Millisekunden die seit dem Drücken der Taste höchstens vergangen sein darf</dd>
+<dd><code>button</code> - the ID of the button to check (e.g. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON1" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON1</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON3" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON3</code></a>)</dd>
+<dd><code>since</code> - Maximum number of milliseconds that may have elapsed since the key was pressed</dd>
 <dt>Returns:</dt>
-<dd><code>true</code> wenn die gewählte Taste vor <code>since</code> oder weniger ms gedrückt wurde</dd>
+<dd><code>true</code> if the selected key was pressed before <code>since</code> or less ms</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 <dt>See Also:</dt>
@@ -965,17 +967,17 @@ loadScripts(document, 'script');</script>
             <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
 </span><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">wasMouseButtonPressedSinceLastAsked</span><wbr><span class="parameters">(int&nbsp;button)</span></div>
 <div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#getMouseButtonPressesSinceLastAsked(int)"><code>getMouseButtonPressesSinceLastAsked(int)</code></a></div>
+<div class="deprecation-comment">replaced with <a href="#getMouseButtonPressesSinceLastAsked(int)"><code>getMouseButtonPressesSinceLastAsked(int)</code></a></div>
 </div>
-<div class="block"><p>Prüft ob die Maustaste <code>button</code> gedrückt wurde seit die selbe Taste zum letzten mal mit 
- <a href="#wasMouseButtonPressed(int,long)"><code>wasMouseButtonPressed(int, long)</code></a> oder <a href="#wasMouseButtonPressedSinceLastAsked(int)"><code>wasMouseButtonPressedSinceLastAsked(int)</code></a> abgefragt wurde.</p>
- <p>Für die erste Abfrage, wenn noch keine der beiden Methoden aufgerufen wurde, 
- wird eine Default-Abfragezeit von <a href="#FIRST_ASK_TIME">30</a> ms verwendet.</p></div>
+<div class="block"><p>Checks if the mouse button <code>button</code> has been pressed since the last time the same button was pressed
+ using <a href="#wasMouseButtonPressed(int,long)"><code>wasMouseButtonPressed(int, long)</code></a> or <a href="#wasMouseButtonPressedSinceLastAsked(int)"><code>wasMouseButtonPressedSinceLastAsked(int)</code></a>.</p>
+ <p>For the first query, if neither method has been called yet,
+ a default query time of <a href="#FIRST_ASK_TIME">30</a> ms is used.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>button</code> - die ID der Taste, die überprüft werden soll (z.B. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON1" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON1</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON3" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON3</code></a>)</dd>
+<dd><code>button</code> - the ID of the button to check (e.g. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON1" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON1</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON3" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON3</code></a>)</dd>
 <dt>Returns:</dt>
-<dd><code>true</code> wenn die gewählte Taste seit dem letzten Abfragen gedrückt wurde</dd>
+<dd><code>true</code> if the selected key has been pressed since the last query</dd>
 <dt>Since:</dt>
 <dd>1.2</dd>
 <dt>See Also:</dt>
@@ -991,15 +993,15 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getMouseButtonPressesSinceLastAsked(int)">
 <h3>getMouseButtonPressesSinceLastAsked</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getMouseButtonPressesSinceLastAsked</span><wbr><span class="parameters">(int&nbsp;button)</span></div>
-<div class="block"><p>Gibt an, wie oft die Maustaste <code>button</code> gedrückt wurde, seit
- die selbe Taste mit einem Aufruf dieser Methode abgefragt wurde.</p>
- <p>Beim ersten Aufruf dieser Funktion wird die Anzahl aller Klicks seit
- dem Start des Programms zurückgegeben.</p></div>
+<div class="block"><p>The number of times the <code>button</code> mouse button has been pressed since
+ the same key was queried with a call to this method.</p>
+ <p>The first time this function is called, it returns the number of clicks since
+ the program was started.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>button</code> - die ID der Taste, die überprüft werden soll (z.B. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON1" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON1</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON3" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON3</code></a>)</dd>
+<dd><code>button</code> - the ID of the button to check (e.g. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON1" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON1</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON3" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON3</code></a>)</dd>
 <dt>Returns:</dt>
-<dd>Anzahl der Klicks mit der Maustaste <code>button</code> seit dem letzten Aufruf</dd>
+<dd>Number of clicks of the mouse button <code>button</code> since the last call</dd>
 <dt>Since:</dt>
 <dd>1.3</dd>
 <dt>See Also:</dt>
@@ -1015,10 +1017,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getLastMouseX()">
 <h3>getLastMouseX</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getLastMouseX</span>()</div>
-<div class="block">Gibt die x-Koordinate der letzten bekannten Mausposition zurück.</div>
+<div class="block">Returns the x-coordinate of the last known mouse position.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>x-Koordinate der Maus</dd>
+<dd>x-coordinate of the mouse</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 </dl>
@@ -1028,10 +1030,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getLastMouseY()">
 <h3>getLastMouseY</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getLastMouseY</span>()</div>
-<div class="block">Gibt die y-Koordinate der letzten bekannten Mausposition zurück.</div>
+<div class="block">Returns the y-coordinate of the last known mouse position.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>y-Koordinate der Maus</dd>
+<dd>y-coordinate of the mouse</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 </dl>
@@ -1041,12 +1043,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isKeyDown(int)">
 <h3>isKeyDown</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isKeyDown</span><wbr><span class="parameters">(int&nbsp;key)</span></div>
-<div class="block">Gibt an, ob die Taste <code>key</code> gerade gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the key <code>key</code> is currently being held down.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>key</code> - die ID der Taste, die überprüft werden soll (z.B. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_0" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_0</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_ALT" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_ALT</code></a>)</dd>
+<dd><code>key</code> - the ID of the key to check (e.g. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_0" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_0</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#VK_ALT" title="class or interface in java.awt.event" class="external-link"><code>KeyEvent.VK_ALT</code></a>)</dd>
 <dt>Returns:</dt>
-<dd><code>true</code> wenn die Taste <code>key</code> gerade gedrückt gehalten wird</dd>
+<dd><code>true</code> if the key <code>key</code> is currently being held down</dd>
 <dt>Since:</dt>
 <dd>1.2</dd>
 <dt>See Also:</dt>
@@ -1062,12 +1064,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isMouseButtonDown(int)">
 <h3>isMouseButtonDown</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isMouseButtonDown</span><wbr><span class="parameters">(int&nbsp;button)</span></div>
-<div class="block">Gibt an, ob die Maustaste <code>button</code> gerade gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the mouse button <code>button</code> is currently being held down.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>button</code> - die ID der Taste, die überprüft werden soll (z.B. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON1" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON1</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON3" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON3</code></a>)</dd>
+<dd><code>button</code> - the ID of the button to check (e.g. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON1" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON1</code></a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/MouseEvent.html#BUTTON3" title="class or interface in java.awt.event" class="external-link"><code>MouseEvent.BUTTON3</code></a>)</dd>
 <dt>Returns:</dt>
-<dd><code>true</code> wenn die Taste <code>button</code> gerade gedrückt gehalten wird</dd>
+<dd><code>true</code> if the mouse button <code>button</code> is currently held down</dd>
 <dt>Since:</dt>
 <dd>1.2</dd>
 <dt>See Also:</dt>
@@ -1086,12 +1088,12 @@ loadScripts(document, 'script');</script>
             <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
 </span><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isControlDown</span>()</div>
 <div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
 </div>
-<div class="block">Gibt an, ob die Strg-Taste gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the Ctrl key is held down.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd><code>true</code> wenn der Benutzer gerade Strg gedrückt hält</dd>
+<dd><code>true</code> if the user is currently holding ctrl</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 </dl>
@@ -1104,12 +1106,12 @@ loadScripts(document, 'script');</script>
             <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
 </span><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isShiftDown</span>()</div>
 <div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
 </div>
-<div class="block">Gibt an, ob die Shift-Taste gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the Shift key is held down.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd><code>true</code> wenn der Benutzer gerade Shift gedrückt hält</dd>
+<dd><code>true</code> if the user is currently holding Shift</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 </dl>
@@ -1122,12 +1124,12 @@ loadScripts(document, 'script');</script>
             <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
 </span><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isAltDown</span>()</div>
 <div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isKeyDown(int)"><code>isKeyDown(int)</code></a></div>
 </div>
-<div class="block">Gibt an, ob die Alt-Taste gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the Alt key is held down.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd><code>true</code> wenn der Benutzer gerade Alt gedrückt hält</dd>
+<dd><code>true</code> if the user is currently holding Alt</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 </dl>
@@ -1140,12 +1142,12 @@ loadScripts(document, 'script');</script>
             <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
 </span><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isMouse1Down</span>()</div>
 <div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
 </div>
-<div class="block">Gibt an, ob die linke Maustaste gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the left mouse button is held down.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd><code>true</code> wenn der Benutzer gerade die linke Maustaste gedrückt hält</dd>
+<dd><code>true</code> if the user is currently holding down the left mouse button</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 </dl>
@@ -1158,12 +1160,12 @@ loadScripts(document, 'script');</script>
             <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
 </span><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isMouse2Down</span>()</div>
 <div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
 </div>
-<div class="block">Gibt an, ob die mittlere Maustaste gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the middle mouse button is held down.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd><code>true</code> wenn der Benutzer gerade die mittlere Maustaste gedrückt hält</dd>
+<dd><code>true</code> if the user is currently holding the middle mouse button</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 </dl>
@@ -1176,12 +1178,12 @@ loadScripts(document, 'script');</script>
             <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
 </span><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isMouse3Down</span>()</div>
 <div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
-<div class="deprecation-comment">ersetzt durch <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
+<div class="deprecation-comment">replaced by <a href="#isMouseButtonDown(int)"><code>isMouseButtonDown(int)</code></a></div>
 </div>
-<div class="block">Gibt an, ob die rechte Maustaste gedrückt gehalten wird.</div>
+<div class="block">Indicates whether the right mouse button is held down.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd><code>true</code> wenn der Benutzer gerade die rechte Maustaste gedrückt hält</dd>
+<dd><code>true</code> if the user is currently holding down the right mouse button</dd>
 <dt>Since:</dt>
 <dd>1.1</dd>
 </dl>
@@ -1191,13 +1193,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isVisible()">
 <h3>isVisible</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isVisible</span>()</div>
-<div class="block"><p>Gibt an, ob das Canvas-Fenster gerade angezeigt wird.</p>
+<div class="block"><p>Indicates whether the Canvas window is currently visible.</p>
  
- <p>Diese Methode kann zum Beispiel dazu verwendet werden, um eine Animations-Schleife
- abzubrechen, wenn das Fenster vom Benutzer geschlossen wird.</p></div>
+ <p>This method can be used, for example, to break an animation loop
+ when the window is closed by the user.</p></div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd><code>true</code> wenn das Fenster sichtbar ist, <code>false</code> sonst</dd>
+<dd><code>true</code> if the window is visible, <code>false</code> otherwise</dd>
 </dl>
 </section>
 </li>
@@ -1205,10 +1207,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getCanvasWidth()">
 <h3>getCanvasWidth</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getCanvasWidth</span>()</div>
-<div class="block">Gibt die aktuelle Breite des Zeichenbereichs zurück.</div>
+<div class="block">Returns the current width of the drawing area.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>die Breite des Canvas</dd>
+<dd>the width of the canvas</dd>
 <dt>Since:</dt>
 <dd>1.2</dd>
 </dl>
@@ -1218,10 +1220,10 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getCanvasHeight()">
 <h3>getCanvasHeight</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getCanvasHeight</span>()</div>
-<div class="block">Gibt die aktuelle Höhe des Zeichenbereichs zurück.</div>
+<div class="block">Returns the current height of the canvas.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>die Höhe des Canvas</dd>
+<dd>the height of the canvas</dd>
 <dt>Since:</dt>
 <dd>1.2</dd>
 </dl>
@@ -1232,11 +1234,11 @@ loadScripts(document, 'script');</script>
 <h3>setCanvasSize</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setCanvasSize</span><wbr><span class="parameters">(int&nbsp;w,
  int&nbsp;h)</span></div>
-<div class="block">Ändert die größe des Zeichenbereichs.</div>
+<div class="block">Changes the size of the drawing area.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>w</code> - die neue Breite des Zeichenbereichs</dd>
-<dd><code>h</code> - die neue Höhe des Zeichenbereichs</dd>
+<dd><code>w</code> - the new width of the canvas</dd>
+<dd><code>h</code> - the new height of the canvas</dd>
 <dt>Since:</dt>
 <dd>1.2</dd>
 </dl>
@@ -1246,12 +1248,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setAntialiasingEnabled(boolean)">
 <h3>setAntialiasingEnabled</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAntialiasingEnabled</span><wbr><span class="parameters">(boolean&nbsp;enabled)</span></div>
-<div class="block"><p>Ändert die Antialiasing-Einstellungen.</p>
- <p>Antialiasing ist per Default ausgeschaltet. Es verbraucht mehr Rechenleistung,
- gibt den gezeichneten Objekten dafür aber glattere Kanten.</p></div>
+<div class="block"><p>Changes antialiasing settings.</p>
+ <p>Antialiasing is turned off by default. It consumes more computing power,
+ but gives the drawn objects smoother edges.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>enabled</code> - wenn <code>true</code> wird Antialiasing eingeschaltet</dd>
+<dd><code>enabled</code> - if <code>true</code> turns on antialiasing</dd>
 <dt>Since:</dt>
 <dd>1.2</dd>
 </dl>
@@ -1262,15 +1264,15 @@ loadScripts(document, 'script');</script>
 <h3>saveToImage</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">saveToImage</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;fname)</span>
                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
-<div class="block"><p>Speichert die aktuelle Grafik als Bilddatei.</p>
- <p>Die Dateinamenerweiterung bestimmt dabei das Speicherformat. Unterstützte
- Formate stehen in der Variable <a href="#SUPPORTED_IMAGE_FORMATS"><code>SUPPORTED_IMAGE_FORMATS</code></a>. Wird eine
- Erweiterung nicht unterstützt, wird automatisch PNG als Format verwendet.</p></div>
+<div class="block"><p>Saves the current graphic as an image file.</p>
+ <p>The file name extension determines the storage format. Supported
+ Formats are listed in the variable <a href="#SUPPORTED_IMAGE_FORMATS"><code>SUPPORTED_IMAGE_FORMATS</code></a>.
+ If an xtension is not supported, PNG is used by default.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>fname</code> - der name der Bilddatei</dd>
+<dd><code>fname</code> - the name of the image file</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - wenn die Datei nicht beschrieben werden konnte</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - if the file could not be written</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list">
