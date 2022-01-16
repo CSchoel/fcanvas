@@ -3,6 +3,7 @@
 - drawImage
 - setPixel
 - keyPressedMostSinceLastAsked
+- adds rudimentary unit tests using BufferedImage
 - rename oval -> ellipse
 - update tutorial from Eclipse to IntelliJ
 - simplify recalculation of centroid for polygon
