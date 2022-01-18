@@ -13,8 +13,8 @@ jobs:
           java-version: 17
       - name: Install xvfb for unit tests
         run: sudo apt install xvfb
-      - name: Setup xvfb for screen 0
-        run: Xvfb :1 -screen 0 1600x1200x32
+      - name: Setup xvfb for screen 0 &
+        run: Xvfb :1 -screen 0 1600x1200x16
       - run: ./gradlew build
         env:
           DISPLAY: :1
