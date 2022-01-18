@@ -11,4 +11,6 @@ jobs:
         with:
           distribution: adopt
           java-version: 17
+      - name: Install xvfb for unit tests
+        run: sudo apt install xvfb
       - run: ./gradlew build
