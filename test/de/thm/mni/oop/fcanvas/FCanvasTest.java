@@ -2,6 +2,8 @@ package de.thm.mni.oop.fcanvas;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.nio.file.Path;
@@ -15,9 +17,18 @@ public class FCanvasTest {
 
     record ImageSetup(BufferedImage image, Graphics2D graphics) {}
 
+    @Before
+    public void setupCanvas() {
+        FCanvas.show();
+    }
+
+    @After
+    public void teardownCanvas() {
+        FCanvas.reset();
+    }
+
     @Test
     public void testRectangle() throws IOException, InterruptedException {
-        FCanvas.show();
         Thread.sleep(100);
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawRect(10, 10, 100, 100);
