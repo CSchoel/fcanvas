@@ -164,7 +164,7 @@ public class FCanvasTest {
         assertEquals(expected.getHeight(), actual.getHeight());
         for (int y = 0; y < expected.getHeight(); y++) {
             for (int x = 0; x < expected.getHeight(); x++) {
-                assertEquals("color mismatch at (%d, %d)".formatted(x, y), expected.getRGB(x, y), actual.getRGB(x, y));
+                assertEquals("color mismatch at (%d, %d)".formatted(x, y), new Color(expected.getRGB(x, y)), new Color(actual.getRGB(x, y)));
             }
         }
     }
