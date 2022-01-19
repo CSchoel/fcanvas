@@ -45,8 +45,8 @@ public class FCanvasTest {
     public void testRectangle() throws IOException, InterruptedException {
         Thread.sleep(100); // canvas must have finished first draw before we can get dimensions
         ImageSetup setup = createFCanvasImageSetup();
-        setup.graphics.drawRect(10, 10, 100, 100);
-        FCanvas.drawRectangle(10, 10, 100, 100);
+        setup.graphics.drawRect(50, 10, 20, 100);
+        FCanvas.drawRectangle(50, 10, 20, 100);
         assertFCanvasEqualsImage(setup.image, "rectangle");
     }
 
@@ -60,8 +60,8 @@ public class FCanvasTest {
     public void testLine() throws IOException, InterruptedException {
         Thread.sleep(100); // canvas must have finished first draw before we can get dimensions
         ImageSetup setup = createFCanvasImageSetup();
-        setup.graphics.drawLine(10, 10, 100, 100);
-        FCanvas.drawLine(10, 10, 100, 100);
+        setup.graphics.drawLine(50, 10, 20, 100);
+        FCanvas.drawLine(50, 10, 20, 100);
         assertFCanvasEqualsImage(setup.image, "line");
     }
 
