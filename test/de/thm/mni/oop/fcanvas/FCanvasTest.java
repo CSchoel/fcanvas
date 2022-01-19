@@ -35,6 +35,14 @@ public class FCanvasTest {
         FCanvas.drawRectangle(10, 10, 100, 100);
         assertFCanvasEqualsImage(setup.image, "rectangle_");
     }
+
+    @Test
+    public void testLine() throws IOException, InterruptedException {
+        Thread.sleep(100); // canvas must have finished first draw before we can get dimensions
+        ImageSetup setup = createFCanvasImageSetup();
+        setup.graphics.drawLine(10, 10, 100, 100);
+        FCanvas.drawLine(10, 10, 100, 100);
+        assertFCanvasEqualsImage(setup.image, "line_");
     }
 
     public static ImageSetup createFCanvasImageSetup() {
