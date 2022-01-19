@@ -40,6 +40,7 @@ tasks.test {
         showStandardStreams = true
         exceptionFormat = TestExceptionFormat.FULL
     }
+    workingDir(binaryResultsDirectory)
 }
 
 tasks.javadoc {
