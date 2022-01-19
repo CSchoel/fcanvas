@@ -33,7 +33,6 @@ public class FCanvasTest {
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawRect(10, 10, 100, 100);
         FCanvas.drawRectangle(10, 10, 100, 100);
-        Thread.sleep(1000);
         BufferedImage ref = FCanvas.gui.getPanel().toImage();
         assertImageEquals(setup.image, ref, "rectangle");
     }
