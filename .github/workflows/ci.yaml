@@ -13,10 +13,10 @@ jobs:
           java-version: 17
       - name: Install xvfb for headless unit tests
         run: sudo apt install xvfb
-      - name: Setup xvfb for screen 0
-        run: Xvfb :1 -screen 0 1600x1200x16 &
-      - run: ./gradlew build
+      # - name: Setup xvfb for screen 0
+      #   run: Xvfb :1 -screen 0 1600x1200x16 &
+      - run: xvfb-run ./gradlew build
         env:
           DISPLAY: :1
-      - name: Tear down xvfb
-        run: killall Xvfb
+      # - name: Tear down xvfb
+      #   run: killall Xvfb
