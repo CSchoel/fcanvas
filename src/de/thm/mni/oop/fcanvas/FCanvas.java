@@ -16,6 +16,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
+import java.awt.event.MouseListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseMotionListener;
 
 /**
  * <p>This class implements a canvas on which you can draw using static methods.</p>
@@ -677,6 +680,38 @@ public class FCanvas {
 	
 	public static void setPixelBuffer(int x, int y) {
 		gui.getPanel().updateImageBuffer(x, y);
+	}
+
+	/**
+	 * Resets the whole canvas, removing all drawing components and setting
+	 * all internal state variables to their default start value.
+	 * 
+	 * This also means that {@link #show()} has to be called again
+	 * before any of the other display methods can be used.
+	 */
+	public static void reset() {
+		for (KeyListener k: gui.getPanel().getKeyListeners()) {
+			if (k instanceof KeyVarsUpdater) { gui.getPanel().removeKeyListener(k); }
+		}
+		for (MouseListener m: gui.getPanel().getMouseListeners()) {
+			if (m instanceof MouseVarsUpdater) { gui.getPanel().removeMouseListener(m); }
+		}
+		for (MouseMotionListener m: gui.getPanel().getMouseMotionListeners()) {
+			if (m instanceof MouseVarsUpdater) { gui.getPanel().removeMouseMotionListener(m); }
+		}
+		gui.getPanel().reset();
+		keyLastSeen = new ConcurrentHashMap<Integer,Long>();
+		keyLastAsked = new ConcurrentHashMap<Integer,Long>();
+		keyPressCountLast = new ConcurrentHashMap<Integer,Long>();
+		keyPressCount = new ConcurrentHashMap<Integer,Long>();
+		buttonLastSeen = new ConcurrentHashMap<Integer,Long>();
+		buttonLastAsked = new ConcurrentHashMap<Integer,Long>();
+		buttonPressCountLast = new ConcurrentHashMap<Integer,Long>();
+		buttonPressCount = new ConcurrentHashMap<Integer,Long>();
+		keysDown = new ConcurrentHashMap<Integer,Boolean>();
+		buttonsDown = new ConcurrentHashMap<Integer,Boolean>();
+		lastMousePoint = new Point(0,0);
+		autoupdate = true;
 	}
 	
 	public static void main(String[] args) throws InterruptedException {

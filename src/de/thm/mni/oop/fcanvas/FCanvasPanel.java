@@ -461,6 +461,25 @@ public class FCanvasPanel extends JPanel {
 	public synchronized void setAntialiasingEnabled(boolean enabled) {
 		useAntialiasing = enabled;
 	}
+
+	/**
+	 * Resets the whole panel removing all components and returning all
+	 * settings to their default values.
+	 */
+	public synchronized void reset() {
+		SwingUtilities.invokeLater( () ->  {
+			idcounter = 0;
+			bufferMaxX = 0;
+			bufferMaxY = 0;
+			useAntialiasing = false;
+			components = new HashMap<Long,FCanvasComponent>();
+			pixels = new HashMap<Point,Color>();
+			sortedKeys = new ArrayList<Long>();
+		});
+		setBackground(Color.WHITE);
+		updateImageBuffer(1,1);
+	}
+
 	/**
 	 * <p>Draws the current graphic to a BufferedImage</p>
 	 * @return BufferedImage with an image of the current canvas content
