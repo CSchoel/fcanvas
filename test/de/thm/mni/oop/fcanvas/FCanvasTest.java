@@ -29,7 +29,7 @@ public class FCanvasTest {
 
     @Test
     public void testRectangle() throws IOException, InterruptedException {
-        Thread.sleep(100);
+        Thread.sleep(100); // canvas must have finished first draw before we can get dimensions
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawRect(10, 10, 100, 100);
         FCanvas.drawRectangle(10, 10, 100, 100);
