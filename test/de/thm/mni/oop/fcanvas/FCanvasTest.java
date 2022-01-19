@@ -33,7 +33,7 @@ public class FCanvasTest {
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawRect(10, 10, 100, 100);
         FCanvas.drawRectangle(10, 10, 100, 100);
-        assertFCanvasEqualsImage(setup.image, "rectangle_");
+        assertFCanvasEqualsImage(setup.image, "rectangle");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class FCanvasTest {
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawLine(10, 10, 100, 100);
         FCanvas.drawLine(10, 10, 100, 100);
-        assertFCanvasEqualsImage(setup.image, "line_");
+        assertFCanvasEqualsImage(setup.image, "line");
     }
 
     public static ImageSetup createFCanvasImageSetup() {
