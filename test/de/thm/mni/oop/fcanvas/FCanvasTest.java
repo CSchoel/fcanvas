@@ -75,6 +75,13 @@ public class FCanvasTest {
         }
     }
 
+    public static int diffRGB(int c1, int c2) {
+        int r = (c1 & 0xff0000 >> 16) - (c2 & 0xff0000 >> 16);
+        int g = (c1 & 0xff00 >> 8) - (c2 & 0xff00 >> 8);
+        int b = (c1 & 0xff) - (c2 & 0xff);
+        return 0xff << 24 | Math.abs(r) << 16 | Math.abs(g) << 8 | Math.abs(b);
+    }
+
     public static BufferedImage differenceImage(BufferedImage a, BufferedImage b) {
         BufferedImage diff = new BufferedImage(a.getWidth(), a.getHeight(), BufferedImage.TYPE_INT_RGB);
         int[] colorA = a.getRGB(0, 0, a.getWidth(), a.getHeight(), null, 0, a.getWidth());
@@ -82,7 +89,7 @@ public class FCanvasTest {
         int[] colorDiff = new int[colorA.length];
         assert colorA.length == colorB.length;
         for (int i = 0; i < colorA.length; i++) {
-            colorDiff[i] = colorA[i] - colorB[i];
+            colorDiff[i] = diffRGB(colorA[i], colorB[i]);
         }
         diff.setRGB(0, 0, a.getWidth(), a.getHeight(), colorDiff, 0, a.getWidth());
         return diff;
