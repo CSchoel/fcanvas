@@ -3,6 +3,7 @@ package de.thm.mni.oop.fcanvas;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.After;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -13,9 +14,16 @@ import java.awt.Graphics2D;
 
 public class FCanvasTest {
 
-    private static final Path IMAGE_DIR = Path.of(".");
+    private static final Path IMAGE_DIR = Path.of(System.getProperty("user.dir")).resolve("testimg");
 
     record ImageSetup(BufferedImage image, Graphics2D graphics) {}
+
+    @BeforeClass
+    public static void createImageDir() {
+        if (!IMAGE_DIR.toFile().exists()) {
+            IMAGE_DIR.toFile().mkdir();
+        }
+    }
 
     @Before
     public void setupCanvas() {
