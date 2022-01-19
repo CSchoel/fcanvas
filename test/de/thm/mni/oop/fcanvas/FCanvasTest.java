@@ -33,8 +33,8 @@ public class FCanvasTest {
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawRect(10, 10, 100, 100);
         FCanvas.drawRectangle(10, 10, 100, 100);
-        BufferedImage ref = FCanvas.gui.getPanel().toImage();
-        assertImageEquals(setup.image, ref, "rectangle");
+        assertFCanvasEqualsImage(setup.image, "rectangle_");
+    }
     }
 
     public static ImageSetup createFCanvasImageSetup() {
@@ -45,6 +45,11 @@ public class FCanvasTest {
         g.setBackground(Color.WHITE);
         g.setPaint(Color.BLACK);
         return new ImageSetup(bi, g);
+    }
+
+    public static void assertFCanvasEqualsImage(BufferedImage expected, String filePrefix) throws IOException {
+        BufferedImage ref = FCanvas.gui.getPanel().toImage();
+        assertImageEquals(expected, ref, filePrefix);
     }
 
     public static void assertImageEquals(BufferedImage expected, BufferedImage actual, String filePrefix) throws IOException {
