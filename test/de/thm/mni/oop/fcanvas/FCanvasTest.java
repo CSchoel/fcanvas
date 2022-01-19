@@ -66,6 +66,53 @@ public class FCanvasTest {
     }
 
     /**
+     * Test hypothesis: {@link FCanvas#drawOval(int, int, int, int)} might fail to display
+     * the oval, or one of the parameters might be handled incorrectly (e.g. swapped axes).
+     * @throws IOException when test image cannot be saved
+     * @throws InterruptedException when test is interrupted
+     */
+    @Test
+    public void testOval() throws IOException, InterruptedException {
+        Thread.sleep(100); // canvas must have finished first draw before we can get dimensions
+        ImageSetup setup = createFCanvasImageSetup();
+        setup.graphics.drawOval(50, 10, 20, 100);
+        FCanvas.drawOval(50, 10, 20, 100);
+        assertFCanvasEqualsImage(setup.image, "oval");
+    }
+
+    /**
+     * Test hypothesis: {@link FCanvas#drawPolygon(int[], int[])} might fail to display
+     * the polygon, or one of the parameters might be handled incorrectly (e.g. swapped axes).
+     * @throws IOException when test image cannot be saved
+     * @throws InterruptedException when test is interrupted
+     */
+    @Test
+    public void testPolygon() throws IOException, InterruptedException {
+        Thread.sleep(100); // canvas must have finished first draw before we can get dimensions
+        ImageSetup setup = createFCanvasImageSetup();
+        int[] x = {100,110,150,110,100, 90, 50,90};
+        int[] y = { 50, 90,100,110,150,110,100,90};
+        setup.graphics.drawPolygon(x, y, x.length);
+        FCanvas.drawPolygon(x, y);
+        assertFCanvasEqualsImage(setup.image, "polygon");
+    }
+
+    /**
+     * Test hypothesis: {@link FCanvas#drawText(String, int, int)} might fail to display
+     * the text, or one of the parameters might be handled incorrectly (e.g. swapped axes).
+     * @throws IOException when test image cannot be saved
+     * @throws InterruptedException when test is interrupted
+     */
+    @Test
+    public void testText() throws IOException, InterruptedException {
+        Thread.sleep(100); // canvas must have finished first draw before we can get dimensions
+        ImageSetup setup = createFCanvasImageSetup();
+        setup.graphics.drawString("foo", 50, 100);
+        FCanvas.drawText("foo", 50, 100);
+        assertFCanvasEqualsImage(setup.image, "text");
+    }
+
+    /**
      * Creates an {@link ImageSetup} object that allows to draw on the image with the
      * same default settings as used by FCanvas (including panel dimensions).
      * @return setup that can be used to draw images comparable to FCanvas content
