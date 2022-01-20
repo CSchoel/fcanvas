@@ -9,8 +9,10 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.nio.file.Path;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import javax.swing.SwingUtilities;
 
 public class FCanvasTest {
 
@@ -35,6 +37,17 @@ public class FCanvasTest {
         FCanvas.reset();
     }
 
+    public void waitForEDT() throws InterruptedException {
+        // waits for execution of empty runnable
+        // => ensure that all events that have been previously
+        // scheduled have already been completed
+        try {
+            SwingUtilities.invokeAndWait(() -> {});
+        } catch (InvocationTargetException e) {
+            /* this can never happen since our runnable is a no-op */
+        }
+    }
+
     /**
      * Test hypothesis: {@link FCanvas#drawRectangle(int, int, int, int)} might fail to display
      * the rectangle, or one of the parameters might be handled incorrectly (e.g. swapped axes).
@@ -47,6 +60,7 @@ public class FCanvasTest {
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawRect(50, 10, 20, 100);
         FCanvas.drawRectangle(50, 10, 20, 100);
+        waitForEDT();
         assertFCanvasEqualsImage(setup.image, "rectangle");
     }
 
@@ -62,6 +76,7 @@ public class FCanvasTest {
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawLine(50, 10, 20, 100);
         FCanvas.drawLine(50, 10, 20, 100);
+        waitForEDT();
         assertFCanvasEqualsImage(setup.image, "line");
     }
 
@@ -77,6 +92,7 @@ public class FCanvasTest {
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawOval(50, 10, 20, 100);
         FCanvas.drawOval(50, 10, 20, 100);
+        waitForEDT();
         assertFCanvasEqualsImage(setup.image, "oval");
     }
 
@@ -94,6 +110,7 @@ public class FCanvasTest {
         int[] y = { 50, 90,100,110,150,110,100,90};
         setup.graphics.drawPolygon(x, y, x.length);
         FCanvas.drawPolygon(x, y);
+        waitForEDT();
         assertFCanvasEqualsImage(setup.image, "polygon");
     }
 
@@ -109,6 +126,7 @@ public class FCanvasTest {
         ImageSetup setup = createFCanvasImageSetup();
         setup.graphics.drawString("foo", 50, 100);
         FCanvas.drawText("foo", 50, 100);
+        waitForEDT();
         assertFCanvasEqualsImage(setup.image, "text");
     }
 
