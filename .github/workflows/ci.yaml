@@ -14,3 +14,8 @@ jobs:
       - name: Install xvfb for headless unit tests
         run: sudo apt install xvfb
       - run: xvfb-run ./gradlew build
+      - name: Archive test images
+        uses: actions/upload-artifact@v2
+        with:
+          name: test images
+          path: build/test-results/test/binary/testimg
