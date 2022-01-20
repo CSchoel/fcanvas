@@ -16,6 +16,7 @@ jobs:
       - name: Install xvfb for headless unit tests
         run: sudo apt install xvfb
       - run: xvfb-run ./gradlew build
+      - run: ./gradlew jacocoTestReport
       - name: Archive test images
         uses: actions/upload-artifact@v2
         if: failure()
