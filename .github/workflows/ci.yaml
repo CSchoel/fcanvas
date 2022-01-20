@@ -22,3 +22,5 @@ jobs:
         with:
           name: test images
           path: build/test-results/test/binary/testimg
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2

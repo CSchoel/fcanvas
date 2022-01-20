@@ -14,6 +14,7 @@ version = "1.3.1"
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+    jacoco
 }
 
 sourceSets {
@@ -41,6 +42,13 @@ tasks.test {
         exceptionFormat = TestExceptionFormat.FULL
     }
     workingDir(binaryResultsDirectory)
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        html.required.set(false)
+    }
 }
 
 tasks.javadoc {
