@@ -1,6 +1,7 @@
 # FCanvas
 
 [![build](https://github.com/CSchoel/fcanvas/actions/workflows/ci.yaml/badge.svg)](https://github.com/CSchoel/fcanvas/actions/workflows/ci.yaml)
+[![codecov](https://codecov.io/gh/CSchoel/fcanvas/branch/main/graph/badge.svg?token=NQ3SEX9N8T)](https://codecov.io/gh/CSchoel/fcanvas)
 
 FCanvas is a small and extremely simple Java library that allows novice Java programmers to draw on a canvas (similar to [Processing](https://processing.org/)) while still learning the basics of the language.
 
