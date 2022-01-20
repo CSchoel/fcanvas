@@ -17,7 +17,7 @@ If you want to create an animation, you can, but you have to write the animation
 
 ## Design choices
 
-FCanvas differs from most graphical toolkits and takes some odd choices that sacrifice performance and stability in favor of ease of use.
+FCanvas differs from most graphical toolkits and makes some odd choices that sacrifice performance and stability in favor of ease of use.
 These design choices are explained in the following.
 
 ### Hidden objects
