@@ -16,6 +16,7 @@ jobs:
       - run: xvfb-run ./gradlew build
       - name: Archive test images
         uses: actions/upload-artifact@v2
+        if: failure()
         with:
           name: test images
           path: build/test-results/test/binary/testimg
