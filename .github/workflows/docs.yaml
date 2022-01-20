@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+name: publish docs
+
 jobs:
   build:
     name: Create release

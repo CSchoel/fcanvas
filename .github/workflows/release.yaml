@@ -3,6 +3,8 @@ on:
     tags: 
       - 'v*'
 
+name: create release
+
 jobs:
   build:
     name: Create release
