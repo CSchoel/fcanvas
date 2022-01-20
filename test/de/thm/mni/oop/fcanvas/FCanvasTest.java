@@ -37,6 +37,11 @@ public class FCanvasTest {
         FCanvas.reset();
     }
 
+    /**
+     * Invokes a no-op runnable on the event dispatch thread
+     * to ensure that all previous events have been processed.
+     * @throws InterruptedException
+     */
     public void waitForEDT() throws InterruptedException {
         // waits for execution of empty runnable
         // => ensure that all events that have been previously
